@@ -41,6 +41,6 @@
   - domains: id, domainname, user*
     => groups
 
-  - bookings (domains-services): id, domain, service, from, to (open-ended), info
+  - bookings (domains-services): id, domain*, service*, from, to (open-ended), info
 
   - payments: id, booking*, date, amount, text
