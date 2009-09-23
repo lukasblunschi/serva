@@ -19,6 +19,7 @@ http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
 
 
 			<!-- C3P0 connection pool provider -->
+			<property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider" />
 
 			<!-- aquire somany new connections if we run out of pooled connections -->
 			<property name="hibernate.c3p0.acquire_increment" value="1" />
