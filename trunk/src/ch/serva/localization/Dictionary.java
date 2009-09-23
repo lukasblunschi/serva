@@ -16,6 +16,8 @@ public interface Dictionary {
 	 */
 	String getLanguageCode();
 
+	String getLanguageName();
+
 	// ----------------------------------------------------------------- common
 
 	String login();
@@ -37,6 +39,10 @@ public interface Dictionary {
 	String welcome();
 
 	String hello();
+	
+	String home();
+	
+	String admin();
 
 	// ------------------------------------------------------------------ users
 

@@ -1,0 +1,57 @@
+package ch.serva.tools;
+
+import java.net.URLDecoder;
+import java.util.logging.Logger;
+
+/**
+ * These servlet tools help to retrieve parameters inside a HTTP request or to dump such a request.
+ * 
+ * @author Lukas Blunschi
+ */
+public class ServletTools {
+
+	private static final Logger log = Logger.getLogger(ServletTools.class.getName());
+
+	/**
+	 * Decode the given URI using UTF-8 charset.
+	 * 
+	 * @param encoded
+	 *            encoded URI.
+	 * @return decoded URI, or null if failure occured.
+	 */
+	public static String decodeURI(String encoded) {
+		String decoded = null;
+		try {
+			decoded = URLDecoder.decode(encoded, "utf-8");
+		} catch (Exception e) {
+			log.warning("Failure while decoding URI (" + encoded + "): " + e.getMessage());
+			decoded = null;
+		}
+		return decoded;
+	}
+
+	/**
+	 * Remove path information from a given filename.
+	 * 
+	 * @param filename
+	 *            filename to remove path information from.
+	 * @return filename without path information.
+	 */
+	public static String removePathInformation(String filename) {
+
+		// convert backslashes to forward slahes
+		filename = filename.replace('\\', '/');
+
+		// cut after last slash
+		int pos = filename.lastIndexOf("/");
+		String name = null;
+		if (pos == -1) {
+			// okay. only name.
+			name = filename;
+		} else {
+			name = filename.substring(pos + 1);
+		}
+		return name;
+	}
+
+}

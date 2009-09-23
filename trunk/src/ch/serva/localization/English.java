@@ -7,10 +7,16 @@ package ch.serva.localization;
  */
 public class English extends AbstractDictionary {
 
+	public static final String LANGCODE = "en";
+
 	// -------------------------------------------------------------- languages
 
 	public String getLanguageCode() {
-		return "en";
+		return LANGCODE;
+	}
+
+	public String getLanguageName() {
+		return "English";
 	}
 
 	// --------------------------------------------------------- common actions
@@ -51,6 +57,14 @@ public class English extends AbstractDictionary {
 
 	public String hello() {
 		return "Hello";
+	}
+	
+	public String home() {
+		return "Home";
+	}
+	
+	public String admin() {
+		return "Admin";
 	}
 
 	// -------------------------------------------------------- users/user page

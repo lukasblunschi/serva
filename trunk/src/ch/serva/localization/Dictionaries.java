@@ -1,11 +1,12 @@
 package ch.serva.localization;
 
-import java.util.HashMap;
+import java.util.Collection;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 
-import ch.serva.SessionConstants;
+import ch.serva.ServaConstants;
 
 /**
  * Available dictionaries and functions to retrieve them.
@@ -14,26 +15,28 @@ import ch.serva.SessionConstants;
  */
 public class Dictionaries {
 
-	private static final Map<String, Dictionary> dictMap;
+	private static final Map<String, Dictionary> dictionaryMap;
 
 	static {
-		English en = new English();
-		dictMap = new HashMap<String, Dictionary>();
-		dictMap.put(en.getLanguageCode(), en);
+		dictionaryMap = new TreeMap<String, Dictionary>();
+		dictionaryMap.put(English.LANGCODE, new English());
 	}
 
-	public static Dictionary getDictionaryByLang(String lang) {
-		return dictMap.get(lang);
+	public static Collection<String> getLanguageCodes() {
+		return dictionaryMap.keySet();
+	}
+
+	public static Dictionary getDictionary(String langcode) {
+		return dictionaryMap.get(langcode);
 	}
 
 	public static Dictionary getDictionaryFromSession(HttpServletRequest req) {
-		String langcode = (String) req.getSession().getAttribute(SessionConstants.A_LANGUAGE);
-		if (langcode == null) {
+		String langCodeStr = (String) req.getSession().getAttribute(ServaConstants.A_LANGUAGE);
+		if (langCodeStr == null) {
 			// english is default
-			return dictMap.get("en");
+			return getDictionary(English.LANGCODE);
 		} else {
-			return getDictionaryByLang(langcode);
+			return getDictionary(langCodeStr);
 		}
 	}
-
 }
