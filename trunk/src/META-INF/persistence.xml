@@ -1,0 +1,51 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+
+	<persistence-unit name="serva">
+
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<class>ch.serva.db.User</class>
+
+		<properties>
+
+			<!-- MySQL connection properties -->
+
+			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/serva" />
+			<property name="hibernate.connection.username" value="serva" />
+			<property name="hibernate.connection.password" value="123" />
+
+
+			<!-- C3P0 connection pool provider -->
+
+			<!-- aquire somany new connections if we run out of pooled connections -->
+			<property name="hibernate.c3p0.acquire_increment" value="1" />
+
+			<!-- check idle connections every somany seconds -->
+			<property name="hibernate.c3p0.idle_test_period" value="300" />
+
+			<!-- min and max pool size -->
+			<property name="hibernate.c3p0.min_size" value="1" />
+			<property name="hibernate.c3p0.max_size" value="10" />
+
+			<!-- size of prepared statement cache (0 = turn off) -->
+			<property name="hibernate.c3p0.max_statements" value="0" />
+
+			<!-- discard a pooled connection if not used for somany seconds -->
+			<property name="hibernate.c3p0.timeout" value="180" />
+
+
+			<!-- Show and print nice SQL on stdout -->
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- Drop and re-create the database schema on startup -->
+			<!--  <property name="hibernate.hbm2ddl.auto" value="create" />  -->
+
+		</properties>
+
+	</persistence-unit>
+
+</persistence>
