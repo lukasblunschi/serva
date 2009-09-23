@@ -1,0 +1,16 @@
+Licenses Hibernate
+------------------
+
+core:            LGPL 2.1 (see LGPL-2.1.txt)
+annotations:     LGPL 2.1
+entity manager:  LGPL 2.1
+
+
+required additional libs:
+- antlr-2.7.6
+- commons-collections-3.1
+- dom4j-1.6.1
+- javaassist-3.9.0.GA
+- jta-1.1
+- slf4j-api-1.5.8
+
