@@ -57,7 +57,7 @@ public class LoginAction implements Action {
 			tx.commit();
 
 			// store login in session and return success (null)
-			req.getSession().setAttribute(ServaConstants.A_USER_ID, user.getId());
+			req.getSession().setAttribute(ServaConstants.A_USER_ID, (Integer) user.getId());
 			return new Success();
 
 		} else {
@@ -70,7 +70,7 @@ public class LoginAction implements Action {
 				if (storedPw.equals(enteredPw)) {
 
 					// store id and langcode in session and return success
-					req.getSession().setAttribute(ServaConstants.A_USER_ID, user.getId());
+					req.getSession().setAttribute(ServaConstants.A_USER_ID, (Integer) user.getId());
 					req.getSession().setAttribute(ServaConstants.A_LANGUAGE, user.getLanguage());
 					return new Success();
 				} else {

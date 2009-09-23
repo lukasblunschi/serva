@@ -3,8 +3,6 @@ package ch.serva.servlets;
 import java.io.IOException;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +22,9 @@ import ch.serva.pages.AdminPage;
 import ch.serva.pages.HomePage;
 import ch.serva.pages.LoginPage;
 import ch.serva.pages.Page;
+import ch.serva.tools.EMF;
 import ch.serva.tools.GetRequest;
 import ch.serva.tools.ServletResponseTools;
-
-
 
 /**
  * The Serva servlet.
@@ -51,8 +48,7 @@ public class ServaServlet extends HttpServlet {
 		StringBuffer html = new StringBuffer();
 
 		// get access to data
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("serva");
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = EMF.get().createEntityManager();
 		try {
 
 			// logged in user
@@ -78,45 +74,45 @@ public class ServaServlet extends HttpServlet {
 				} else if (isLoggedIn) {
 
 					// save answer and submit
-//					if (actionStr.equals(SaveAnswerAction.NAME)) {
-//						action = new SaveAnswerAction();
-//					} else if (actionStr.equals(SubmitTaskAction.NAME)) {
-//						action = new SubmitTaskAction();
-//					} else if (isAdmin) {
+					// if (actionStr.equals(SaveAnswerAction.NAME)) {
+					// action = new SaveAnswerAction();
+					// } else if (actionStr.equals(SubmitTaskAction.NAME)) {
+					// action = new SubmitTaskAction();
+					// } else if (isAdmin) {
 
-						// save
-//						if (actionStr.equals(SaveNurseAction.NAME)) {
-//							action = new SaveNurseAction();
-//						} else if (actionStr.equals(SavePatientAction.NAME)) {
-//							action = new SavePatientAction();
-//						} else if (actionStr.equals(SaveQuestionAction.NAME)) {
-//							action = new SaveQuestionAction();
-//						} else if (actionStr.equals(SaveQuestionnaireAction.NAME)) {
-//							action = new SaveQuestionnaireAction();
+					// save
+					// if (actionStr.equals(SaveNurseAction.NAME)) {
+					// action = new SaveNurseAction();
+					// } else if (actionStr.equals(SavePatientAction.NAME)) {
+					// action = new SavePatientAction();
+					// } else if (actionStr.equals(SaveQuestionAction.NAME)) {
+					// action = new SaveQuestionAction();
+					// } else if (actionStr.equals(SaveQuestionnaireAction.NAME)) {
+					// action = new SaveQuestionnaireAction();
 
-							// associations
-//						} else if (actionStr.equals(AddQuestionAction.NAME)) {
-//							action = new AddQuestionAction();
-//						} else if (actionStr.equals(AddQuestionnaireAction.NAME)) {
-//							action = new AddQuestionnaireAction();
-//						} else if (actionStr.equals(AddQuestionnaireToAllPatientsAction.NAME)) {
-//							action = new AddQuestionnaireToAllPatientsAction();
-//						} else if (actionStr.equals(RemoveQuestionAction.NAME)) {
-//							action = new RemoveQuestionAction();
-//						} else if (actionStr.equals(RemoveQuestionnaireAction.NAME)) {
-//							action = new RemoveQuestionnaireAction();
+					// associations
+					// } else if (actionStr.equals(AddQuestionAction.NAME)) {
+					// action = new AddQuestionAction();
+					// } else if (actionStr.equals(AddQuestionnaireAction.NAME)) {
+					// action = new AddQuestionnaireAction();
+					// } else if (actionStr.equals(AddQuestionnaireToAllPatientsAction.NAME)) {
+					// action = new AddQuestionnaireToAllPatientsAction();
+					// } else if (actionStr.equals(RemoveQuestionAction.NAME)) {
+					// action = new RemoveQuestionAction();
+					// } else if (actionStr.equals(RemoveQuestionnaireAction.NAME)) {
+					// action = new RemoveQuestionnaireAction();
 
-							// special
-//						} else if (actionStr.equals(DistributeLoginsAction.NAME)) {
-//							action = new DistributeLoginsAction();
-//						} else if (actionStr.equals(SendLoginAction.NAME)) {
-//							action = new SendLoginAction();
-//						} else if (actionStr.equals(DistributeNotificationsAction.NAME)) {
-//							action = new DistributeNotificationsAction();
-//						} else if (actionStr.equals(SendNotificationAction.NAME)) {
-//							action = new SendNotificationAction();
-//						}
-//					}
+					// special
+					// } else if (actionStr.equals(DistributeLoginsAction.NAME)) {
+					// action = new DistributeLoginsAction();
+					// } else if (actionStr.equals(SendLoginAction.NAME)) {
+					// action = new SendLoginAction();
+					// } else if (actionStr.equals(DistributeNotificationsAction.NAME)) {
+					// action = new DistributeNotificationsAction();
+					// } else if (actionStr.equals(SendNotificationAction.NAME)) {
+					// action = new SendNotificationAction();
+					// }
+					// }
 				}
 			}
 			if (actionStr != null && action == null) {
@@ -145,8 +141,8 @@ public class ServaServlet extends HttpServlet {
 			} else if (isLoggedIn) {
 				if (pageStr.equals(HomePage.NAME)) {
 					page = new HomePage();
-//				} else if (pageStr.equals(EditAnswerPage.NAME)) {
-//					page = new EditAnswerPage();
+					// } else if (pageStr.equals(EditAnswerPage.NAME)) {
+					// page = new EditAnswerPage();
 
 					// admin
 				} else if (isAdmin) {
@@ -154,38 +150,38 @@ public class ServaServlet extends HttpServlet {
 						page = new AdminPage();
 
 						// list pages
-//					} else if (pageStr.equals(ListNursesPage.NAME)) {
-//						page = new ListNursesPage();
-//					} else if (pageStr.equals(ListPatientsPage.NAME)) {
-//						page = new ListPatientsPage();
-//					} else if (pageStr.equals(ListQuestionsPage.NAME)) {
-//						page = new ListQuestionsPage();
-//					} else if (pageStr.equals(ListQuestionnairesPage.NAME)) {
-//						page = new ListQuestionnairesPage();
-//					} else if (pageStr.equals(ViewTasksPage.NAME)) {
-//						page = new ViewTasksPage();
+						// } else if (pageStr.equals(ListNursesPage.NAME)) {
+						// page = new ListNursesPage();
+						// } else if (pageStr.equals(ListPatientsPage.NAME)) {
+						// page = new ListPatientsPage();
+						// } else if (pageStr.equals(ListQuestionsPage.NAME)) {
+						// page = new ListQuestionsPage();
+						// } else if (pageStr.equals(ListQuestionnairesPage.NAME)) {
+						// page = new ListQuestionnairesPage();
+						// } else if (pageStr.equals(ViewTasksPage.NAME)) {
+						// page = new ViewTasksPage();
 
 						// edit pages
-//					} else if (pageStr.equals(EditNursePage.NAME)) {
-//						page = new EditNursePage();
-//					} else if (pageStr.equals(EditPatientPage.NAME)) {
-//						page = new EditPatientPage();
-//					} else if (pageStr.equals(EditQuestionPage.NAME)) {
-//						page = new EditQuestionPage();
-//					} else if (pageStr.equals(EditQuestionnairePage.NAME)) {
-//						page = new EditQuestionnairePage();
+						// } else if (pageStr.equals(EditNursePage.NAME)) {
+						// page = new EditNursePage();
+						// } else if (pageStr.equals(EditPatientPage.NAME)) {
+						// page = new EditPatientPage();
+						// } else if (pageStr.equals(EditQuestionPage.NAME)) {
+						// page = new EditQuestionPage();
+						// } else if (pageStr.equals(EditQuestionnairePage.NAME)) {
+						// page = new EditQuestionnairePage();
 
 						// association pages
-//					} else if (pageStr.equals(EditQuestionnaireQuestionsPage.NAME)) {
-//						page = new EditQuestionnaireQuestionsPage();
-//					} else if (pageStr.equals(EditTasksPage.NAME)) {
-//						page = new EditTasksPage();
+						// } else if (pageStr.equals(EditQuestionnaireQuestionsPage.NAME)) {
+						// page = new EditQuestionnaireQuestionsPage();
+						// } else if (pageStr.equals(EditTasksPage.NAME)) {
+						// page = new EditTasksPage();
 
 						// evaluation
-//					} else if (pageStr.equals(EvaluateQuestionnairePage.NAME)) {
-//						page = new EvaluateQuestionnairePage();
-//					} else if (pageStr.equals(FeverCurvesPage.NAME)) {
-//						page = new FeverCurvesPage();
+						// } else if (pageStr.equals(EvaluateQuestionnairePage.NAME)) {
+						// page = new EvaluateQuestionnairePage();
+						// } else if (pageStr.equals(FeverCurvesPage.NAME)) {
+						// page = new FeverCurvesPage();
 					}
 				}
 			} else {

@@ -14,7 +14,7 @@ import ch.serva.ServaConstants;
 public class Users {
 
 	public static User getUserFromSession(HttpServletRequest req, EntityManager em) {
-		Long userId = (Long) req.getSession().getAttribute(ServaConstants.A_USER_ID);
+		Integer userId = (Integer) req.getSession().getAttribute(ServaConstants.A_USER_ID);
 		if (userId == null) {
 			return null;
 		} else {

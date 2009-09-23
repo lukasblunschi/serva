@@ -1,7 +1,9 @@
 package ch.serva.tools;
 
 import java.net.URLDecoder;
-import java.util.logging.Logger;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * These servlet tools help to retrieve parameters inside a HTTP request or to dump such a request.
@@ -10,7 +12,7 @@ import java.util.logging.Logger;
  */
 public class ServletTools {
 
-	private static final Logger log = Logger.getLogger(ServletTools.class.getName());
+	private static Log log = LogFactory.getLog(ServletResponseTools.class);
 
 	/**
 	 * Decode the given URI using UTF-8 charset.
@@ -24,7 +26,7 @@ public class ServletTools {
 		try {
 			decoded = URLDecoder.decode(encoded, "utf-8");
 		} catch (Exception e) {
-			log.warning("Failure while decoding URI (" + encoded + "): " + e.getMessage());
+			log.warn("Failure while decoding URI (" + encoded + "): " + e.getMessage());
 			decoded = null;
 		}
 		return decoded;

@@ -10,10 +10,12 @@ import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  * Tools to work with servlet responses.
@@ -25,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ServletResponseTools {
 
-	private static final Logger log = Logger.getLogger(ServletResponseTools.class.getName());
+	private static Log log = LogFactory.getLog(ServletResponseTools.class);
 
 	private static SimpleDateFormat cacheFormatter;
 
@@ -160,7 +162,7 @@ public class ServletResponseTools {
 			pout = resp.getWriter();
 			pout.write(message);
 		} catch (IOException ioe) {
-			log.severe("Failure writing response: " + ioe.getMessage());
+			log.error("Failure writing response: " + ioe.getMessage());
 		} finally {
 			if (pout != null) {
 				pout.close();
