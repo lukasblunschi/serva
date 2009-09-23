@@ -1,16 +1,27 @@
 package ch.serva.db;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import ch.serva.localization.English;
 
 /**
  * An entity to store a user.
+ * <p>
+ * A user contains a combination of
+ * <ul>
+ * <li>login information: username, password
+ * <li>rights information: isadmin
+ * <li>display information: language, nickname, firstname, lastname
+ * <li>contact information: address, phone, email
+ * </ul>
  * 
  * @author Lukas Blunschi
  * 
@@ -27,12 +38,12 @@ public class User {
 
 	private String password;
 
+	private boolean isadmin;
+
 	/**
 	 * language code, e.g. en or de
 	 */
 	private String language;
-
-	private boolean isadmin;
 
 	private String nickname;
 
@@ -49,14 +60,20 @@ public class User {
 
 	private String email;
 
-	// @OneToMany(mappedBy = "user")
-	// private List<Domain> domains;
+	@OneToMany(mappedBy = "holder")
+	private List<Domain> domainsAsHolder;
+
+	@OneToMany(mappedBy = "billingcontact")
+	private List<Domain> domainsAsBillingcontact;
+
+	@OneToMany(mappedBy = "technicalcontact")
+	private List<Domain> domainsAsTechnicalcontact;
 
 	public static final String F_ID = "id";
 	public static final String F_USERNAME = "username";
 	public static final String F_PASSWORD = "password";
-	public static final String F_LANGUAGE = "language";
 	public static final String F_ISADMIN = "isadmin";
+	public static final String F_LANGUAGE = "language";
 	public static final String F_NICKNAME = "nickname";
 	public static final String F_FIRSTNAME = "firstname";
 	public static final String F_LASTNAME = "lastname";
@@ -65,23 +82,27 @@ public class User {
 	public static final String F_EMAIL = "email";
 
 	public User() {
-		set("", "", English.LANGCODE, false, "", "", "", "", "", "");
+		set("", "", false, English.LANGCODE, "", "", "", "", "", "");
 		generatePassword();
-		// this.domains = new ArrayList<Domain>();
+		this.domainsAsHolder = new ArrayList<Domain>();
+		this.domainsAsBillingcontact = new ArrayList<Domain>();
+		this.domainsAsTechnicalcontact = new ArrayList<Domain>();
 	}
 
-	public User(String username, String password, String language, boolean isadmin, String nickname, String firstname,
+	public User(String username, String password, boolean isadmin, String language, String nickname, String firstname,
 			String lastname, String address, String phone, String email) {
-		set(username, password, language, isadmin, nickname, firstname, lastname, address, phone, email);
-		// this.domains = new ArrayList<Domain>();
+		set(username, password, isadmin, language, nickname, firstname, lastname, address, phone, email);
+		this.domainsAsHolder = new ArrayList<Domain>();
+		this.domainsAsBillingcontact = new ArrayList<Domain>();
+		this.domainsAsTechnicalcontact = new ArrayList<Domain>();
 	}
 
-	public void set(String username, String password, String language, boolean isadmin, String nickname, String firstname,
+	public void set(String username, String password, boolean isadmin, String language, String nickname, String firstname,
 			String lastname, String address, String phone, String email) {
 		this.username = username;
 		this.password = password;
-		this.language = language;
 		this.isadmin = isadmin;
+		this.language = language;
 		this.nickname = nickname;
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -112,20 +133,20 @@ public class User {
 		this.password = password;
 	}
 
-	public String getLanguage() {
-		return language;
-	}
-
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-
 	public boolean isIsadmin() {
 		return isadmin;
 	}
 
 	public void setIsadmin(boolean isadmin) {
 		this.isadmin = isadmin;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 	public String getNickname() {
@@ -176,6 +197,18 @@ public class User {
 		this.email = email;
 	}
 
+	public List<Domain> getDomainsAsHolder() {
+		return domainsAsHolder;
+	}
+
+	public List<Domain> getDomainsAsBillingcontact() {
+		return domainsAsBillingcontact;
+	}
+
+	public List<Domain> getDomainsAsTechnicalcontact() {
+		return domainsAsTechnicalcontact;
+	}
+
 	// ----------------------------------------------------- additional methods
 
 	private void generatePassword() {
@@ -197,6 +230,14 @@ public class User {
 			}
 		}
 		setPassword(buf.toString());
+	}
+
+	public List<Domain> getDomains() {
+		List<Domain> domains = new ArrayList<Domain>();
+		domains.addAll(domainsAsHolder);
+		domains.addAll(domainsAsBillingcontact);
+		domains.addAll(domainsAsTechnicalcontact);
+		return domains;
 	}
 
 }
