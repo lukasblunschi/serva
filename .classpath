@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/activation-1.1.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/serva/lib/activation-1.1.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/commons-fileupload-1.2.1.jar" sourcepath="lib/commons-fileupload-1.2.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-1.4.jar" sourcepath="lib/commons-io-1.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar" sourcepath="lib/commons-logging-1.1.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/ejb3-persistence-1.0.2-GA.jar" sourcepath="lib/ejb3-persistence-1.0.2-GA-sources.jar"/>
+	<classpathentry kind="lib" path="lib/infoaccess-0.6.0.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.5.jar" sourcepath="lib/junit-4.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="lib/mail-1.4.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/serva/lib/mail-1.4.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.7-bin.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api-2.5-6.1.14.jar" sourcepath="lib/servlet-api-2.5-sources.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/c3p0-0.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/hibernate-annotations-3.4.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/hibernate-commons-annotations-3.4.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/hibernate-core-3.3.2.GA.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/hibernate-entitymanager-3.4.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/slf4j-api-1.5.8.jar" sourcepath="lib/hibernate/slf4j-api-1.5.8-sources.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate/slf4j-log4j12-1.5.8.jar" sourcepath="lib/hibernate/slf4j-log4j12-1.5.8-sources.jar"/>
+	<classpathentry kind="lib" path="lib/jetty/jetty-6.1.14.jar" sourcepath="lib/jetty/jetty-6.1.14-sources.jar"/>
+	<classpathentry kind="lib" path="lib/jetty/jetty-util-6.1.14.jar" sourcepath="lib/jetty/jetty-util-6.1.14-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

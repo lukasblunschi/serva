@@ -1,0 +1,46 @@
+
+- names:
+  - Serva (service accounting)
+  - web (hosting) service accounting
+  - what = web hosting accounTing
+  - service booker
+  - service accounting: servIng, serviting
+  - domain service booker
+  x sbooker
+  x spooky
+
+- sf public description:
+  As a webhoster, you need to do accounting for your provided services. Serva is a web application which does this for you.
+
+- pages
+  (customer)
+  - login: allow users to login
+  - user summary: (show detailed user plus list of domains with service abbreviations and balance)
+  - domain summary: (show detailed domain; detailed service listing of that domain = timeline with cost; start balance; payments; end balance)
+  (server-admin)
+  - users
+  - edit user
+  - domains: all or per user
+  - edit domain
+  - services
+  - edit service
+  - bookings: per service or per domain
+  - edit booking
+  - payments: per user, per domain or by date
+  - edit payment
+
+- tables (*=foreign key)
+
+  - users (server-admin, customers): id, username, password, isadmin, name, street, postalcode, locality, country, telefon, mobile, email, homepage
+
+  - services: id, servicename, price/year, description
+    e.g. webpackage (50.-), +mysql (0.-), +mail (0.-), switch (17.-), storage space, ...
+    > price/year cannot be changed if service is booked
+    => products
+
+  - domains: id, domainname, user*
+    => groups
+
+  - bookings (domains-services): id, domain*, service*, from, to (open-ended), info
+
+  - payments: id, booking*, date, amount, text
