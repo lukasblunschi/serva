@@ -81,20 +81,16 @@ public class User {
 	public static final String F_PHONE = "phone";
 	public static final String F_EMAIL = "email";
 
+	// ----------------------------------------------------------- construction
+
 	public User() {
 		set("", "", false, English.LANGCODE, "", "", "", "", "", "");
 		generatePassword();
-		this.domainsAsHolder = new ArrayList<Domain>();
-		this.domainsAsBillingcontact = new ArrayList<Domain>();
-		this.domainsAsTechnicalcontact = new ArrayList<Domain>();
 	}
 
 	public User(String username, String password, boolean isadmin, String language, String nickname, String firstname,
 			String lastname, String address, String phone, String email) {
 		set(username, password, isadmin, language, nickname, firstname, lastname, address, phone, email);
-		this.domainsAsHolder = new ArrayList<Domain>();
-		this.domainsAsBillingcontact = new ArrayList<Domain>();
-		this.domainsAsTechnicalcontact = new ArrayList<Domain>();
 	}
 
 	public void set(String username, String password, boolean isadmin, String language, String nickname, String firstname,
@@ -109,6 +105,9 @@ public class User {
 		this.address = address;
 		this.phone = phone;
 		this.email = email;
+		this.domainsAsHolder = new ArrayList<Domain>();
+		this.domainsAsBillingcontact = new ArrayList<Domain>();
+		this.domainsAsTechnicalcontact = new ArrayList<Domain>();
 	}
 
 	// ---------------------------------------------------- getters and setters

@@ -37,6 +37,8 @@ public class Domain {
 	public static final String F_BILLINGCONTACT = "billingcontact";
 	public static final String F_TECHNICALCONTACT = "technicalcontact";
 
+	// ----------------------------------------------------------- construction
+
 	public Domain() {
 		set("", null, null, null);
 	}
@@ -89,5 +91,7 @@ public class Domain {
 	public void setTechnicalcontact(User technicalcontact) {
 		this.technicalcontact = technicalcontact;
 	}
+
+	// ----------------------------------------------------- additional methods
 
 }
