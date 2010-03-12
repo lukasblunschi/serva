@@ -1,5 +1,7 @@
 0.1.0 (ongoing)
 -----
+- edit user page added.
+- list users page added.
 - save user action added.
 - remove user action added.
 - send login action added.
