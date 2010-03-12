@@ -17,7 +17,7 @@ public abstract class ServaConstants {
 	// ----------------------------------------------------- session attributes
 
 	/**
-	 * [int]
+	 * [Long]
 	 */
 	public static final String A_USER_ID = "userId";
 
