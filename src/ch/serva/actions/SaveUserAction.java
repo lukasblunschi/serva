@@ -107,7 +107,7 @@ public class SaveUserAction implements Action {
 			List<User> users = instance.getUsers();
 			for (User curUser : users) {
 				if (!curUser.getId().equals(user.getId())) {
-					if (curUser.isIsadmin()) {
+					if (curUser.getIsAdmin()) {
 						hasOtherAdmins = true;
 						break;
 					}
