@@ -18,7 +18,15 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String getLanguageName();
 
+	// ----------------------------------------------------------- common terms
+
+	String yes();
+
+	String no();
+
 	// --------------------------------------------------------- common actions
+
+	String actions();
 
 	String login();
 

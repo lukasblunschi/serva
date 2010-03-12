@@ -19,7 +19,21 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "English";
 	}
 
+	// ----------------------------------------------------------- common terms
+
+	public String yes() {
+		return "Yes";
+	}
+
+	public String no() {
+		return "No";
+	}
+
 	// --------------------------------------------------------- common actions
+
+	public String actions() {
+		return "Actions";
+	}
 
 	public String login() {
 		return "Login";
