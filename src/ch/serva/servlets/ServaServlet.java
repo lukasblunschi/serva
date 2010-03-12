@@ -41,8 +41,6 @@ public class ServaServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	// private static final Logger log = Logger.getLogger(ServaServlet.class.getName());
-
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
 	}
@@ -103,12 +101,15 @@ public class ServaServlet extends HttpServlet {
 				// if everything was okay
 				// send reload (retaining get parameters)
 				if (result.success) {
-					String parameters = GetRequest.reconstructParameters(req);
+					String parameters = GetRequest.reconstructParameters(req, result.message);
 					String uri = req.getRequestURI();
 					ServletResponseTools.sendReload(req, resp, uri + parameters);
 					return;
 				}
 			}
+
+			// find message (if any)
+			String msg = req.getParameter("msg");
 
 			// find page
 			Page page = null;
@@ -149,10 +150,21 @@ public class ServaServlet extends HttpServlet {
 			// dictionary
 			Dictionary dict = Dictionaries.getDictionaryFromSession(req);
 
+			// onload javascript
+			String onload = "";
+			String onloadJs = page.getOnloadJs(req, em);
+			if (onloadJs != null) {
+				onload = " onload='" + onloadJs + "'";
+			}
+
+			// html
 			html.append(getXHtmlStrictHeader(dict));
-			html.append("<body>\n\n");
+			html.append("<body" + onload + ">\n\n");
 			if (result != null) {
 				html.append("<p class='error content'>" + result.message + "</p>\n\n");
+			}
+			if (msg != null) {
+				html.append("<p class='success content'>" + msg + "</p>\n\n");
 			}
 			html.append(page.getContent(req, em, dict));
 			html.append("</body>\n");

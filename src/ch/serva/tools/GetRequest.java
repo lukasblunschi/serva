@@ -37,12 +37,24 @@ public class GetRequest {
 	 * Reconstruct parameter string for given GET request.
 	 * 
 	 * @param req
+	 * @param msg
+	 *            message parameter to append (not added if null or zero-length).
 	 * @return parameter string, e.g. '?a=2'
 	 */
-	public static String reconstructParameters(HttpServletRequest req) {
+	public static String reconstructParameters(HttpServletRequest req, String msg) {
 
 		// get parameters
 		Map<String, String> map = getParameterMap(req);
+
+		// add message
+		if (msg != null && msg.trim().length() > 0) {
+			String prevMsg = map.get("msg");
+			if (prevMsg == null) {
+				map.put("msg", msg);
+			} else {
+				map.put("msg", prevMsg + "_" + msg);
+			}
+		}
 
 		// recreate parameters string
 		// removing action and language parameters.

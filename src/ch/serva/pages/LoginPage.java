@@ -16,6 +16,11 @@ public class LoginPage extends AbstractPage {
 
 	public static final String NAME = "login";
 
+	@Override
+	public String getOnloadJs(HttpServletRequest req, EntityManager em) {
+		return "document.getElementById(\"focus_username\").focus();";
+	}
+
 	public String getHtml(HttpServletRequest req, EntityManager em, Dictionary dict) {
 		StringBuffer html = new StringBuffer();
 
@@ -34,7 +39,7 @@ public class LoginPage extends AbstractPage {
 		html.append("<tr>");
 		html.append("<td>").append(dict.username()).append("</td>");
 		html.append("<td>");
-		html.append("<input type='text' name='" + User.F_USERNAME + "' value='' />");
+		html.append("<input id='focus_username' type='text' name='" + User.F_USERNAME + "' value='' />");
 		html.append("</td>");
 		html.append("</tr>\n");
 
