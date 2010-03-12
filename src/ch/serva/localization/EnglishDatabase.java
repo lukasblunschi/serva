@@ -18,6 +18,14 @@ public class EnglishDatabase implements DictionaryDatabase {
 
 	// -------------------------------------------------------- users/user page
 
+	public String users() {
+		return "Users";
+	}
+
+	public String user() {
+		return "User";
+	}
+
 	public String username() {
 		return "Username";
 	}
@@ -34,16 +42,28 @@ public class EnglishDatabase implements DictionaryDatabase {
 		return "Language";
 	}
 
+	public String nickname() {
+		return "Nickname";
+	}
+
+	public String firstname() {
+		return "Firstname";
+	}
+
+	public String lastname() {
+		return "Lastname";
+	}
+
 	public String address() {
 		return "Address";
 	}
 
-	public String email() {
-		return "Email";
+	public String phone() {
+		return "Phone";
 	}
 
-	public String mobile() {
-		return "Mobile";
+	public String email() {
+		return "Email";
 	}
 
 	// --------------------------------------------------------------- bookings

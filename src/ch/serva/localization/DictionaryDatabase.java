@@ -12,6 +12,10 @@ public interface DictionaryDatabase {
 
 	// -------------------------------------------------------- users/user page
 
+	String users();
+
+	String user();
+
 	String username();
 
 	String password();
@@ -20,11 +24,17 @@ public interface DictionaryDatabase {
 
 	String language();
 
+	String nickname();
+
+	String firstname();
+
+	String lastname();
+
 	String address();
 
-	String email();
+	String phone();
 
-	String mobile();
+	String email();
 
 	// --------------------------------------------------------------- bookings
 
