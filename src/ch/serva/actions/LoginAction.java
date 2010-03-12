@@ -44,7 +44,7 @@ public class LoginAction implements Action {
 			return new Failure("No password given.");
 		}
 
-		// switch on no nurses
+		// switch on no users
 		List<?> users = em.createQuery("select u from User u").getResultList();
 		if (users.isEmpty()) {
 
@@ -57,7 +57,7 @@ public class LoginAction implements Action {
 			tx.commit();
 
 			// store login in session and return success (null)
-			req.getSession().setAttribute(ServaConstants.A_USER_ID, (Integer) user.getId());
+			req.getSession().setAttribute(ServaConstants.A_USER_ID, (Long) user.getId());
 			return new Success();
 
 		} else {
@@ -70,7 +70,7 @@ public class LoginAction implements Action {
 				if (storedPw.equals(enteredPw)) {
 
 					// store id and langcode in session and return success
-					req.getSession().setAttribute(ServaConstants.A_USER_ID, (Integer) user.getId());
+					req.getSession().setAttribute(ServaConstants.A_USER_ID, (Long) user.getId());
 					req.getSession().setAttribute(ServaConstants.A_LANGUAGE, user.getLanguage());
 					return new Success();
 				} else {
