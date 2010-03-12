@@ -23,7 +23,7 @@ public class Users {
 	 * @return user if logged in, null otherwise.
 	 */
 	public static User getUserFromSession(HttpServletRequest req, EntityManager em) {
-		Integer userId = (Integer) req.getSession().getAttribute(ServaConstants.A_USER_ID);
+		Long userId = (Long) req.getSession().getAttribute(ServaConstants.A_USER_ID);
 		if (userId == null) {
 			return null;
 		} else {

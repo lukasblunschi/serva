@@ -38,7 +38,7 @@ public class User {
 
 	private String password;
 
-	private boolean isadmin;
+	private int isadmin;
 
 	/**
 	 * language code, e.g. en or de
@@ -97,7 +97,7 @@ public class User {
 			String lastname, String address, String phone, String email) {
 		this.username = username;
 		this.password = password;
-		this.isadmin = isadmin;
+		this.isadmin = isadmin ? 1 : 0;
 		this.language = language;
 		this.nickname = nickname;
 		this.firstname = firstname;
@@ -133,11 +133,11 @@ public class User {
 	}
 
 	public boolean getIsAdmin() {
-		return isadmin;
+		return isadmin > 0;
 	}
 
 	public void setIsadmin(boolean isadmin) {
-		this.isadmin = isadmin;
+		this.isadmin = isadmin ? 1 : 0;
 	}
 
 	public String getLanguage() {
