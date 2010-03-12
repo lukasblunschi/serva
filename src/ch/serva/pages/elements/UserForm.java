@@ -10,8 +10,8 @@ import ch.serva.config.Config;
 import ch.serva.db.User;
 import ch.serva.localization.Dictionaries;
 import ch.serva.localization.Dictionary;
-import ch.serva.pages.EditNursePage;
-import ch.serva.pages.ListNursesPage;
+import ch.serva.pages.EditUserPage;
+import ch.serva.pages.ListUsersPage;
 import ch.serva.tools.Escape;
 
 /**
@@ -43,7 +43,7 @@ public class UserForm implements Element {
 
 		// form
 		String pAction = "action=" + SaveUserAction.NAME + "&amp;";
-		String pPage = "page=" + (isNew ? ListNursesPage.NAME : EditNursePage.NAME + "&amp;");
+		String pPage = "page=" + (isNew ? ListUsersPage.NAME : EditUserPage.NAME + "&amp;");
 		String pId = isNew ? "" : User.F_ID + "=" + user.getId();
 		String action = "?" + pAction + pPage + pId;
 		html.append("<form id='user_form' enctype='multipart/form-data' action='" + action + "' method='post'>\n");
@@ -165,7 +165,7 @@ public class UserForm implements Element {
 		html.append("<button onclick='document.getElementById(\"user_form\").submit()'>" + dict.save() + "</button>\n");
 		if (!idStr.equals(ServaConstants.NEW) && user.getEmail().trim().length() > 0) {
 			String href = "?";
-			href += "page=" + ListNursesPage.NAME + "&amp;";
+			href += "page=" + ListUsersPage.NAME + "&amp;";
 			href += "action=" + SendLoginAction.NAME + "&amp;";
 			href += "id=" + user.getId();
 			html.append("<button onclick='" + href + "'>" + dict.sendLogin() + "</button>\n");

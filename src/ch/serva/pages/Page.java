@@ -14,19 +14,18 @@ import ch.serva.localization.Dictionary;
 public interface Page {
 
 	/**
-	 * Create HTML for this page. No body tag.
+	 * Javascript code to execute upon page loading.
 	 * 
 	 * @param req
 	 * @param em
-	 * @param dict
-	 * @return
+	 * @return javascript code (no single quotes) or null.
 	 */
-	String getHtml(HttpServletRequest req, EntityManager em, Dictionary dict);
+	String getOnloadJs(HttpServletRequest req, EntityManager em);
 
 	/**
 	 * Create HTML for this page. No body tag.
 	 * <p>
-	 * This method generate header, menu and footer.
+	 * This method generates header, menu and footer.
 	 * 
 	 * @param req
 	 * @param em

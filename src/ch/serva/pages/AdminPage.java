@@ -22,7 +22,6 @@ public class AdminPage extends AbstractAdminPage {
 		html.append("<!-- title -->\n");
 		html.append("<h3 class='content'>").append(dict.admin()).append("</h3>\n\n");
 
-
 		return html.toString();
 	}
 

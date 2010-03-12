@@ -20,13 +20,7 @@ public abstract class AbstractAdminPage extends AbstractPage {
 		html.append("<!-- admin menu -->\n");
 		html.append("<div id='adminmenu'>\n");
 		html.append("<ul>\n");
-//		html.append("<li><a href='?page=" + ListQuestionsPage.NAME + "'>" + dict.questions() + "</a></li>\n");
-//		html.append("<li><a href='?page=" + ListQuestionnairesPage.NAME + "'>" + dict.questionnaires() + "</a></li>\n");
-//		html.append("<li><a href='?page=" + ListNursesPage.NAME + "'>" + dict.nurses() + "</a></li>\n");
-//		html.append("<li><a href='?page=" + ListPatientsPage.NAME + "'>" + dict.patients() + "</a></li>\n");
-//		html.append("<li><a href='?page=" + ViewTasksPage.NAME + "'>" + dict.viewTasks() + "</a></li>\n");
-//		html.append("<li><a href='?page=" + EvaluateQuestionnairePage.NAME + "'>" + dict.evaluateQuestionnaire() + "</a></li>\n");
-//		html.append("<li><a href='?page=" + FeverCurvesPage.NAME + "&amp;" + Question.F_RELEVANT + "=on'>" + dict.feverCurves() + "</a></li>\n");
+		html.append("<li><a href='?page=" + ListUsersPage.NAME + "'>" + dict.users() + "</a></li>\n");
 		html.append("</ul>\n");
 		html.append("</div>\n\n");
 

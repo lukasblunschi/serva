@@ -25,6 +25,10 @@ import ch.serva.tools.GetRequest;
  */
 public abstract class AbstractPage implements Page {
 
+	public String getOnloadJs(HttpServletRequest req, EntityManager em) {
+		return null;
+	}
+
 	public final String getContent(HttpServletRequest req, EntityManager em, Dictionary dict) {
 		StringBuffer html = new StringBuffer();
 
@@ -72,7 +76,7 @@ public abstract class AbstractPage implements Page {
 		html.append("<div id='menu'>\n");
 		User user = Users.getUserFromSession(req, em);
 		boolean isLoggedIn = user != null;
-		boolean isAdmin = user == null ? false : user.isIsadmin();
+		boolean isAdmin = user == null ? false : user.getIsAdmin();
 		if (isLoggedIn) {
 			html.append("<ul>\n");
 			html.append("<li><a href='?page=" + HomePage.NAME + "'>" + dict.home() + "</a></li>\n");
@@ -105,5 +109,15 @@ public abstract class AbstractPage implements Page {
 
 		return html.toString();
 	}
+
+	/**
+	 * Create HTML for this page. No body tag.
+	 * 
+	 * @param req
+	 * @param em
+	 * @param dict
+	 * @return
+	 */
+	public abstract String getHtml(HttpServletRequest req, EntityManager em, Dictionary dict);
 
 }
