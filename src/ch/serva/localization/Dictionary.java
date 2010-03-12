@@ -1,11 +1,11 @@
 package ch.serva.localization;
 
 /**
- * Interface which defines the vocabulary of Serva.
+ * Dictionary for this application.
  * 
  * @author Lukas Blunschi
  */
-public interface Dictionary {
+public interface Dictionary extends DictionaryDatabase {
 
 	// -------------------------------------------------------------- languages
 
@@ -18,7 +18,7 @@ public interface Dictionary {
 
 	String getLanguageName();
 
-	// ----------------------------------------------------------------- common
+	// --------------------------------------------------------- common actions
 
 	String login();
 
@@ -34,40 +34,14 @@ public interface Dictionary {
 
 	String undefined();
 
-	// ----------------------------------------------------------------- header
+	// ----------------------------------------------- header line, page titles
 
 	String welcome();
 
 	String hello();
-	
+
 	String home();
-	
+
 	String admin();
-
-	// ------------------------------------------------------------------ users
-
-	String id();
-
-	String username();
-
-	String password();
-
-	String isAdmin();
-
-	String name();
-
-	String language();
-
-	String address();
-
-	String email();
-
-	String mobile();
-
-	// --
-
-	String from();
-
-	String to();
 
 }
