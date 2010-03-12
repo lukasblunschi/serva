@@ -28,12 +28,12 @@ public class Booking {
 	@ManyToOne
 	private Service service;
 
-	private Date from;
+	private Date fromdate;
 
 	/**
 	 * open-ended
 	 */
-	private Date to;
+	private Date todate;
 
 	/**
 	 * e.g. login info
@@ -60,8 +60,8 @@ public class Booking {
 	public void set(Domain domain, Service service, Date from, Date to, String info) {
 		this.domain = domain;
 		this.service = service;
-		this.from = from;
-		this.to = to;
+		this.fromdate = from;
+		this.todate = to;
 		this.info = info;
 	}
 
@@ -88,19 +88,19 @@ public class Booking {
 	}
 
 	public Date getFrom() {
-		return from;
+		return fromdate;
 	}
 
 	public void setFrom(Date from) {
-		this.from = from;
+		this.fromdate = from;
 	}
 
 	public Date getTo() {
-		return to;
+		return todate;
 	}
 
 	public void setTo(Date to) {
-		this.to = to;
+		this.todate = to;
 	}
 
 	public String getInfo() {
