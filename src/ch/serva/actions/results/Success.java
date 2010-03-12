@@ -14,4 +14,11 @@ public class Success extends Result {
 		super(true, null);
 	}
 
+	/**
+	 * Constructor with message
+	 */
+	public Success(String message) {
+		super(true, message);
+	}
+
 }
