@@ -1,0 +1,183 @@
+package ch.serva.pages.elements;
+
+import java.util.Map;
+import java.util.TreeMap;
+
+import ch.serva.ServaConstants;
+import ch.serva.actions.SaveUserAction;
+import ch.serva.actions.SendLoginAction;
+import ch.serva.config.Config;
+import ch.serva.db.User;
+import ch.serva.localization.Dictionaries;
+import ch.serva.localization.Dictionary;
+import ch.serva.pages.EditNursePage;
+import ch.serva.pages.ListNursesPage;
+import ch.serva.tools.Escape;
+
+/**
+ * Form to edit a user.
+ * 
+ * @author Lukas Blunschi
+ * 
+ */
+public class UserForm implements Element {
+
+	private final boolean isNew;
+
+	private final User user;
+
+	public UserForm(boolean isNew, User user) {
+		this.isNew = isNew;
+		this.user = user;
+	}
+
+	public void appendHtml(StringBuffer html, Config config, Dictionary dict) {
+
+		html.append("<!-- user form -->\n");
+
+		// element
+		html.append("<div class='content floatleft'>\n");
+
+		// element title
+		html.append("<h4>").append(dict.properties()).append("</h4>\n");
+
+		// form
+		String pAction = "action=" + SaveUserAction.NAME + "&amp;";
+		String pPage = "page=" + (isNew ? ListNursesPage.NAME : EditNursePage.NAME + "&amp;");
+		String pId = isNew ? "" : User.F_ID + "=" + user.getId();
+		String action = "?" + pAction + pPage + pId;
+		html.append("<form id='user_form' enctype='multipart/form-data' action='" + action + "' method='post'>\n");
+		html.append("<table>\n");
+
+		// id (hidden)
+		String idStr = isNew ? ServaConstants.NEW : String.valueOf(user.getId());
+		html.append("<tr class='hidden'>");
+		html.append("<td>").append(dict.id() + ":").append("</td>");
+		html.append("<td>");
+		html.append("<input type='hidden' name='" + User.F_ID + "' value='" + idStr + "' />");
+		html.append(idStr);
+		html.append("</td>");
+		html.append("</tr>\n");
+
+		// username
+		String username = Escape.safeXml(user.getUsername());
+		html.append("<tr>");
+		html.append("<td>").append(dict.username() + ":").append("</td>");
+		html.append("<td>");
+		html.append("<input id='focus_username' type='text' name='" + User.F_USERNAME + "' value='" + username + "' />");
+		html.append("</td>");
+		html.append("</tr>\n");
+
+		// password
+		String password = Escape.safeXml(user.getPassword());
+		html.append("<tr>");
+		html.append("<td>").append(dict.password() + ":").append("</td>");
+		html.append("<td>").append("<input type='text' name='" + User.F_PASSWORD + "' value='" + password + "' />").append(
+				"</td>");
+		html.append("</tr>\n");
+
+		// isadmin
+		String isAdminStr = user.getIsAdmin() ? " checked='checked'" : "";
+		html.append("<tr>");
+		html.append("<td>").append(dict.isAdmin() + ":").append("</td>");
+		html.append("<td>").append("<input type='checkbox' name='" + User.F_ISADMIN + "'" + isAdminStr + " />").append(
+				"</td>");
+		html.append("</tr>\n");
+
+		// language
+		String selValue = user.getLanguage();
+		Map<String, String> options = new TreeMap<String, String>();
+		for (String langCode : Dictionaries.getLanguageCodes()) {
+			options.put(Dictionaries.getDictionary(langCode).getLanguageName(), langCode);
+		}
+		html.append("<tr>");
+		html.append("<td>").append(dict.language() + ":").append("</td>");
+		html.append("<td>");
+		html.append("<select name='" + User.F_LANGUAGE + "' size='1'>");
+		for (Map.Entry<String, String> entry : options.entrySet()) {
+			String value = entry.getValue();
+			if (value.equals(selValue)) {
+				html.append("<option value='" + value + "' selected='selected'>" + entry.getKey() + "</option>");
+			} else {
+				html.append("<option value='" + value + "'>" + entry.getKey() + "</option>");
+			}
+		}
+		html.append("</select>");
+		html.append("</td>");
+		html.append("</tr>\n");
+
+		// nickname
+		String nickname = Escape.safeXml(user.getNickname());
+		html.append("<tr>");
+		html.append("<td>").append(dict.nickname() + ":").append("</td>");
+		html.append("<td>");
+		html.append("<input type='text' name='" + User.F_NICKNAME + "' value='" + nickname + "' />");
+		html.append("</td>");
+		html.append("</tr>\n");
+
+		// firstname
+		String firstname = Escape.safeXml(user.getFirstname());
+		html.append("<tr>");
+		html.append("<td>").append(dict.firstname() + ":").append("</td>");
+		html.append("<td>");
+		html.append("<input type='text' name='" + User.F_FIRSTNAME + "' value='" + firstname + "' />");
+		html.append("</td>");
+		html.append("</tr>\n");
+
+		// lastname
+		String lastname = Escape.safeXml(user.getLastname());
+		html.append("<tr>");
+		html.append("<td>").append(dict.lastname() + ":").append("</td>");
+		html.append("<td>");
+		html.append("<input type='text' name='" + User.F_LASTNAME + "' value='" + lastname + "' />");
+		html.append("</td>");
+		html.append("</tr>\n");
+
+		// address
+		String address = Escape.safeXml(user.getAddress());
+		html.append("<tr>");
+		html.append("<td>").append(dict.address() + ":").append("</td>");
+		html.append("<td>");
+		html.append("<input type='text' name='" + User.F_ADDRESS + "' value='" + address + "' />");
+		html.append("</td>");
+		html.append("</tr>\n");
+
+		// phone
+		String phone = Escape.safeXml(user.getPhone());
+		html.append("<tr>");
+		html.append("<td>").append(dict.phone() + ":").append("</td>");
+		html.append("<td>").append("<input type='text' name='" + User.F_PHONE + "' value='" + phone + "' />")
+				.append("</td>");
+		html.append("</tr>\n");
+
+		// email
+		String email = Escape.safeXml(user.getEmail());
+		html.append("<tr>");
+		html.append("<td>").append(dict.email() + ":").append("</td>");
+		html.append("<td>").append("<input type='text' name='" + User.F_EMAIL + "' value='" + email + "' />")
+				.append("</td>");
+		html.append("</tr>\n");
+
+		// actions
+		html.append("<tr>\n");
+		html.append("<td />\n");
+		html.append("<td>\n");
+		html.append("<button onclick='document.getElementById(\"user_form\").submit()'>" + dict.save() + "</button>\n");
+		if (!idStr.equals(ServaConstants.NEW) && user.getEmail().trim().length() > 0) {
+			String href = "?";
+			href += "page=" + ListNursesPage.NAME + "&amp;";
+			href += "action=" + SendLoginAction.NAME + "&amp;";
+			href += "id=" + user.getId();
+			html.append("<button onclick='" + href + "'>" + dict.sendLogin() + "</button>\n");
+		}
+		html.append("</td>\n");
+		html.append("</tr>\n");
+
+		html.append("</table>\n");
+		html.append("</form>\n");
+
+		// end of element
+		html.append("</div>\n\n");
+	}
+
+}
