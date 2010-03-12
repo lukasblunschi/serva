@@ -61,9 +61,7 @@ public class RunServaStandalone {
 			context.addServlet(new ServletHolder(new ResourcesServlet()), "/js/*");
 
 			// start HTTP server
-			// TODO join is not needed right?
 			server.start();
-			// server.join();
 
 		} catch (Exception e) {
 			e.printStackTrace();
