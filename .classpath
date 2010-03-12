@@ -10,7 +10,6 @@
 	<classpathentry kind="lib" path="lib/commons-fileupload-1.2.1.jar" sourcepath="lib/commons-fileupload-1.2.1-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-1.4.jar" sourcepath="lib/commons-io-1.4-sources.jar"/>
 	<classpathentry kind="lib" path="lib/ejb3-persistence-1.0.2-GA.jar" sourcepath="lib/ejb3-persistence-1.0.2-GA-sources.jar"/>
-	<classpathentry kind="lib" path="lib/infoaccess-0.6.0.jar"/>
 	<classpathentry kind="lib" path="lib/junit-4.5.jar" sourcepath="lib/junit-4.5-sources.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="lib/mail-1.4.1.jar">
