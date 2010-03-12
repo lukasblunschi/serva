@@ -54,7 +54,7 @@ public class ServaServlet extends HttpServlet {
 			// logged in user
 			User user = Users.getUserFromSession(req, em);
 			boolean isLoggedIn = user != null;
-			boolean isAdmin = user == null ? false : user.isIsadmin();
+			boolean isAdmin = user == null ? false : user.getIsAdmin();
 
 			// prepare action and page
 			Result result = null;

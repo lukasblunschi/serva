@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import ch.serva.tools.ServletResponseTools;
 
-
 /**
  * A servlet to retrieve static resources.
  * 
