@@ -137,7 +137,7 @@ CREATE TABLE `users` (
   `address` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `firstname` varchar(255) DEFAULT NULL,
-  `isadmin` bit(1) NOT NULL,
+  `isadmin` int(11) NOT NULL,
   `language` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
   `nickname` varchar(255) DEFAULT NULL,
@@ -166,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-03-11 20:20:09
+-- Dump completed on 2010-03-11 20:34:17
