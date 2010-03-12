@@ -14,8 +14,8 @@ import java.util.TimeZone;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Tools to work with servlet responses.
@@ -27,7 +27,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class ServletResponseTools {
 
-	private static Log log = LogFactory.getLog(ServletResponseTools.class);
+	private static final Logger logger = LoggerFactory.getLogger(ServletResponseTools.class);
 
 	private static SimpleDateFormat cacheFormatter;
 
@@ -59,7 +59,7 @@ public class ServletResponseTools {
 		String contentType = req.getSession().getServletContext().getMimeType(filename);
 
 		// logging
-		log.info(req.getMethod() + " 200 " + file.length() + " " + ServletTools.decodeURI(req.getRequestURI()));
+		logger.info(req.getMethod() + " 200 " + file.length() + " " + ServletTools.decodeURI(req.getRequestURI()));
 		resp.setStatus(HttpServletResponse.SC_OK);
 		resp.setContentType(contentType);
 		if (expireTime > 0) {
@@ -96,7 +96,7 @@ public class ServletResponseTools {
 	public static void streamStringBuffer(StringBuffer html, String contenttype, String encoding, double calcTime,
 			HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String decodedURI = ServletTools.decodeURI(req.getRequestURI());
-		log.info(req.getMethod() + " 200 " + html.length() + " " + calcTime + "ms " + decodedURI);
+		logger.info(req.getMethod() + " 200 " + html.length() + " " + calcTime + "ms " + decodedURI);
 		resp.setStatus(HttpServletResponse.SC_OK);
 		resp.setContentType(contenttype);
 		resp.setCharacterEncoding(encoding);
@@ -117,7 +117,7 @@ public class ServletResponseTools {
 	 */
 	public static void sendReload(HttpServletRequest req, HttpServletResponse resp, String location) {
 		String decodedURI = ServletTools.decodeURI(req.getRequestURI());
-		log.info(req.getMethod() + " 303 " + decodedURI);
+		logger.info(req.getMethod() + " 303 " + decodedURI);
 		resp.setStatus(HttpServletResponse.SC_SEE_OTHER);
 
 		// encode location in ASCII
@@ -140,7 +140,7 @@ public class ServletResponseTools {
 	 */
 	public static void sendNotFound(HttpServletRequest req, HttpServletResponse resp) {
 		String decodedURI = ServletTools.decodeURI(req.getRequestURI());
-		log.info(req.getMethod() + " 404 " + decodedURI);
+		logger.info(req.getMethod() + " 404 " + decodedURI);
 		resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		String message = "The requested document '" + decodedURI + "' was not found.";
 		saveWrite(resp, message);
@@ -162,7 +162,7 @@ public class ServletResponseTools {
 			pout = resp.getWriter();
 			pout.write(message);
 		} catch (IOException ioe) {
-			log.error("Failure writing response: " + ioe.getMessage());
+			logger.error("Failure writing response: " + ioe.getMessage());
 		} finally {
 			if (pout != null) {
 				pout.close();
