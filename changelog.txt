@@ -1,3 +1,18 @@
 0.1.0 (ongoing)
 -----
+- save user action added.
+- remove user action added.
+- send login action added.
+- props tools added.
+- escape tools added.
+- mails tools added.
+- database schema added.
+- jetty lib updated.
+- servlet api lib updated.
+- slf4j libs moved.
+- servlet api 2.4 removed.
+- mysql lib updated.
+- mail lib updated.
+- infoaccess removed.
+- removed commons logging.
 - changelog opened.
