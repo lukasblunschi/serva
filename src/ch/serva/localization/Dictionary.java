@@ -36,11 +36,15 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String add();
 
+	String remove();
+
 	String save();
 
 	String error();
 
 	String undefined();
+
+	String sendLogin();
 
 	// ----------------------------------------------- header line, page titles
 
@@ -51,5 +55,15 @@ public interface Dictionary extends DictionaryDatabase {
 	String home();
 
 	String admin();
+
+	String editUser();
+
+	// ---------------------------------------------------------------- actions
+
+	String loginInformationSubject();
+
+	String loginInformationBody(String username, String password, String address);
+
+	String emailSent();
 
 }

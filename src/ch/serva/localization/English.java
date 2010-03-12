@@ -51,6 +51,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Add";
 	}
 
+	public String remove() {
+		return "Remove";
+	}
+
 	public String save() {
 		return "Save";
 	}
@@ -61,6 +65,10 @@ public class English extends EnglishDatabase implements Dictionary {
 
 	public String undefined() {
 		return "Undefined";
+	}
+
+	public String sendLogin() {
+		return "Send Email";
 	}
 
 	// ----------------------------------------------- header line, page titles
@@ -79,6 +87,34 @@ public class English extends EnglishDatabase implements Dictionary {
 
 	public String admin() {
 		return "Admin";
+	}
+
+	public String editUser() {
+		return "Edit User";
+	}
+
+	// ---------------------------------------------------------------- actions
+
+	public String loginInformationSubject() {
+		return "Serva Login Information";
+	}
+
+	public String loginInformationBody(String username, String password, String address) {
+		StringBuffer msg = new StringBuffer();
+		msg.append("Hi " + username + ",\n");
+		msg.append("\n");
+		msg.append("Your login information for " + address + " is:\n");
+		msg.append("\n");
+		msg.append("Username: " + username + "\n");
+		msg.append("Password: " + password + "\n");
+		msg.append("\n");
+		msg.append("Cheers,\n");
+		msg.append("Serva\n");
+		return msg.toString();
+	}
+
+	public String emailSent() {
+		return "Email Sent";
 	}
 
 }
