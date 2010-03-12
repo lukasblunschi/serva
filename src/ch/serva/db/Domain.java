@@ -18,7 +18,7 @@ public class Domain {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 
 	private String domainname;
 
@@ -56,7 +56,7 @@ public class Domain {
 
 	// ---------------------------------------------------- getters and setters
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 

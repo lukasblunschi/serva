@@ -20,7 +20,7 @@ public class Booking {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 
 	@ManyToOne
 	private Domain domain;
@@ -67,7 +67,7 @@ public class Booking {
 
 	// ---------------------------------------------------- getters and setters
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 

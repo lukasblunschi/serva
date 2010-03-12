@@ -20,7 +20,7 @@ public class Payment {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 
 	@ManyToOne
 	private Booking booking;
@@ -56,7 +56,7 @@ public class Payment {
 
 	// ---------------------------------------------------- getters and setters
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
