@@ -1,5 +1,6 @@
 0.1.0 (ongoing)
 -----
+- scripts added.
 - edit user page added.
 - list users page added.
 - save user action added.
