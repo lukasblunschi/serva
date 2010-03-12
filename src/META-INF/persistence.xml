@@ -6,6 +6,10 @@ http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
+		<class>ch.serva.db.Booking</class>
+		<class>ch.serva.db.Domain</class>
+		<class>ch.serva.db.Payment</class>
+		<class>ch.serva.db.Service</class>
 		<class>ch.serva.db.User</class>
 
 		<properties>
