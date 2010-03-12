@@ -32,7 +32,7 @@ public class User {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private Long id;
 
 	private String username;
 
@@ -112,7 +112,7 @@ public class User {
 
 	// ---------------------------------------------------- getters and setters
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -132,7 +132,7 @@ public class User {
 		this.password = password;
 	}
 
-	public boolean isIsadmin() {
+	public boolean getIsAdmin() {
 		return isadmin;
 	}
 
@@ -209,6 +209,14 @@ public class User {
 	}
 
 	// ----------------------------------------------------- additional methods
+
+	public boolean isRemovable(User userLoggedIn) {
+		boolean notHolder = domainsAsHolder != null && domainsAsHolder.isEmpty();
+		boolean notBillingContact = domainsAsBillingcontact != null && domainsAsBillingcontact.isEmpty();
+		boolean notTechnicalContact = domainsAsTechnicalcontact != null && domainsAsTechnicalcontact.isEmpty();
+		boolean notItself = id != null && !id.equals(userLoggedIn.id);
+		return notHolder && notBillingContact && notTechnicalContact && notItself;
+	}
 
 	private void generatePassword() {
 		StringBuffer buf = new StringBuffer();
