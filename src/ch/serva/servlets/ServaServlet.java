@@ -12,6 +12,9 @@ import ch.serva.actions.Action;
 import ch.serva.actions.ChangeLanguageAction;
 import ch.serva.actions.LoginAction;
 import ch.serva.actions.LogoutAction;
+import ch.serva.actions.RemoveUserAction;
+import ch.serva.actions.SaveUserAction;
+import ch.serva.actions.SendLoginAction;
 import ch.serva.actions.results.Failure;
 import ch.serva.actions.results.Result;
 import ch.serva.db.User;
@@ -19,7 +22,9 @@ import ch.serva.db.Users;
 import ch.serva.localization.Dictionaries;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.AdminPage;
+import ch.serva.pages.EditUserPage;
 import ch.serva.pages.HomePage;
+import ch.serva.pages.ListUsersPage;
 import ch.serva.pages.LoginPage;
 import ch.serva.pages.Page;
 import ch.serva.tools.EMF;
@@ -56,14 +61,9 @@ public class ServaServlet extends HttpServlet {
 			boolean isLoggedIn = user != null;
 			boolean isAdmin = user == null ? false : user.getIsAdmin();
 
-			// prepare action and page
-			Result result = null;
+			// find action
 			Action action = null;
 			String actionStr = req.getParameter("action");
-			Page page = null;
-			String pageStr = req.getParameter("page");
-
-			// check for action
 			if (actionStr != null) {
 				if (actionStr.equals(ChangeLanguageAction.NAME)) {
 					action = new ChangeLanguageAction();
@@ -79,42 +79,22 @@ public class ServaServlet extends HttpServlet {
 					// } else if (actionStr.equals(SubmitTaskAction.NAME)) {
 					// action = new SubmitTaskAction();
 					// } else if (isAdmin) {
+					if (isAdmin) {
 
-					// save
-					// if (actionStr.equals(SaveNurseAction.NAME)) {
-					// action = new SaveNurseAction();
-					// } else if (actionStr.equals(SavePatientAction.NAME)) {
-					// action = new SavePatientAction();
-					// } else if (actionStr.equals(SaveQuestionAction.NAME)) {
-					// action = new SaveQuestionAction();
-					// } else if (actionStr.equals(SaveQuestionnaireAction.NAME)) {
-					// action = new SaveQuestionnaireAction();
-
-					// associations
-					// } else if (actionStr.equals(AddQuestionAction.NAME)) {
-					// action = new AddQuestionAction();
-					// } else if (actionStr.equals(AddQuestionnaireAction.NAME)) {
-					// action = new AddQuestionnaireAction();
-					// } else if (actionStr.equals(AddQuestionnaireToAllPatientsAction.NAME)) {
-					// action = new AddQuestionnaireToAllPatientsAction();
-					// } else if (actionStr.equals(RemoveQuestionAction.NAME)) {
-					// action = new RemoveQuestionAction();
-					// } else if (actionStr.equals(RemoveQuestionnaireAction.NAME)) {
-					// action = new RemoveQuestionnaireAction();
-
-					// special
-					// } else if (actionStr.equals(DistributeLoginsAction.NAME)) {
-					// action = new DistributeLoginsAction();
-					// } else if (actionStr.equals(SendLoginAction.NAME)) {
-					// action = new SendLoginAction();
-					// } else if (actionStr.equals(DistributeNotificationsAction.NAME)) {
-					// action = new DistributeNotificationsAction();
-					// } else if (actionStr.equals(SendNotificationAction.NAME)) {
-					// action = new SendNotificationAction();
-					// }
-					// }
+						// save
+						if (actionStr.equals(SaveUserAction.NAME)) {
+							action = new SaveUserAction();
+						} else if (actionStr.equals(RemoveUserAction.NAME)) {
+							action = new RemoveUserAction();
+						} else if (actionStr.equals(SendLoginAction.NAME)) {
+							action = new SendLoginAction();
+						}
+					}
 				}
 			}
+
+			// execute action (if any)
+			Result result = null;
 			if (actionStr != null && action == null) {
 				result = new Failure("Action unknown or insuffiecient rights.");
 			}
@@ -131,6 +111,8 @@ public class ServaServlet extends HttpServlet {
 			}
 
 			// find page
+			Page page = null;
+			String pageStr = req.getParameter("page");
 			if (pageStr == null) {
 				pageStr = HomePage.NAME;
 			}
@@ -141,8 +123,6 @@ public class ServaServlet extends HttpServlet {
 			} else if (isLoggedIn) {
 				if (pageStr.equals(HomePage.NAME)) {
 					page = new HomePage();
-					// } else if (pageStr.equals(EditAnswerPage.NAME)) {
-					// page = new EditAnswerPage();
 
 					// admin
 				} else if (isAdmin) {
@@ -150,38 +130,12 @@ public class ServaServlet extends HttpServlet {
 						page = new AdminPage();
 
 						// list pages
-						// } else if (pageStr.equals(ListNursesPage.NAME)) {
-						// page = new ListNursesPage();
-						// } else if (pageStr.equals(ListPatientsPage.NAME)) {
-						// page = new ListPatientsPage();
-						// } else if (pageStr.equals(ListQuestionsPage.NAME)) {
-						// page = new ListQuestionsPage();
-						// } else if (pageStr.equals(ListQuestionnairesPage.NAME)) {
-						// page = new ListQuestionnairesPage();
-						// } else if (pageStr.equals(ViewTasksPage.NAME)) {
-						// page = new ViewTasksPage();
+					} else if (pageStr.equals(ListUsersPage.NAME)) {
+						page = new ListUsersPage();
 
 						// edit pages
-						// } else if (pageStr.equals(EditNursePage.NAME)) {
-						// page = new EditNursePage();
-						// } else if (pageStr.equals(EditPatientPage.NAME)) {
-						// page = new EditPatientPage();
-						// } else if (pageStr.equals(EditQuestionPage.NAME)) {
-						// page = new EditQuestionPage();
-						// } else if (pageStr.equals(EditQuestionnairePage.NAME)) {
-						// page = new EditQuestionnairePage();
-
-						// association pages
-						// } else if (pageStr.equals(EditQuestionnaireQuestionsPage.NAME)) {
-						// page = new EditQuestionnaireQuestionsPage();
-						// } else if (pageStr.equals(EditTasksPage.NAME)) {
-						// page = new EditTasksPage();
-
-						// evaluation
-						// } else if (pageStr.equals(EvaluateQuestionnairePage.NAME)) {
-						// page = new EvaluateQuestionnairePage();
-						// } else if (pageStr.equals(FeverCurvesPage.NAME)) {
-						// page = new FeverCurvesPage();
+					} else if (pageStr.equals(EditUserPage.NAME)) {
+						page = new EditUserPage();
 					}
 				}
 			} else {
