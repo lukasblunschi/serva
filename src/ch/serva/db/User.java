@@ -69,6 +69,9 @@ public class User {
 	@OneToMany(mappedBy = "technicalcontact")
 	private List<Domain> domainsAsTechnicalcontact;
 
+	@OneToMany(mappedBy = "hostingcontact")
+	private List<Domain> domainsAsHostingcontact;
+
 	public static final String F_ID = "id";
 	public static final String F_USERNAME = "username";
 	public static final String F_PASSWORD = "password";
@@ -108,6 +111,7 @@ public class User {
 		this.domainsAsHolder = new ArrayList<Domain>();
 		this.domainsAsBillingcontact = new ArrayList<Domain>();
 		this.domainsAsTechnicalcontact = new ArrayList<Domain>();
+		this.domainsAsHostingcontact = new ArrayList<Domain>();
 	}
 
 	// ---------------------------------------------------- getters and setters
@@ -208,14 +212,19 @@ public class User {
 		return domainsAsTechnicalcontact;
 	}
 
+	public List<Domain> getDomainsAsHostingcontact() {
+		return domainsAsHostingcontact;
+	}
+
 	// ----------------------------------------------------- additional methods
 
 	public boolean isRemovable(User userLoggedIn) {
 		boolean notHolder = domainsAsHolder != null && domainsAsHolder.isEmpty();
 		boolean notBillingContact = domainsAsBillingcontact != null && domainsAsBillingcontact.isEmpty();
 		boolean notTechnicalContact = domainsAsTechnicalcontact != null && domainsAsTechnicalcontact.isEmpty();
+		boolean notHostingContact = domainsAsHostingcontact != null && domainsAsHostingcontact.isEmpty();
 		boolean notItself = id != null && !id.equals(userLoggedIn.id);
-		return notHolder && notBillingContact && notTechnicalContact && notItself;
+		return notHolder && notBillingContact && notTechnicalContact && notHostingContact && notItself;
 	}
 
 	private void generatePassword() {
@@ -244,6 +253,7 @@ public class User {
 		domains.addAll(domainsAsHolder);
 		domains.addAll(domainsAsBillingcontact);
 		domains.addAll(domainsAsTechnicalcontact);
+		domains.addAll(domainsAsHostingcontact);
 		return domains;
 	}
 
