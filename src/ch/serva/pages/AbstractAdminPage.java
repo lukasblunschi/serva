@@ -24,8 +24,16 @@ public abstract class AbstractAdminPage extends AbstractPage {
 		html.append("</ul>\n");
 		html.append("</div>\n\n");
 
+		// open admin container
+		html.append("<!-- open admin container -->\n");
+		html.append("<div id='admincontainer'>\n\n");
+
 		// content
 		html.append(getAdminContent(req, em, dict));
+
+		// close admin container
+		html.append("<!-- close admin container -->\n");
+		html.append("</div>\n\n");
 
 		return html.toString();
 	}
