@@ -66,6 +66,36 @@ public class EnglishDatabase implements DictionaryDatabase {
 		return "Email";
 	}
 
+	// ---------------------------------------------------------------- domains
+
+	public String domains() {
+		return "Domains";
+	}
+
+	public String domain() {
+		return "Domain";
+	}
+
+	public String domainname() {
+		return "Domain Name";
+	}
+
+	public String holder() {
+		return "Holder";
+	}
+
+	public String billingcontact() {
+		return "Billing Contact";
+	}
+
+	public String technicalcontact() {
+		return "Technical Contact";
+	}
+
+	public String hostingcontact() {
+		return "Hosting Contact";
+	}
+
 	// --------------------------------------------------------------- bookings
 
 	public String from() {

@@ -36,6 +36,22 @@ public interface DictionaryDatabase {
 
 	String email();
 
+	// ---------------------------------------------------------------- domains
+
+	String domains();
+
+	String domain();
+
+	String domainname();
+
+	String holder();
+
+	String billingcontact();
+
+	String technicalcontact();
+
+	String hostingcontact();
+
 	// --------------------------------------------------------------- bookings
 
 	String from();
