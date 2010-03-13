@@ -3,6 +3,7 @@ package ch.serva.pages;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
+import ch.serva.actions.results.Result;
 import ch.serva.localization.Dictionary;
 
 /**
@@ -30,8 +31,10 @@ public interface Page {
 	 * @param req
 	 * @param em
 	 * @param dict
+	 * @param result
+	 *            result of previous action (may be null).
 	 * @return
 	 */
-	String getContent(HttpServletRequest req, EntityManager em, Dictionary dict);
+	String getContent(HttpServletRequest req, EntityManager em, Dictionary dict, Result result);
 
 }

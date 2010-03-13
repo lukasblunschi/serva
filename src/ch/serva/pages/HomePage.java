@@ -11,11 +11,11 @@ import ch.serva.localization.Dictionary;
  * @author Lukas Blunschi
  * 
  */
-public class HomePage extends AbstractPage {
+public class HomePage extends AbstractUserPage {
 
 	public static final String NAME = "home";
 
-	public String getHtml(HttpServletRequest req, EntityManager em, Dictionary dict) {
+	public String getUserContent(HttpServletRequest req, EntityManager em, Dictionary dict) {
 
 		StringBuffer html = new StringBuffer();
 		return html.toString();

@@ -17,6 +17,7 @@ import ch.serva.actions.SaveUserAction;
 import ch.serva.actions.SendLoginAction;
 import ch.serva.actions.results.Failure;
 import ch.serva.actions.results.Result;
+import ch.serva.actions.results.Success;
 import ch.serva.db.User;
 import ch.serva.db.Users;
 import ch.serva.localization.Dictionaries;
@@ -110,6 +111,9 @@ public class ServaServlet extends HttpServlet {
 
 			// find message (if any)
 			String msg = req.getParameter("msg");
+			if (msg != null) {
+				result = new Success(msg);
+			}
 
 			// find page
 			Page page = null;
@@ -160,13 +164,7 @@ public class ServaServlet extends HttpServlet {
 			// html
 			html.append(getXHtmlStrictHeader(dict));
 			html.append("<body" + onload + ">\n\n");
-			if (result != null) {
-				html.append("<p class='error content'>" + result.message + "</p>\n\n");
-			}
-			if (msg != null) {
-				html.append("<p class='success content'>" + msg + "</p>\n\n");
-			}
-			html.append(page.getContent(req, em, dict));
+			html.append(page.getContent(req, em, dict, result));
 			html.append("</body>\n");
 			html.append("</html>\n");
 

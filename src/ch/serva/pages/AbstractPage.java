@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import ch.serva.ServaConstants;
 import ch.serva.actions.ChangeLanguageAction;
 import ch.serva.actions.LogoutAction;
+import ch.serva.actions.results.Result;
 import ch.serva.db.User;
 import ch.serva.db.Users;
 import ch.serva.localization.Dictionaries;
@@ -29,7 +30,7 @@ public abstract class AbstractPage implements Page {
 		return null;
 	}
 
-	public final String getContent(HttpServletRequest req, EntityManager em, Dictionary dict) {
+	public final String getContent(HttpServletRequest req, EntityManager em, Dictionary dict, Result result) {
 		StringBuffer html = new StringBuffer();
 
 		// header (welcome and language selector)
@@ -103,7 +104,7 @@ public abstract class AbstractPage implements Page {
 		html.append("<div id='horizontal-bar'>&#160;</div>\n\n");
 
 		// real html content
-		html.append(getHtml(req, em, dict));
+		html.append(getHtml(req, em, dict, result));
 
 		// footer
 
@@ -116,8 +117,10 @@ public abstract class AbstractPage implements Page {
 	 * @param req
 	 * @param em
 	 * @param dict
+	 * @param result
+	 *            result of previous action (may be null).
 	 * @return
 	 */
-	public abstract String getHtml(HttpServletRequest req, EntityManager em, Dictionary dict);
+	public abstract String getHtml(HttpServletRequest req, EntityManager em, Dictionary dict, Result result);
 
 }

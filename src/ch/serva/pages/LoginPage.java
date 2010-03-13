@@ -12,7 +12,7 @@ import ch.serva.localization.Dictionary;
  * 
  * @author Lukas Blunschi
  */
-public class LoginPage extends AbstractPage {
+public class LoginPage extends AbstractUserPage {
 
 	public static final String NAME = "login";
 
@@ -21,7 +21,7 @@ public class LoginPage extends AbstractPage {
 		return "document.getElementById(\"focus_username\").focus();";
 	}
 
-	public String getHtml(HttpServletRequest req, EntityManager em, Dictionary dict) {
+	public String getUserContent(HttpServletRequest req, EntityManager em, Dictionary dict) {
 		StringBuffer html = new StringBuffer();
 
 		html.append("<!-- page title -->\n");

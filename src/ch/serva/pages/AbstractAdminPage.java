@@ -3,6 +3,7 @@ package ch.serva.pages;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
+import ch.serva.actions.results.Result;
 import ch.serva.localization.Dictionary;
 
 /**
@@ -13,7 +14,7 @@ import ch.serva.localization.Dictionary;
  */
 public abstract class AbstractAdminPage extends AbstractPage {
 
-	public final String getHtml(HttpServletRequest req, EntityManager em, Dictionary dict) {
+	public final String getHtml(HttpServletRequest req, EntityManager em, Dictionary dict, Result result) {
 		StringBuffer html = new StringBuffer();
 
 		// admin menu
@@ -27,6 +28,16 @@ public abstract class AbstractAdminPage extends AbstractPage {
 		// open admin container
 		html.append("<!-- open admin container -->\n");
 		html.append("<div id='admincontainer'>\n\n");
+
+		// result
+		if (result != null) {
+			html.append("<!-- result -->\n");
+			if (result.success) {
+				html.append("<p class='success content'>" + result.message + "</p>\n\n");
+			} else {
+				html.append("<p class='error content'>" + result.message + "</p>\n\n");
+			}
+		}
 
 		// content
 		html.append(getAdminContent(req, em, dict));
