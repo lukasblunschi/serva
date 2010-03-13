@@ -31,27 +31,32 @@ public class Domain {
 	@ManyToOne
 	private User technicalcontact;
 
+	@ManyToOne
+	private User hostingcontact;
+
 	public static final String F_ID = "id";
 	public static final String F_DOMAINNAME = "domainname";
 	public static final String F_HOLDER = "holder";
 	public static final String F_BILLINGCONTACT = "billingcontact";
 	public static final String F_TECHNICALCONTACT = "technicalcontact";
+	public static final String F_HOSTINGCONTACT = "hostingcontact";
 
 	// ----------------------------------------------------------- construction
 
 	public Domain() {
-		set("", null, null, null);
+		set("", null, null, null, null);
 	}
 
-	public Domain(String domainname, User holder, User billingcontact, User technicalcontact) {
-		set(domainname, holder, billingcontact, technicalcontact);
+	public Domain(String domainname, User holder, User billingcontact, User technicalcontact, User hostingcontact) {
+		set(domainname, holder, billingcontact, technicalcontact, hostingcontact);
 	}
 
-	public void set(String domainname, User holder, User billingcontact, User technicalcontact) {
+	public void set(String domainname, User holder, User billingcontact, User technicalcontact, User hostingcontact) {
 		this.domainname = domainname;
 		this.holder = holder;
 		this.billingcontact = billingcontact;
 		this.technicalcontact = technicalcontact;
+		this.hostingcontact = hostingcontact;
 	}
 
 	// ---------------------------------------------------- getters and setters
@@ -90,6 +95,14 @@ public class Domain {
 
 	public void setTechnicalcontact(User technicalcontact) {
 		this.technicalcontact = technicalcontact;
+	}
+
+	public User getHostingcontact() {
+		return hostingcontact;
+	}
+
+	public void setHostingcontact(User hostingcontact) {
+		this.hostingcontact = hostingcontact;
 	}
 
 	// ----------------------------------------------------- additional methods
