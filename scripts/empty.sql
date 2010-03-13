@@ -56,8 +56,10 @@ CREATE TABLE `domains` (
   `domainname` varchar(255) DEFAULT NULL,
   `billingcontact_id` bigint(20) DEFAULT NULL,
   `holder_id` bigint(20) DEFAULT NULL,
+  `hostingcontact_id` bigint(20) DEFAULT NULL,
   `technicalcontact_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  KEY `FK6D86C42FF0076003` (`hostingcontact_id`),
   KEY `FK6D86C42F680AAE66` (`technicalcontact_id`),
   KEY `FK6D86C42FDC429A3D` (`holder_id`),
   KEY `FK6D86C42F3EB2C404` (`billingcontact_id`)
@@ -166,4 +168,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-03-11 20:34:17
+-- Dump completed on 2010-03-12 18:11:41
