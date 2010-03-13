@@ -27,7 +27,11 @@ public class Dictionaries {
 	}
 
 	public static Dictionary getDictionary(String langcode) {
-		return dictionaryMap.get(langcode);
+		if (langcode == null) {
+			langcode = English.LANGCODE;
+		}
+		Dictionary dict = dictionaryMap.get(langcode);
+		return dict == null ? dictionaryMap.get(English.LANGCODE) : dict;
 	}
 
 	public static Dictionary getDictionaryFromSession(HttpServletRequest req) {
