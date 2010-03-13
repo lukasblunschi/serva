@@ -68,7 +68,7 @@ public class English extends EnglishDatabase implements Dictionary {
 	}
 
 	public String sendLogin() {
-		return "Send Email";
+		return "Send Login";
 	}
 
 	// ----------------------------------------------- header line, page titles

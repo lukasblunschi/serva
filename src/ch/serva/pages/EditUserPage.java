@@ -7,6 +7,7 @@ import ch.serva.ServaConstants;
 import ch.serva.config.Config;
 import ch.serva.db.User;
 import ch.serva.localization.Dictionary;
+import ch.serva.pages.elements.SendLoginButton;
 import ch.serva.pages.elements.UserForm;
 
 /**
@@ -59,8 +60,13 @@ public class EditUserPage extends AbstractAdminPage {
 		html.append("<!-- title -->\n");
 		html.append("<h3 class='content'>" + dict.editUser() + "</h3>\n\n");
 
-		// form
+		// user form
 		new UserForm(isNew, user).appendHtml(html, config, dict);
+
+		// send login button
+		if (!isNew) {
+			new SendLoginButton(user).appendHtml(html, config, dict);
+		}
 
 		return html.toString();
 	}
