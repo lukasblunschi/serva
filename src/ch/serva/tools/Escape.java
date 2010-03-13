@@ -23,6 +23,11 @@ public class Escape {
 	 */
 	public static String safeXml(String input) {
 
+		// ensure safe input
+		if (input == null) {
+			return "";
+		}
+
 		// this must be first!
 		input = input.replaceAll("&", "&amp;");
 
@@ -42,6 +47,11 @@ public class Escape {
 	 * @return plain XML
 	 */
 	public static String safeXmlRevert(String input) {
+
+		// ensure safe input
+		if (input == null) {
+			return "";
+		}
 
 		// first the rest (in reverse order)
 		input = input.replaceAll("&gt;", ">");
