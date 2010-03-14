@@ -111,7 +111,7 @@ DROP TABLE IF EXISTS `services`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `services` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `description` varchar(255) DEFAULT NULL,
+  `description` longtext,
   `price` double NOT NULL,
   `servicename` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -168,4 +168,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2010-03-12 18:11:41
+-- Dump completed on 2010-03-14 15:53:52
