@@ -46,4 +46,12 @@ public class Instance {
 		return domains;
 	}
 
+	public List<Service> getServices() {
+		List<Service> services = new ArrayList<Service>();
+		for (Object obj : em.createQuery("select s from Service s").getResultList()) {
+			services.add((Service) obj);
+		}
+		return services;
+	}
+
 }

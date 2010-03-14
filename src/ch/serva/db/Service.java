@@ -2,6 +2,7 @@ package ch.serva.db;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -29,6 +30,7 @@ public class Service {
 	 */
 	private double price;
 
+	@Column(length = 4000)
 	private String description;
 
 	@OneToMany(mappedBy = "service")
@@ -90,5 +92,9 @@ public class Service {
 	}
 
 	// ----------------------------------------------------- additional methods
+
+	public boolean isRemovable() {
+		return bookings != null && bookings.isEmpty();
+	}
 
 }
