@@ -58,6 +58,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String editUser();
 
+	String editDomain();
+
 	// ---------------------------------------------------------------- actions
 
 	String loginInformationSubject();
