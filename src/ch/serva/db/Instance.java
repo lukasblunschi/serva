@@ -38,4 +38,12 @@ public class Instance {
 		return admins;
 	}
 
+	public List<Domain> getDomains() {
+		List<Domain> domains = new ArrayList<Domain>();
+		for (Object obj : em.createQuery("select d from Domain d").getResultList()) {
+			domains.add((Domain) obj);
+		}
+		return domains;
+	}
+
 }

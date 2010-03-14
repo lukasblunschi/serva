@@ -1,9 +1,12 @@
 package ch.serva.db;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -33,6 +36,9 @@ public class Domain {
 
 	@ManyToOne
 	private User hostingcontact;
+
+	@OneToMany(mappedBy = "domain")
+	private List<Booking> bookings;
 
 	public static final String F_ID = "id";
 	public static final String F_DOMAINNAME = "domainname";
@@ -105,6 +111,14 @@ public class Domain {
 		this.hostingcontact = hostingcontact;
 	}
 
+	public List<Booking> getBookings() {
+		return bookings;
+	}
+
 	// ----------------------------------------------------- additional methods
+
+	public boolean isRemovable() {
+		return bookings != null && bookings.isEmpty();
+	}
 
 }

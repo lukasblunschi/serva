@@ -257,4 +257,12 @@ public class User {
 		return domains;
 	}
 
+	public String toMiddleString() {
+		StringBuffer buf = new StringBuffer();
+		buf.append(nickname).append(", ");
+		buf.append(firstname).append(" ").append(lastname).append(", ");
+		buf.append(email);
+		return buf.toString();
+	}
+
 }
