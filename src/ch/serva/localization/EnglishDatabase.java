@@ -120,12 +120,24 @@ public class EnglishDatabase implements DictionaryDatabase {
 
 	// --------------------------------------------------------------- bookings
 
+	public String bookings() {
+		return "Bookings";
+	}
+
+	public String booking() {
+		return "Booking";
+	}
+
 	public String from() {
 		return "From";
 	}
 
 	public String to() {
 		return "To";
+	}
+
+	public String info() {
+		return "Info";
 	}
 
 }

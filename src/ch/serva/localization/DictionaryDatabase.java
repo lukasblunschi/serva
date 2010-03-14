@@ -66,8 +66,14 @@ public interface DictionaryDatabase {
 
 	// --------------------------------------------------------------- bookings
 
+	String bookings();
+
+	String booking();
+
 	String from();
 
 	String to();
+
+	String info();
 
 }

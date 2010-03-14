@@ -101,6 +101,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Edit Service";
 	}
 
+	public String editBooking() {
+		return "Edit Booking";
+	}
+
 	// ---------------------------------------------------------------- actions
 
 	public String loginInformationSubject() {
