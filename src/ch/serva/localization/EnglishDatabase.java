@@ -96,6 +96,28 @@ public class EnglishDatabase implements DictionaryDatabase {
 		return "Hosting Contact";
 	}
 
+	// --------------------------------------------------------------- services
+
+	public String services() {
+		return "Services";
+	}
+
+	public String service() {
+		return "Service";
+	}
+
+	public String servicename() {
+		return "Servicename";
+	}
+
+	public String price() {
+		return "Price";
+	}
+
+	public String description() {
+		return "Description";
+	}
+
 	// --------------------------------------------------------------- bookings
 
 	public String from() {

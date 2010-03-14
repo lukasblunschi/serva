@@ -52,6 +52,18 @@ public interface DictionaryDatabase {
 
 	String hostingcontact();
 
+	// --------------------------------------------------------------- services
+
+	String services();
+
+	String service();
+
+	String servicename();
+
+	String price();
+
+	String description();
+
 	// --------------------------------------------------------------- bookings
 
 	String from();
