@@ -22,7 +22,7 @@ public class Select {
 	 * @param options
 	 *            possible optioins (key (shown) -> value).
 	 * @param selValue
-	 *            selected value.
+	 *            selected value (may be null).
 	 */
 	public Select(String name, Map<String, String> options, String selValue) {
 		this.name = name;
