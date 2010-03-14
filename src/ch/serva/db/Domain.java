@@ -121,4 +121,8 @@ public class Domain {
 		return bookings != null && bookings.isEmpty();
 	}
 
+	public String toShortString() {
+		return domainname;
+	}
+
 }

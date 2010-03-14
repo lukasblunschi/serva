@@ -1,11 +1,13 @@
 package ch.serva.db;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -39,6 +41,9 @@ public class Booking {
 	 * e.g. login info
 	 */
 	private String info;
+
+	@OneToMany(mappedBy = "booking")
+	private List<Payment> payments;
 
 	public static final String F_ID = "id";
 	public static final String F_DOMAIN = "domain";
@@ -111,6 +116,14 @@ public class Booking {
 		this.info = info;
 	}
 
+	public List<Payment> getPayments() {
+		return payments;
+	}
+
 	// ----------------------------------------------------- additional methods
+
+	public boolean isRemovable() {
+		return payments != null && payments.isEmpty();
+	}
 
 }

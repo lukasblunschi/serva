@@ -54,4 +54,12 @@ public class Instance {
 		return services;
 	}
 
+	public List<Booking> getBookings() {
+		List<Booking> bookings = new ArrayList<Booking>();
+		for (Object obj : em.createQuery("select b from Booking b").getResultList()) {
+			bookings.add((Booking) obj);
+		}
+		return bookings;
+	}
+
 }

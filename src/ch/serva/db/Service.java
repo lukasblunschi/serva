@@ -97,4 +97,8 @@ public class Service {
 		return bookings != null && bookings.isEmpty();
 	}
 
+	public String toShortString() {
+		return servicename;
+	}
+
 }
