@@ -259,8 +259,15 @@ public class User {
 
 	public String toMiddleString() {
 		StringBuffer buf = new StringBuffer();
-		buf.append(nickname).append(", ");
-		buf.append(firstname).append(" ").append(lastname).append(", ");
+		boolean hasNickname = nickname != null && nickname.trim().length() > 0;
+		boolean hasFirstname = firstname != null && firstname.trim().length() > 0;
+		boolean hasLastname = lastname != null && lastname.trim().length() > 0;
+		if (hasNickname || hasFirstname || hasLastname) {
+			buf.append(nickname).append(", ");
+			buf.append(firstname).append(" ").append(lastname).append(", ");
+		} else {
+			buf.append(username).append(", ");
+		}
 		buf.append(email);
 		return buf.toString();
 	}
