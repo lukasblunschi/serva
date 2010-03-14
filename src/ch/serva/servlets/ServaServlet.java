@@ -13,8 +13,10 @@ import ch.serva.actions.ChangeLanguageAction;
 import ch.serva.actions.LoginAction;
 import ch.serva.actions.LogoutAction;
 import ch.serva.actions.RemoveDomainAction;
+import ch.serva.actions.RemoveServiceAction;
 import ch.serva.actions.RemoveUserAction;
 import ch.serva.actions.SaveDomainAction;
+import ch.serva.actions.SaveServiceAction;
 import ch.serva.actions.SaveUserAction;
 import ch.serva.actions.SendLoginAction;
 import ch.serva.actions.results.Failure;
@@ -26,9 +28,11 @@ import ch.serva.localization.Dictionaries;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.AdminPage;
 import ch.serva.pages.EditDomainPage;
+import ch.serva.pages.EditServicePage;
 import ch.serva.pages.EditUserPage;
 import ch.serva.pages.HomePage;
 import ch.serva.pages.ListDomainsPage;
+import ch.serva.pages.ListServicesPage;
 import ch.serva.pages.ListUsersPage;
 import ch.serva.pages.LoginPage;
 import ch.serva.pages.Page;
@@ -89,10 +93,14 @@ public class ServaServlet extends HttpServlet {
 							action = new SaveUserAction();
 						} else if (actionStr.equals(SaveDomainAction.NAME)) {
 							action = new SaveDomainAction();
+						} else if (actionStr.equals(SaveServiceAction.NAME)) {
+							action = new SaveServiceAction();
 						} else if (actionStr.equals(RemoveUserAction.NAME)) {
 							action = new RemoveUserAction();
 						} else if (actionStr.equals(RemoveDomainAction.NAME)) {
 							action = new RemoveDomainAction();
+						} else if (actionStr.equals(RemoveServiceAction.NAME)) {
+							action = new RemoveServiceAction();
 						} else if (actionStr.equals(SendLoginAction.NAME)) {
 							action = new SendLoginAction();
 						}
@@ -147,12 +155,16 @@ public class ServaServlet extends HttpServlet {
 						page = new ListUsersPage();
 					} else if (pageStr.equals(ListDomainsPage.NAME)) {
 						page = new ListDomainsPage();
+					} else if (pageStr.equals(ListServicesPage.NAME)) {
+						page = new ListServicesPage();
 
 						// edit pages
 					} else if (pageStr.equals(EditUserPage.NAME)) {
 						page = new EditUserPage();
 					} else if (pageStr.equals(EditDomainPage.NAME)) {
 						page = new EditDomainPage();
+					} else if (pageStr.equals(EditServicePage.NAME)) {
+						page = new EditServicePage();
 					}
 				}
 			} else {

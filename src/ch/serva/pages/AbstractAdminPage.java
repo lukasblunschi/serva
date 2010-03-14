@@ -23,6 +23,7 @@ public abstract class AbstractAdminPage extends AbstractPage {
 		html.append("<ul>\n");
 		html.append("<li><a href='?page=" + ListUsersPage.NAME + "'>" + dict.users() + "</a></li>\n");
 		html.append("<li><a href='?page=" + ListDomainsPage.NAME + "'>" + dict.domains() + "</a></li>\n");
+		html.append("<li><a href='?page=" + ListServicesPage.NAME + "'>" + dict.services() + "</a></li>\n");
 		html.append("</ul>\n");
 		html.append("</div>\n\n");
 
