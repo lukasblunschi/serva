@@ -97,6 +97,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Edit Domain";
 	}
 
+	public String editService() {
+		return "Edit Service";
+	}
+
 	// ---------------------------------------------------------------- actions
 
 	public String loginInformationSubject() {
