@@ -76,4 +76,16 @@ public interface DictionaryDatabase {
 
 	String info();
 
+	// --------------------------------------------------------------- payments
+
+	String payments();
+
+	String payment();
+
+	String date();
+
+	String amount();
+
+	String text();
+
 }

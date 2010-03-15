@@ -66,6 +66,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String editBooking();
 
+	String editPayment();
+
 	// ---------------------------------------------------------------- actions
 
 	String loginInformationSubject();

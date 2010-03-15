@@ -140,4 +140,26 @@ public class EnglishDatabase implements DictionaryDatabase {
 		return "Info";
 	}
 
+	// --------------------------------------------------------------- payments
+
+	public String payments() {
+		return "Payments";
+	}
+
+	public String payment() {
+		return "Payment";
+	}
+
+	public String date() {
+		return "Date";
+	}
+
+	public String amount() {
+		return "Amount";
+	}
+
+	public String text() {
+		return "Text";
+	}
+
 }
