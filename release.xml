@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Serva" default="release" basedir=".">
+
+	<property name="version" value="0.1.0" />
+
+	<description>
+		Release Serva
+	</description>
+
+	<!-- initialize this build -->
+	<target name="init">
+		<tstamp />
+		<mkdir dir="bin" />
+	</target>
+
+	<!-- compile the java code from src into bin -->
+	<target name="compile" depends="init">
+		<javac srcdir="src" destdir="bin" />
+	</target>
+
+	<!-- clean dist dir -->
+	<target name="clean" depends="compile">
+		<delete includeemptydirs="true">
+			<fileset dir="dist">
+				<include name="**" />
+			</fileset>
+		</delete>
+	</target>
+
+	<!-- put compiled classes in the jar -->
+	<target name="dist" depends="clean">
+		<jar jarfile="dist/serva-${version}.jar">
+			<fileset dir="bin">
+				<include name="**" />
+				<exclude name="*.properties" />
+				<exclude name="META-INF/**" />
+			</fileset>
+			<fileset dir="src">
+				<include name="**" />
+				<exclude name="*.properties" />
+				<exclude name="META-INF/**" />
+			</fileset>
+		</jar>
+	</target>
+
+	<!-- clean the release directory -->
+	<target name="release-clean" depends="dist">
+		<delete dir="/tmp/serva" />
+	</target>
+
+	<!-- create standalone release -->
+	<target name="release-standalone" depends="release-clean">
+		<property name="dir-standalone" value="/tmp/serva/serva-standalone-${version}" />
+		<mkdir dir="${dir-standalone}" />
+		<copy todir="${dir-standalone}/bin">
+			<fileset dir="bin">
+				<include name="**" />
+				<exclude name="ch**" />
+			</fileset>
+		</copy>
+		<copy todir="${dir-standalone}/dist">
+			<fileset dir="dist" includes="*" />
+		</copy>
+		<copy todir="${dir-standalone}/lib">
+			<fileset dir="lib">
+				<include name="**" />
+				<exclude name="jetty/jetty*6.1.14*" />
+				<exclude name="**javadoc*" />
+				<exclude name="**sources*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir-standalone}/scripts">
+			<fileset dir="scripts" includes="*" />
+		</copy>
+		<copy todir="${dir-standalone}/war">
+			<fileset dir="war">
+				<include name="css**" />
+				<include name="images**" />
+				<include name="js**" />
+			</fileset>
+		</copy>
+		<copy todir="${dir-standalone}">
+			<fileset dir=".">
+				<include name="LICENSE.txt" />
+				<include name="NOTICE.txt" />
+				<include name="changelog.txt" />
+				<include name="upgrade.txt" />
+				<include name="run-*" />
+			</fileset>
+			<fileset dir="doc/setup">
+				<include name="*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- create webapp release -->
+	<target name="release-webapp">
+		<property name="dir-webapp" value="/tmp/serva/serva-webapp-${version}" />
+		<mkdir dir="${dir-webapp}" />
+		<copy todir="${dir-webapp}">
+			<fileset dir="war" includes="**" />
+		</copy>
+		<copy todir="${dir-webapp}/WEB-INF">
+			<fileset dir=".">
+				<include name="LICENSE.txt" />
+				<include name="NOTICE.txt" />
+				<include name="changelog.txt" />
+				<include name="upgrade.txt" />
+			</fileset>
+			<fileset dir="doc/setup">
+				<include name="*" />
+			</fileset>
+		</copy>
+		<copy todir="${dir-webapp}/WEB-INF/classes">
+			<fileset dir="bin">
+				<include name="**" />
+				<exclude name="ch**" />
+			</fileset>
+		</copy>
+		<copy todir="${dir-webapp}/WEB-INF/lib">
+			<fileset dir="lib">
+				<include name="*" />
+				<exclude name="jetty" />
+				<exclude name="hibernate" />
+				<exclude name="servlet-api*" />
+				<exclude name="*javadoc*" />
+				<exclude name="*sources*" />
+			</fileset>
+			<fileset dir="lib/hibernate">
+				<include name="*" />
+			</fileset>
+			<fileset dir="dist" includes="*" />
+		</copy>
+	</target>
+
+	<!-- zip created release directories -->
+	<target name="release" depends="release-clean,release-standalone,release-webapp">
+
+		<!-- create war file inside standalone release dir -->
+		<mkdir dir="/tmp/serva/serva-standalone-${version}/webapp" />
+		<zip destfile="/tmp/serva/serva-standalone-${version}/webapp/serva-${version}.war" basedir="/tmp/serva/serva-webapp-${version}/" />
+
+		<!-- create single release file -->
+		<move file="/tmp/serva/serva-standalone-${version}" tofile="/tmp/serva/serva-${version}" />
+		<delete dir="/tmp/serva/serva-webapp-${version}/" includeemptydirs="true" />
+		<zip destfile="/tmp/serva/serva-${version}.zip">
+			<fileset dir="/tmp/serva/">
+				<include name="serva-${version}/**" />
+			</fileset>
+		</zip>
+	</target>
+
+</project>
