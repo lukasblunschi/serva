@@ -65,7 +65,7 @@ public class BookingForm implements Element {
 		html.append("<tr class='hidden'>");
 		html.append("<td>").append(dict.id() + ":").append("</td>");
 		html.append("<td>");
-		html.append("<input type='hidden' name='" + Domain.F_ID + "' value='" + idStr + "' />");
+		html.append("<input type='hidden' name='" + Booking.F_ID + "' value='" + idStr + "' />");
 		html.append(idStr);
 		html.append("</td>");
 		html.append("</tr>\n");

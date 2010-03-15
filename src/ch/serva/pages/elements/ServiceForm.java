@@ -3,7 +3,6 @@ package ch.serva.pages.elements;
 import ch.serva.ServaConstants;
 import ch.serva.actions.SaveServiceAction;
 import ch.serva.config.Config;
-import ch.serva.db.Domain;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.EditServicePage;
@@ -53,7 +52,7 @@ public class ServiceForm implements Element {
 		html.append("<tr class='hidden'>");
 		html.append("<td>").append(dict.id() + ":").append("</td>");
 		html.append("<td>");
-		html.append("<input type='hidden' name='" + Domain.F_ID + "' value='" + idStr + "' />");
+		html.append("<input type='hidden' name='" + Service.F_ID + "' value='" + idStr + "' />");
 		html.append(idStr);
 		html.append("</td>");
 		html.append("</tr>\n");
