@@ -80,7 +80,7 @@ public class BookingForm implements Element {
 		html.append("<tr>");
 		html.append("<td>").append(dict.domain() + ":").append("</td>");
 		html.append("<td>");
-		new Select(Booking.F_DOMAIN, options, selValue).appendHtml(html);
+		new Select("focus_domain", Booking.F_DOMAIN, options, selValue).appendHtml(html);
 		html.append("</td>");
 		html.append("</tr>\n");
 
