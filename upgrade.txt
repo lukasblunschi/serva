@@ -8,6 +8,11 @@ Usage:
   E.g. for update block "2.1.x", rename coach to nurse, then rename group to patient and so on.
 
 
+from 0.1.0 to 0.2.0:
+  - add services.check field:
+    mysql> alter table services add checkdef varchar(255) default null after id;
+
+
 from 0.0.0 to 0.1.0:
   - install serva.
 
