@@ -126,4 +126,8 @@ public class Booking {
 		return payments != null && payments.isEmpty();
 	}
 
+	public String toShortString() {
+		return domain.toShortString() + " : " + service.toShortString();
+	}
+
 }

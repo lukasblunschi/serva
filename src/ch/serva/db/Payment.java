@@ -94,4 +94,8 @@ public class Payment {
 
 	// ----------------------------------------------------- additional methods
 
+	public boolean isRemovable() {
+		return true;
+	}
+
 }

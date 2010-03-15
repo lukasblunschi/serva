@@ -62,4 +62,12 @@ public class Instance {
 		return bookings;
 	}
 
+	public List<Payment> getPayments() {
+		List<Payment> payments = new ArrayList<Payment>();
+		for (Object obj : em.createQuery("select p from Payment p").getResultList()) {
+			payments.add((Payment) obj);
+		}
+		return payments;
+	}
+
 }
