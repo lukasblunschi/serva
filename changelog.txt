@@ -1,5 +1,13 @@
 0.1.0 (ongoing)
 -----
+- payments implemented.
+- bookings implemented.
+- domains implemented.
+- hosting contact added.
+- send login button added.
+- focus username on login page.
+- onload javascript.
+- message support.
 - scripts added.
 - edit user page added.
 - list users page added.
