@@ -35,7 +35,7 @@ public class ServiceForm implements Element {
 		html.append("<div class='content floatleft'>\n");
 
 		// element title
-		html.append("<h4>").append(dict.services()).append("</h4>\n");
+		html.append("<h4>").append(dict.properties()).append("</h4>\n");
 
 		// form
 		String pAction = "action=" + SaveServiceAction.NAME + "&amp;";
