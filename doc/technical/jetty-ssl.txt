@@ -1,0 +1,46 @@
+Jetty SSL
+---------
+
+links:
+- http://docs.codehaus.org/display/JETTY/How+to+configure+SSL
+- http://java.sun.com/j2se/1.4.2/docs/tooldocs/solaris/keytool.html
+
+
+howto:
+
+1. generate public/private key pair and wrap the public key into a self-signed certificate:
+
+ a) using keytool:
+  $ keytool -keystore serva.keystore -alias serva -genkey -keyalg RSA -keypass 123456
+  keystore pw: serva123
+  first- and lastname: Lukas Blunschi
+  organization unit:
+  organization: Serva
+  city: Zurich
+  state: Zurich
+  country code: CH
+
+ b) using OpenSSL:
+  $ openssl genrsa -des3 -out serva.key
+  key pw: 123456
+  $ openssl req -new -x509 -key serva.key -out serva.crt
+  key pw: 123456
+  country: CH
+  state: Zurich
+  city: Zurich
+  organization: Serva
+  organization unit:
+  common name: Lukas Blunschi
+  email:
+
+  $ openssl pkcs12 -inkey serva.key -in serva.crt -export -out serva.pkcs12
+  key pw: 123456
+  export pw: 123456
+
+  $ keytool -importkeystore -srckeystore serva.pkcs12 -srcstoretype PKCS12 -destkeystore serva.keystore2
+  dest keystore pw: serva123
+  source keystore pw: 123456
+
+
+-- STOPPED HERE, BECAUSE WE CANNOT ENSURE A SAFE ENOUGHT WEBAPP FOR ROOT PRIVILEGES --
+
