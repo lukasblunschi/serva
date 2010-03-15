@@ -30,8 +30,10 @@ public class Booking {
 	@ManyToOne
 	private Service service;
 
+	// from is a mysql keyword
 	private Date fromdate;
 
+	// to is a mysql keyword
 	/**
 	 * open-ended
 	 */

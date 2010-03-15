@@ -33,7 +33,8 @@ public class Service {
 	@Column(length = 4000)
 	private String description;
 
-	private String check;
+	// check is a mysql keyword
+	private String checkdef;
 
 	@OneToMany(mappedBy = "service")
 	private List<Booking> bookings;
@@ -58,7 +59,7 @@ public class Service {
 		this.servicename = servicename;
 		this.price = price;
 		this.description = description;
-		this.check = check;
+		this.checkdef = check;
 	}
 
 	// ---------------------------------------------------- getters and setters
@@ -92,11 +93,11 @@ public class Service {
 	}
 
 	public String getCheck() {
-		return check;
+		return checkdef;
 	}
 
 	public void setCheck(String check) {
-		this.check = check;
+		this.checkdef = check;
 	}
 
 	public List<Booking> getBookings() {
