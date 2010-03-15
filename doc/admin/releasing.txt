@@ -1,0 +1,22 @@
+Releasing Serva Howto
+---------------------
+
+1. update changelog.txt.
+
+2. update upgrade.txt.
+
+3. increase version number in:
+   - src/ch/serva/ServaConstants.java
+   - war/WEB-INF/web.xml
+   - release.xml
+   - run-standalone.sh
+
+4. commit "releasing ..."
+
+5. run release.xml
+
+6. upload to sourceforge
+
+   $ rsync --progress -e ssh /tmp/serva/serva-0.*.zip blukas,serva@frs.sf.net:/home/frs/project/s/se/serva/
+
+Lukas, 2010-03-14
