@@ -34,6 +34,7 @@ public class SaveServiceAction implements Action {
 		String servicename = postReq.getFormField(Service.F_SERVICENAME);
 		String priceStr = postReq.getFormField(Service.F_PRICE);
 		String desc = postReq.getFormField(Service.F_DESC);
+		String check = postReq.getFormField(Service.F_CHECK);
 		if (idStr == null || idStr.length() > 100 || idStr.trim().length() == 0) {
 			return new Failure("No or too long service id given!");
 		}
@@ -44,7 +45,10 @@ public class SaveServiceAction implements Action {
 			return new Failure("No or too long price entered!");
 		}
 		if (desc == null || desc.length() > 4000) {
-			return new Failure("No or too long holder id given!");
+			return new Failure("No or too long description entered!");
+		}
+		if (check == null || check.length() > 250) {
+			return new Failure("No or too long check given!");
 		}
 
 		// parse parameters
@@ -57,7 +61,7 @@ public class SaveServiceAction implements Action {
 		// get entitiy
 		Service service = null;
 		if (idStr.equals(ServaConstants.NEW)) {
-			service = new Service(servicename, price, desc);
+			service = new Service(servicename, price, desc, check);
 		} else {
 			Long id = null;
 			try {
@@ -71,7 +75,7 @@ public class SaveServiceAction implements Action {
 				return new Failure("service not found!");
 			}
 
-			service.set(servicename, price, desc);
+			service.set(servicename, price, desc, check);
 		}
 
 		// persist

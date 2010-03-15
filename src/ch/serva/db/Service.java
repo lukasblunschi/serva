@@ -33,6 +33,8 @@ public class Service {
 	@Column(length = 4000)
 	private String description;
 
+	private String check;
+
 	@OneToMany(mappedBy = "service")
 	private List<Booking> bookings;
 
@@ -40,21 +42,23 @@ public class Service {
 	public static final String F_SERVICENAME = "servicename";
 	public static final String F_PRICE = "price";
 	public static final String F_DESC = "description";
+	public static final String F_CHECK = "check";
 
 	// ----------------------------------------------------------- construction
 
 	public Service() {
-		set("", 0.0, "");
+		set("", 0.0, "", "");
 	}
 
-	public Service(String servicename, double price, String description) {
-		set(servicename, price, description);
+	public Service(String servicename, double price, String description, String check) {
+		set(servicename, price, description, check);
 	}
 
-	public void set(String servicename, double price, String description) {
+	public void set(String servicename, double price, String description, String check) {
 		this.servicename = servicename;
 		this.price = price;
 		this.description = description;
+		this.check = check;
 	}
 
 	// ---------------------------------------------------- getters and setters
@@ -85,6 +89,14 @@ public class Service {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getCheck() {
+		return check;
+	}
+
+	public void setCheck(String check) {
+		this.check = check;
 	}
 
 	public List<Booking> getBookings() {
