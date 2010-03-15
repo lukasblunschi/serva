@@ -14,10 +14,12 @@ import ch.serva.actions.LoginAction;
 import ch.serva.actions.LogoutAction;
 import ch.serva.actions.RemoveBookingAction;
 import ch.serva.actions.RemoveDomainAction;
+import ch.serva.actions.RemovePaymentAction;
 import ch.serva.actions.RemoveServiceAction;
 import ch.serva.actions.RemoveUserAction;
 import ch.serva.actions.SaveBookingAction;
 import ch.serva.actions.SaveDomainAction;
+import ch.serva.actions.SavePaymentAction;
 import ch.serva.actions.SaveServiceAction;
 import ch.serva.actions.SaveUserAction;
 import ch.serva.actions.SendLoginAction;
@@ -31,11 +33,13 @@ import ch.serva.localization.Dictionary;
 import ch.serva.pages.AdminPage;
 import ch.serva.pages.EditBookingPage;
 import ch.serva.pages.EditDomainPage;
+import ch.serva.pages.EditPaymentPage;
 import ch.serva.pages.EditServicePage;
 import ch.serva.pages.EditUserPage;
 import ch.serva.pages.HomePage;
 import ch.serva.pages.ListBookingsPage;
 import ch.serva.pages.ListDomainsPage;
+import ch.serva.pages.ListPaymentsPage;
 import ch.serva.pages.ListServicesPage;
 import ch.serva.pages.ListUsersPage;
 import ch.serva.pages.LoginPage;
@@ -101,6 +105,8 @@ public class ServaServlet extends HttpServlet {
 							action = new SaveServiceAction();
 						} else if (actionStr.equals(SaveBookingAction.NAME)) {
 							action = new SaveBookingAction();
+						} else if (actionStr.equals(SavePaymentAction.NAME)) {
+							action = new SavePaymentAction();
 
 							// remove
 						} else if (actionStr.equals(RemoveUserAction.NAME)) {
@@ -111,6 +117,8 @@ public class ServaServlet extends HttpServlet {
 							action = new RemoveServiceAction();
 						} else if (actionStr.equals(RemoveBookingAction.NAME)) {
 							action = new RemoveBookingAction();
+						} else if (actionStr.equals(RemovePaymentAction.NAME)) {
+							action = new RemovePaymentAction();
 
 							// special
 						} else if (actionStr.equals(SendLoginAction.NAME)) {
@@ -171,6 +179,8 @@ public class ServaServlet extends HttpServlet {
 						page = new ListServicesPage();
 					} else if (pageStr.equals(ListBookingsPage.NAME)) {
 						page = new ListBookingsPage();
+					} else if (pageStr.equals(ListPaymentsPage.NAME)) {
+						page = new ListPaymentsPage();
 
 						// edit pages
 					} else if (pageStr.equals(EditUserPage.NAME)) {
@@ -181,6 +191,8 @@ public class ServaServlet extends HttpServlet {
 						page = new EditServicePage();
 					} else if (pageStr.equals(EditBookingPage.NAME)) {
 						page = new EditBookingPage();
+					} else if (pageStr.equals(EditPaymentPage.NAME)) {
+						page = new EditPaymentPage();
 					}
 				}
 			} else {
