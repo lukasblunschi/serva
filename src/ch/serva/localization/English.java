@@ -51,6 +51,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Add";
 	}
 
+	public String edit() {
+		return "Edit";
+	}
+
 	public String remove() {
 		return "Remove";
 	}

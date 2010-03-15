@@ -36,6 +36,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String add();
 
+	String edit();
+
 	String remove();
 
 	String save();
