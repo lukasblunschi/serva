@@ -1,0 +1,42 @@
+Setup of Serva as a standalone application
+------------------------------------------
+
+1. Create database
+
+   $ mysql -u root -p
+   (Enter MySQL root password)
+   mysql> status
+     (check that everything is stored in utf8)
+   mysql> create database serva;
+   mysql> grant all on serva.* to serva@localhost identified by '123';
+   mysql> flush privileges;
+   mysql> exit
+
+   $ mysql -u serva --password=123 serva
+   mysql> show databases;
+   mysql> status
+     (check that everything is stored in utf8)
+   mysql> exit
+
+
+2. Restore empty database
+
+   $ cd serva/scripts/
+   $ ./restore-db.sh empty.sql
+
+
+3. Start Serva standalone
+
+   $ cd serva/
+   $ ./run-standalone.sh
+
+
+4. Point your web browser to
+
+   http://localhost:8081/serva
+
+
+5. Enjoy!
+
+
+Lukas, 2010-03-14

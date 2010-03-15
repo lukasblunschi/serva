@@ -1,0 +1,17 @@
+Setup of Serva as a web application
+-----------------------------------
+
+1. Create database
+
+   (see setup-standalone.txt step 1)
+
+
+2. Restore empty database
+
+   (see setup-standalone.txt step 2)
+
+
+3. TODO
+
+   $ chmod 644 *
+
