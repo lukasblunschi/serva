@@ -1,7 +1,9 @@
 package ch.serva.checks;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import ch.serva.actions.results.Failure;
@@ -21,7 +23,7 @@ public class CheckWebalizer implements Check {
 		return null;
 	}
 
-	public Result run(String domainname, Properties properties) {
+	public Result run(String domainname, String username, Properties properties) {
 
 		// webalizer config file (DOMAINCONFIGDIR/etc/webalizer/DOMAINNAME.conf)
 		//
@@ -43,7 +45,17 @@ public class CheckWebalizer implements Check {
 			return new Failure("webalizer config file " + path + " does not exist or can not be read.");
 		}
 
-		return null;
+		// replacement map
+		Map<String, String> replacementMap = new HashMap<String, String>();
+		replacementMap.put("user00000", username);
+		replacementMap.put("template.domain", domainname);
+
+		// compare
+		Result result = TextFileComparator.compare(configFile, templateFile, replacementMap);
+
+		// TODO check webalizer dir
+
+		return result;
 	}
 
 }

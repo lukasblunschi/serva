@@ -18,11 +18,13 @@ public interface Check {
 	 * 
 	 * @param domainname
 	 *            domain name.
+	 * @param username
+	 *            domain username.
 	 * @param properties
 	 *            properties.
 	 * @return result.
 	 */
-	Result run(String domainname, Properties properties);
+	Result run(String domainname, String username, Properties properties);
 
 	/**
 	 * Get configuration lines for an other service.

@@ -1,7 +1,12 @@
 package ch.serva.pages.elements;
 
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import ch.serva.ServaConstants;
 import ch.serva.actions.SaveServiceAction;
+import ch.serva.checks.Checks;
 import ch.serva.config.Config;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
@@ -9,6 +14,7 @@ import ch.serva.pages.EditServicePage;
 import ch.serva.pages.ListServicesPage;
 import ch.serva.tools.Doubles;
 import ch.serva.tools.Escape;
+import ch.serva.tools.html.Select;
 
 /**
  * Form to edit a service.
@@ -79,9 +85,23 @@ public class ServiceForm implements Element {
 		// description
 		String description = Escape.safeXml(service.getDescription());
 		html.append("<tr>");
-		html.append("<td>").append(dict.servicename() + ":").append("</td>");
+		html.append("<td>").append(dict.description() + ":").append("</td>");
 		html.append("<td>");
 		html.append("<textarea name='" + Service.F_DESCRIPTION + "' rows='4' cols='80'>" + description + "</textarea>\n");
+		html.append("</td>");
+		html.append("</tr>\n");
+
+		// check definition
+		Map<String, String> options = new TreeMap<String, String>();
+		List<String> checks = Checks.getCheckDefinitions();
+		for (String checkDefinition : checks) {
+			options.put(checkDefinition, checkDefinition);
+		}
+		String selValue = isNew ? null : service.getCheckDefinition();
+		html.append("<tr>");
+		html.append("<td>").append(dict.checkDefinition() + ":").append("</td>");
+		html.append("<td>");
+		new Select(Service.F_CHECKDEFINITION, options, selValue).appendHtml(html);
 		html.append("</td>");
 		html.append("</tr>\n");
 

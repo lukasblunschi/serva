@@ -46,6 +46,7 @@ public class ListServicesPage extends AbstractAdminPage {
 		html.append("<td>").append(dict.servicename()).append("</td>");
 		html.append("<td>").append(dict.price()).append("</td>");
 		html.append("<td>").append(dict.description()).append("</td>");
+		html.append("<td>").append(dict.check()).append("</td>");
 		html.append("<td>").append(dict.actions()).append("</td>");
 		html.append("</tr>\n");
 		List<Service> services = new Instance(em).getServices();
@@ -63,6 +64,9 @@ public class ListServicesPage extends AbstractAdminPage {
 			// price and description
 			html.append("<td>").append(Doubles.formatter.format(service.getPrice())).append("</td>");
 			html.append("<td>").append(TextToHtml.toHtml(Escape.safeXml(service.getDescription()))).append("</td>");
+
+			// check
+			html.append("<td>").append(service.getCheckDefinition()).append("</td>");
 
 			// actions
 			if (service.isRemovable()) {
