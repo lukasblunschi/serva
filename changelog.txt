@@ -1,7 +1,7 @@
 0.2.0 (ongoing)
 -----
 - check interface added.
-- services.check field added.
+- services.checkdefinition field added.
 
 
 0.1.0 (revision 125, 2010-03-14)
