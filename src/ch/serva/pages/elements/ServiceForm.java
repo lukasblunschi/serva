@@ -81,7 +81,7 @@ public class ServiceForm implements Element {
 		html.append("<tr>");
 		html.append("<td>").append(dict.servicename() + ":").append("</td>");
 		html.append("<td>");
-		html.append("<textarea name='" + Service.F_DESC + "' rows='4' cols='80'>" + description + "</textarea>\n");
+		html.append("<textarea name='" + Service.F_DESCRIPTION + "' rows='4' cols='80'>" + description + "</textarea>\n");
 		html.append("</td>");
 		html.append("</tr>\n");
 

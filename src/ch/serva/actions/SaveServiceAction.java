@@ -33,8 +33,8 @@ public class SaveServiceAction implements Action {
 		String idStr = postReq.getFormField(Service.F_ID);
 		String servicename = postReq.getFormField(Service.F_SERVICENAME);
 		String priceStr = postReq.getFormField(Service.F_PRICE);
-		String desc = postReq.getFormField(Service.F_DESC);
-		String check = postReq.getFormField(Service.F_CHECK);
+		String description = postReq.getFormField(Service.F_DESCRIPTION);
+		String checkDefinition = postReq.getFormField(Service.F_CHECKDEFINITION);
 		if (idStr == null || idStr.length() > 100 || idStr.trim().length() == 0) {
 			return new Failure("No or too long service id given!");
 		}
@@ -44,11 +44,11 @@ public class SaveServiceAction implements Action {
 		if (priceStr == null || priceStr.length() > 100) {
 			return new Failure("No or too long price entered!");
 		}
-		if (desc == null || desc.length() > 4000) {
+		if (description == null || description.length() > 4000) {
 			return new Failure("No or too long description entered!");
 		}
-		if (check == null || check.length() > 250) {
-			return new Failure("No or too long check given!");
+		if (checkDefinition == null || checkDefinition.length() > 250) {
+			return new Failure("No or too long check definition given!");
 		}
 
 		// parse parameters
@@ -61,7 +61,7 @@ public class SaveServiceAction implements Action {
 		// get entitiy
 		Service service = null;
 		if (idStr.equals(ServaConstants.NEW)) {
-			service = new Service(servicename, price, desc, check);
+			service = new Service(servicename, price, description, checkDefinition);
 		} else {
 			Long id = null;
 			try {
@@ -75,7 +75,7 @@ public class SaveServiceAction implements Action {
 				return new Failure("service not found!");
 			}
 
-			service.set(servicename, price, desc, check);
+			service.set(servicename, price, description, checkDefinition);
 		}
 
 		// persist

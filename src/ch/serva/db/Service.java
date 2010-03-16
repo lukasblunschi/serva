@@ -33,8 +33,10 @@ public class Service {
 	@Column(length = 4000)
 	private String description;
 
-	// check is a mysql keyword
-	private String checkdef;
+	/**
+	 * e.g. java:ch.serva.checks.Webalizer
+	 */
+	private String checkdefinition;
 
 	@OneToMany(mappedBy = "service")
 	private List<Booking> bookings;
@@ -42,8 +44,8 @@ public class Service {
 	public static final String F_ID = "id";
 	public static final String F_SERVICENAME = "servicename";
 	public static final String F_PRICE = "price";
-	public static final String F_DESC = "description";
-	public static final String F_CHECK = "check";
+	public static final String F_DESCRIPTION = "description";
+	public static final String F_CHECKDEFINITION = "checkdefinition";
 
 	// ----------------------------------------------------------- construction
 
@@ -51,15 +53,15 @@ public class Service {
 		set("", 0.0, "", "");
 	}
 
-	public Service(String servicename, double price, String description, String check) {
-		set(servicename, price, description, check);
+	public Service(String servicename, double price, String description, String checkDefinition) {
+		set(servicename, price, description, checkDefinition);
 	}
 
-	public void set(String servicename, double price, String description, String check) {
+	public void set(String servicename, double price, String description, String checkDefinition) {
 		this.servicename = servicename;
 		this.price = price;
 		this.description = description;
-		this.checkdef = check;
+		this.checkdefinition = checkDefinition;
 	}
 
 	// ---------------------------------------------------- getters and setters
@@ -92,12 +94,12 @@ public class Service {
 		this.description = description;
 	}
 
-	public String getCheck() {
-		return checkdef;
+	public String getCheckDefinition() {
+		return checkdefinition;
 	}
 
-	public void setCheck(String check) {
-		this.checkdef = check;
+	public void setCheckDefinition(String checkDefinition) {
+		this.checkdefinition = checkDefinition;
 	}
 
 	public List<Booking> getBookings() {
