@@ -1,6 +1,7 @@
 package ch.serva.checks;
 
 import java.util.List;
+import java.util.Properties;
 
 import ch.serva.actions.results.Result;
 
@@ -15,15 +16,21 @@ public interface Check {
 	/**
 	 * Run this check.
 	 * 
+	 * @param domainname
+	 *            domain name.
+	 * @param properties
+	 *            properties.
 	 * @return result.
 	 */
-	Result run();
+	Result run(String domainname, Properties properties);
 
 	/**
 	 * Get configuration lines for an other service.
 	 * 
+	 * @param domainname
+	 *            domain name.
 	 * @return configuration lines.
 	 */
-	List<String> getExternalConfigLines();
+	List<String> getExternalConfigLines(String domainname);
 
 }
