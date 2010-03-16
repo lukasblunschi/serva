@@ -64,6 +64,10 @@ public interface DictionaryDatabase {
 
 	String description();
 
+	String check();
+
+	String checkDefinition();
+
 	// --------------------------------------------------------------- bookings
 
 	String bookings();

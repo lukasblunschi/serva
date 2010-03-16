@@ -118,6 +118,14 @@ public class EnglishDatabase implements DictionaryDatabase {
 		return "Description";
 	}
 
+	public String check() {
+		return "Check";
+	}
+
+	public String checkDefinition() {
+		return "Check Definition";
+	}
+
 	// --------------------------------------------------------------- bookings
 
 	public String bookings() {
