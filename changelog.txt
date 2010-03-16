@@ -1,5 +1,6 @@
 0.2.0 (ongoing)
 -----
+- path.domainconfigdir property added.
 - check interface added.
 - services.checkdefinition field added.
 
