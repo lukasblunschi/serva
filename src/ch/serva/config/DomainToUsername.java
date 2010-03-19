@@ -35,6 +35,7 @@ public class DomainToUsername {
 
 	private DomainToUsername(String pathMapping) {
 		this.pathMapping = pathMapping;
+		// 0 if not existing
 		this.lastModified = 0L;
 		this.mapping = new HashMap<String, String>();
 		refreshIfNeeded();
@@ -80,6 +81,13 @@ public class DomainToUsername {
 				BufferedReader reader = new BufferedReader(new FileReader(mappingFile));
 				String line = null;
 				while ((line = reader.readLine()) != null) {
+
+					// ignore comments and empty lines
+					if (line.trim().startsWith("#") || line.trim().length() == 0) {
+						continue;
+					}
+
+					// parse line
 					String[] parts = line.split(":");
 					if (parts.length == 2) {
 						int domainUserNumber = Integer.parseInt(parts[0]);
