@@ -5,6 +5,7 @@ release critical:
 
 
 important:
+- check: permissions of serverconfig dir.
 
 
 standard:

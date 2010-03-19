@@ -1,5 +1,11 @@
 0.2.0 (ongoing)
 -----
+- booking check element added.
+- username added to domain entity.
+- check integration.
+- css extended.
+- path.domainToUsernameMapping property added.
+- domain to username mapping added.
 - path.domainconfigdir property added.
 - check interface added.
 - services.checkdefinition field added.
