@@ -137,4 +137,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Email Sent";
 	}
 
+	// --------------------------------------------------------------- messages
+
+	public String domainUsernameNotMapped() {
+		return "Domain username not mapped.";
+	}
+
 }

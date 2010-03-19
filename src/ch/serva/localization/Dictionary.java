@@ -76,4 +76,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String emailSent();
 
+	// --------------------------------------------------------------- messages
+
+	String domainUsernameNotMapped();
+
 }
