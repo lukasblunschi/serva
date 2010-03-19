@@ -16,6 +16,8 @@ textarea { width: 500px; height: 110px; }
 .content { margin: 7px; }
 .tablecontent { margin: 8px; }
 
+.checkproblem { padding: 7px; border: 1px solid orange; background-color: #ffdd33; /* light orange */ }
+
 .notification { margin: 21px 7px; }
 .notificationtext { padding: 7px; border: 2px solid orange; background-color: #ffdd33; /* light orange */ }
 
