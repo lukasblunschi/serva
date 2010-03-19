@@ -93,6 +93,7 @@ public class ServiceForm implements Element {
 
 		// check definition
 		Map<String, String> options = new TreeMap<String, String>();
+		options.put("-", "");
 		List<String> checks = Checks.getCheckDefinitions();
 		for (String checkDefinition : checks) {
 			options.put(checkDefinition, checkDefinition);
