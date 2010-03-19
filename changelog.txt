@@ -1,5 +1,6 @@
 0.2.0 (ongoing)
 -----
+- check results added.
 - booking check element added.
 - username added to domain entity.
 - check integration.
