@@ -1,10 +1,12 @@
 package ch.serva.pages.elements;
 
+import java.util.List;
 import java.util.Properties;
 
-import ch.serva.actions.results.Result;
 import ch.serva.checks.Check;
 import ch.serva.checks.Checks;
+import ch.serva.checks.results.CheckResult;
+import ch.serva.checks.results.CheckResultLevel;
 import ch.serva.config.Config;
 import ch.serva.config.DomainToUsername;
 import ch.serva.db.Booking;
@@ -12,7 +14,6 @@ import ch.serva.db.Domain;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
 import ch.serva.tools.Props;
-import ch.serva.tools.TextToHtml;
 
 /**
  * An element which runs checks for a booking and shows it results.
@@ -51,12 +52,16 @@ public class BookingCheck implements Element {
 			html.append("<div class='checkproblem'>" + dict.domainUsernameNotMapped() + "</div>\n");
 		} else {
 			Properties properties = Props.load(this.getClass());
-			Result result = check.run(domainname, username, properties);
-			String msgSuffix = result.message == null ? "" : ":<br/>" + TextToHtml.toHtml(result.message);
-			if (result.success) {
-				html.append("<div class='checksuccess'>" + dict.success() + msgSuffix + "</div>\n");
-			} else {
-				html.append("<div class='checkproblem'>" + dict.failure() + msgSuffix + "</div>\n");
+			List<CheckResult> results = check.run(domainname, username, properties);
+			for (CheckResult result : results) {
+				String msgSuffix = result.message == null ? "" : ": " + result.message;
+				if (result.level == CheckResultLevel.NO_PROBLEM) {
+					html.append("<div class='noProblem'>" + dict.noProblem() + msgSuffix + "</div>\n");
+				} else if (result.level == CheckResultLevel.MINOR_PROBLEM) {
+					html.append("<div class='minorProblem'>" + dict.minorProblem() + msgSuffix + "</div>\n");
+				} else {
+					html.append("<div class='problem'>" + dict.problem() + msgSuffix + "</div>\n");
+				}
 			}
 		}
 
