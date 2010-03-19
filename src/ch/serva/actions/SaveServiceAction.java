@@ -57,6 +57,9 @@ public class SaveServiceAction implements Action {
 			price = Double.valueOf(priceStr);
 		} catch (Exception e) {
 		}
+		if (checkDefinition.trim().length() == 0) {
+			checkDefinition = null;
+		}
 
 		// get entitiy
 		Service service = null;
