@@ -66,7 +66,8 @@ public class ListServicesPage extends AbstractAdminPage {
 			html.append("<td>").append(TextToHtml.toHtml(Escape.safeXml(service.getDescription()))).append("</td>");
 
 			// check
-			html.append("<td>").append(service.getCheckDefinition()).append("</td>");
+			String checkDefStr = service.getCheckDefinition() == null ? "" : service.getCheckDefinition();
+			html.append("<td>").append(checkDefStr).append("</td>");
 
 			// actions
 			if (service.isRemovable()) {
