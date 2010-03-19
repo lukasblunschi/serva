@@ -84,4 +84,16 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String domainUsernameNotMapped();
 
+	// ----------------------------------------------------------------- checks
+
+	String checks();
+
+	String check();
+
+	String noProblem();
+
+	String minorProblem();
+
+	String problem();
+
 }

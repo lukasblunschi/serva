@@ -151,4 +151,26 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Domain username not mapped.";
 	}
 
+	// ----------------------------------------------------------------- checks
+
+	public String checks() {
+		return "Checks";
+	}
+
+	public String check() {
+		return "Check";
+	}
+
+	public String noProblem() {
+		return "No Problem";
+	}
+
+	public String minorProblem() {
+		return "Minor Problem";
+	}
+
+	public String problem() {
+		return "Problem";
+	}
+
 }
