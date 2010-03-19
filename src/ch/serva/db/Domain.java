@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import ch.serva.config.DomainToUsername;
+
 /**
  * An entity to store a domain.
  * 
@@ -119,6 +121,10 @@ public class Domain {
 
 	public boolean isRemovable() {
 		return bookings != null && bookings.isEmpty();
+	}
+
+	public String getUsername() {
+		return DomainToUsername.getInstance().getUsername(domainname);
 	}
 
 	public String toShortString() {
