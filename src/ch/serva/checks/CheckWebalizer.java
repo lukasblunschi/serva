@@ -45,7 +45,7 @@ public class CheckWebalizer implements Check {
 			return new Failure("webalizer config file " + path + " does not exist or can not be read.");
 		}
 
-		// replacement map
+		// replacement map (template > config)
 		Map<String, String> replacementMap = new HashMap<String, String>();
 		replacementMap.put("user00000", username);
 		replacementMap.put("template.domain", domainname);

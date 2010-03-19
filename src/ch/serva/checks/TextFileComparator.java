@@ -25,7 +25,7 @@ public class TextFileComparator {
 	 * @param templateFile
 	 *            template file.
 	 * @param replacementMap
-	 *            possible replacements.
+	 *            possible replacements (template > config).
 	 * @return success if equal, failure if not equal.
 	 */
 	public static Result compare(File configFile, File templateFile, Map<String, String> replacementMap) {
@@ -54,8 +54,8 @@ public class TextFileComparator {
 						String regex = entry.getKey();
 						String replacement = entry.getValue();
 
-						String lineNew = lineConfig.replaceAll(regex, replacement);
-						if (lineNew.equals(lineTemplate)) {
+						String lineNew = lineTemplate.replaceAll(regex, replacement);
+						if (lineNew.equals(lineConfig)) {
 							matches = true;
 							break;
 						}

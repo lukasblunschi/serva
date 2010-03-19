@@ -21,4 +21,18 @@ public class Checks {
 		return checkDefinitions;
 	}
 
+	/**
+	 * Get check by providing a definition.
+	 * 
+	 * @param checkDefinition
+	 * @return check or null if check not found.
+	 */
+	public static Check getByDefinition(String checkDefinition) {
+		if (checkDefinition.equals("java:" + CheckWebalizer.class.getName())) {
+			return new CheckWebalizer();
+		} else {
+			return null;
+		}
+	}
+
 }
