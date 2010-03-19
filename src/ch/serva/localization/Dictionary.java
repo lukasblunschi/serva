@@ -42,6 +42,10 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String save();
 
+	String success();
+
+	String failure();
+
 	String error();
 
 	String undefined();
