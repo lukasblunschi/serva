@@ -7,6 +7,7 @@ import ch.serva.ServaConstants;
 import ch.serva.config.Config;
 import ch.serva.db.Booking;
 import ch.serva.localization.Dictionary;
+import ch.serva.pages.elements.BookingCheck;
 import ch.serva.pages.elements.BookingForm;
 
 /**
@@ -61,6 +62,11 @@ public class EditBookingPage extends AbstractAdminPage {
 
 		// booking form
 		new BookingForm(isNew, booking, em).appendHtml(html, config, dict);
+
+		// booking check
+		if (!isNew) {
+			new BookingCheck(booking).appendHtml(html, config, dict);
+		}
 
 		return html.toString();
 	}
