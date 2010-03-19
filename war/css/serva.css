@@ -17,7 +17,7 @@ textarea { width: 500px; height: 110px; }
 .tablecontent { margin: 8px; }
 
 .notification { margin: 21px 7px; }
-.notificationtext { padding: 7px; border: 2px solid green; background-color: #77dd77; /* light green */ }
+.notificationtext { padding: 7px; border: 2px solid orange; background-color: #ffdd33; /* light orange */ }
 
 .actions span { padding: 3px 7px; border: 1px solid #cccccc; background-color: #ddffbb; }
 
