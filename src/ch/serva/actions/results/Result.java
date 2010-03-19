@@ -22,4 +22,12 @@ public abstract class Result {
 		this.message = message;
 	}
 
+	public void appendMessage(String message) {
+		if (this.message == null) {
+			this.message = message;
+		} else {
+			this.message += "\n" + message;
+		}
+	}
+
 }

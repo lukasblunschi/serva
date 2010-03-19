@@ -52,6 +52,9 @@ public class CheckWebalizer implements Check {
 
 		// compare
 		Result result = TextFileComparator.compare(configFile, templateFile, replacementMap);
+		if (result.success) {
+			result.appendMessage("- config file content as expected.");
+		}
 
 		// TODO check webalizer dir
 

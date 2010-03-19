@@ -12,6 +12,7 @@ import ch.serva.db.Domain;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
 import ch.serva.tools.Props;
+import ch.serva.tools.TextToHtml;
 
 /**
  * An element which runs checks for a booking and shows it results.
@@ -51,7 +52,7 @@ public class BookingCheck implements Element {
 		} else {
 			Properties properties = Props.load(this.getClass());
 			Result result = check.run(domainname, username, properties);
-			String msgSuffix = result.message == null ? "" : ": " + result.message;
+			String msgSuffix = result.message == null ? "" : ":<br/>" + TextToHtml.toHtml(result.message);
 			if (result.success) {
 				html.append("<div class='checksuccess'>" + dict.success() + msgSuffix + "</div>\n");
 			} else {
