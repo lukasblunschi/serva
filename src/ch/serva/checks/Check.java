@@ -3,7 +3,7 @@ package ch.serva.checks;
 import java.util.List;
 import java.util.Properties;
 
-import ch.serva.actions.results.Result;
+import ch.serva.checks.results.CheckResult;
 
 /**
  * Interface for all checks.
@@ -22,9 +22,9 @@ public interface Check {
 	 *            domain username.
 	 * @param properties
 	 *            properties.
-	 * @return result.
+	 * @return list of results.
 	 */
-	Result run(String domainname, String username, Properties properties);
+	List<CheckResult> run(String domainname, String username, Properties properties);
 
 	/**
 	 * Get configuration lines for an other service.

@@ -1,13 +1,15 @@
 package ch.serva.checks;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import ch.serva.actions.results.Failure;
-import ch.serva.actions.results.Result;
+import ch.serva.checks.results.CheckProblem;
+import ch.serva.checks.results.CheckResult;
+import ch.serva.checks.results.CheckResultLevel;
 import ch.serva.config.Config;
 
 /**
@@ -23,7 +25,18 @@ public class CheckWebalizer implements Check {
 		return null;
 	}
 
-	public Result run(String domainname, String username, Properties properties) {
+	public List<CheckResult> run(String domainname, String username, Properties properties) {
+		List<CheckResult> results = new ArrayList<CheckResult>();
+
+		// config file
+		checkConfigFile(domainname, username, properties, results);
+
+		// TODO check webalizer dir
+
+		return results;
+	}
+
+	private void checkConfigFile(String domainname, String username, Properties properties, List<CheckResult> results) {
 
 		// webalizer config file (DOMAINCONFIGDIR/etc/webalizer/DOMAINNAME.conf)
 		//
@@ -35,30 +48,32 @@ public class CheckWebalizer implements Check {
 		File templateFile = new File(pathDomainConfigDir + "/etc/webalizer/template.domain.conf");
 		if (!templateFile.canRead()) {
 			String path = templateFile.getAbsolutePath();
-			return new Failure("webalizer template file " + path + " does not exist or can not be read.");
+			results.add(new CheckProblem("webalizer template file " + path + " does not exist or can not be read."));
 		}
 
 		// config file
 		File configFile = new File(pathDomainConfigDir + "/etc/webalizer/" + domainname + ".conf");
 		if (!configFile.canRead()) {
 			String path = configFile.getAbsolutePath();
-			return new Failure("webalizer config file " + path + " does not exist or can not be read.");
+			results.add(new CheckProblem("webalizer config file " + path + " does not exist or can not be read."));
 		}
 
-		// replacement map (template > config)
-		Map<String, String> replacementMap = new HashMap<String, String>();
-		replacementMap.put("user00000", username);
-		replacementMap.put("template.domain", domainname);
+		// only if both files can be read
+		if (templateFile.canRead() && configFile.canRead()) {
 
-		// compare
-		Result result = TextFileComparator.compare(configFile, templateFile, replacementMap);
-		if (result.success) {
-			result.appendMessage("- config file content as expected.");
+			// replacement map (template > config)
+			Map<String, String> replacementMap = new HashMap<String, String>();
+			replacementMap.put("user00000", username);
+			replacementMap.put("template.domain", domainname);
+
+			// compare
+			CheckResult result = TextFileComparator.compare(configFile, templateFile, replacementMap);
+			if (result.level == CheckResultLevel.NO_PROBLEM) {
+				result.appendMessage("- config file content as expected.");
+			}
+			results.add(result);
 		}
 
-		// TODO check webalizer dir
-
-		return result;
 	}
 
 }

@@ -14,12 +14,20 @@ public class CheckResult {
 
 	public CheckResult(CheckResultLevel level) {
 		this.level = level;
-		this.message = "";
+		this.message = null;
 	}
 
 	public CheckResult(CheckResultLevel level, String message) {
 		this.level = level;
 		this.message = message;
+	}
+
+	public void appendMessage(String message) {
+		if (this.message == null) {
+			this.message = message;
+		} else {
+			this.message += "\n" + message;
+		}
 	}
 
 }

@@ -5,9 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.Map;
 
-import ch.serva.actions.results.Failure;
-import ch.serva.actions.results.Result;
-import ch.serva.actions.results.Success;
+import ch.serva.checks.results.CheckNoProblem;
+import ch.serva.checks.results.CheckProblem;
+import ch.serva.checks.results.CheckResult;
 
 /**
  * A text file comparator to match a config file to a template file using a given set of possible replacements.
@@ -28,7 +28,7 @@ public class TextFileComparator {
 	 *            possible replacements (template > config).
 	 * @return success if equal, failure if not equal.
 	 */
-	public static Result compare(File configFile, File templateFile, Map<String, String> replacementMap) {
+	public static CheckResult compare(File configFile, File templateFile, Map<String, String> replacementMap) {
 		try {
 
 			// readers
@@ -42,7 +42,7 @@ public class TextFileComparator {
 				// ensure config file is not longer than template file
 				String lineTemplate = readerTemplate.readLine();
 				if (lineTemplate == null) {
-					return new Failure("config file is longer than template file");
+					return new CheckProblem("config file is longer than template file");
 				}
 
 				// compare line by line
@@ -61,7 +61,7 @@ public class TextFileComparator {
 						}
 					}
 					if (!matches) {
-						return new Failure("config line '" + lineConfig + "' does not match expected template line '"
+						return new CheckProblem("config line '" + lineConfig + "' does not match expected template line '"
 								+ lineTemplate + "'.");
 					}
 				}
@@ -70,14 +70,14 @@ public class TextFileComparator {
 			// ensure config file is not shorter than template file
 			String lineTemplate = readerTemplate.readLine();
 			if (lineTemplate != null) {
-				return new Failure("config file is shorter than template file");
+				return new CheckProblem("config file is shorter than template file");
 			}
 
 		} catch (Exception e) {
-			return new Failure("exception in text file comparer: " + e.getMessage());
+			return new CheckProblem("exception in text file comparer: " + e.getMessage());
 		}
 
-		return new Success();
+		return new CheckNoProblem();
 	}
 
 }
