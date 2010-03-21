@@ -29,6 +29,14 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "No";
 	}
 
+	public String none() {
+		return "None";
+	}
+
+	public String all() {
+		return "All";
+	}
+
 	// --------------------------------------------------------- common actions
 
 	public String actions() {

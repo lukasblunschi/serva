@@ -24,6 +24,10 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String no();
 
+	String none();
+
+	String all();
+
 	// --------------------------------------------------------- common actions
 
 	String actions();
