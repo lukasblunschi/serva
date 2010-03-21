@@ -28,6 +28,9 @@ public class Checks {
 	 * @return check or null if check not found.
 	 */
 	public static Check getByDefinition(String checkDefinition) {
+		if (checkDefinition == null) {
+			return null;
+		}
 		if (checkDefinition.equals("java:" + CheckWebalizer.class.getName())) {
 			return new CheckWebalizer();
 		} else {
