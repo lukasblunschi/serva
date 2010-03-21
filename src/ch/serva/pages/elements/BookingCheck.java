@@ -6,7 +6,6 @@ import java.util.Properties;
 import ch.serva.checks.Check;
 import ch.serva.checks.Checks;
 import ch.serva.checks.results.CheckResult;
-import ch.serva.checks.results.CheckResultLevel;
 import ch.serva.config.Config;
 import ch.serva.config.DomainToUsername;
 import ch.serva.db.Booking;
@@ -54,14 +53,8 @@ public class BookingCheck implements Element {
 			Properties properties = Props.load(this.getClass());
 			List<CheckResult> results = check.run(domainname, username, properties);
 			for (CheckResult result : results) {
-				String msgSuffix = result.message == null ? "" : ": " + result.message;
-				if (result.level == CheckResultLevel.NO_PROBLEM) {
-					html.append("<div class='noProblem'>" + dict.noProblem() + msgSuffix + "</div>\n");
-				} else if (result.level == CheckResultLevel.MINOR_PROBLEM) {
-					html.append("<div class='minorProblem'>" + dict.minorProblem() + msgSuffix + "</div>\n");
-				} else {
-					html.append("<div class='problem'>" + dict.problem() + msgSuffix + "</div>\n");
-				}
+				new CheckResultDiv(result).appendEmbedableHtml(html, config, dict);
+				html.append("\n");
 			}
 		}
 
