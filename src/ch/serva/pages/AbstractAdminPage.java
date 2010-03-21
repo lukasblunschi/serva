@@ -31,6 +31,8 @@ public abstract class AbstractAdminPage extends AbstractPage {
 		html.append("<li><a href='?page=" + ListServicesPage.NAME + "'>" + dict.services() + "</a></li>\n");
 		html.append("<li><a href='?page=" + ListBookingsPage.NAME + "'>" + dict.bookings() + "</a></li>\n");
 		html.append("<li><a href='?page=" + ListPaymentsPage.NAME + "'>" + dict.payments() + "</a></li>\n");
+		html.append("<li>&#160;</li>\n");
+		html.append("<li><a href='?page=" + ChecksPage.NAME + "'>" + dict.checks() + "</a></li>\n");
 		html.append("</ul>\n");
 		html.append("</div>\n\n");
 

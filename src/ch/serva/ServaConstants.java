@@ -14,6 +14,10 @@ public abstract class ServaConstants {
 
 	public static final String NEW = "new";
 
+	public static final String NONE = "none";
+
+	public static final String ALL = "all";
+
 	// ----------------------------------------------------- session attributes
 
 	/**
