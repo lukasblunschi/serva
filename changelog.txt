@@ -1,4 +1,4 @@
-0.2.1 (ongoing)
+0.2.1 (revision 185, 2010-03-21)
 -----
 - fix edit booking of service without check.
 
