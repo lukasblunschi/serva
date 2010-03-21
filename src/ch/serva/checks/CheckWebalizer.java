@@ -25,13 +25,28 @@ public class CheckWebalizer implements Check {
 		return null;
 	}
 
-	public List<CheckResult> run(String domainname, String username, Properties properties) {
+	public List<CheckResult> runEnabled(String domainname, String username, Properties properties) {
 		List<CheckResult> results = new ArrayList<CheckResult>();
 
 		// config file
 		checkConfigFile(domainname, username, properties, results);
 
 		// TODO check webalizer dir
+
+		return results;
+	}
+
+	public List<CheckResult> runDisabled(String domainname, String username, Properties properties) {
+		List<CheckResult> results = new ArrayList<CheckResult>();
+
+		final String pathDomainConfigDir = properties.getProperty(Config.PN_PATH_DOMAINCONFIGDIR);
+
+		// config file
+		File configFile = new File(pathDomainConfigDir + "/etc/webalizer/" + domainname + ".conf");
+		if (configFile.exists()) {
+			String path = configFile.getAbsolutePath();
+			results.add(new CheckProblem("webalizer config file " + path + " exists."));
+		}
 
 		return results;
 	}

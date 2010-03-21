@@ -12,6 +12,19 @@ import java.util.List;
 public class Checks {
 
 	/**
+	 * Get all checks.
+	 * 
+	 * @return list of checks.
+	 */
+	public static List<Check> getAll() {
+		List<Check> checks = new ArrayList<Check>();
+		for (String checkDef : getCheckDefinitions()) {
+			checks.add(getByDefinition(checkDef));
+		}
+		return checks;
+	}
+
+	/**
 	 * 
 	 * @return list of all check definitions (hardcoded for the moment:-)
 	 */
