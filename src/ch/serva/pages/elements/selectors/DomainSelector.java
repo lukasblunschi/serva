@@ -44,6 +44,9 @@ public class DomainSelector implements Element {
 			options.put(domain.toShortString(), domain.getId().toString());
 		}
 
+		// selected value
+		String selValue = selDomainIdStr == null ? ServaConstants.NONE : selDomainIdStr;
+
 		// html
 		html.append("<!-- domain selector -->\n");
 		html.append("<form id='domain_selector' action='?' method='get'>\n");
@@ -54,7 +57,7 @@ public class DomainSelector implements Element {
 		html.append("<select id='focus_domainselector' name='domain_" + Domain.F_ID + "' " + onchange + " size='1'>\n");
 		for (Map.Entry<String, String> entry : options.entrySet()) {
 			String value = entry.getValue();
-			if (value.equals(selDomainIdStr)) {
+			if (value.equals(selValue)) {
 				html.append("<option value='" + value + "' selected='selected'>" + entry.getKey() + "</option>\n");
 			} else {
 				html.append("<option value='" + value + "'>" + entry.getKey() + "</option>\n");
