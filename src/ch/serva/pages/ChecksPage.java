@@ -2,24 +2,18 @@ package ch.serva.pages;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
 import ch.serva.ServaConstants;
-import ch.serva.checks.Check;
-import ch.serva.checks.Checks;
-import ch.serva.checks.results.CheckResult;
 import ch.serva.config.Config;
-import ch.serva.db.Booking;
 import ch.serva.db.Domain;
 import ch.serva.db.Instance;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
-import ch.serva.pages.elements.CheckResultDiv;
+import ch.serva.pages.elements.DomainsServicesCheckTable;
 import ch.serva.pages.elements.selectors.DomainSelector;
-import ch.serva.tools.Props;
 
 /**
  * A page to show checks.
@@ -40,9 +34,6 @@ public class ChecksPage extends AbstractAdminPage {
 
 		// config
 		Config config = new Config();
-
-		// properties
-		Properties properties = Props.load(this.getClass());
 
 		// title
 		html.append("<!-- title -->\n");
@@ -73,44 +64,11 @@ public class ChecksPage extends AbstractAdminPage {
 			}
 		}
 
-		// loop over domains
-		html.append("<!-- checks -->\n");
-		html.append("<table class='tablecontent'>\n");
-		for (Domain domain : domains) {
-			String domainname = domain.getDomainname();
-			String username = domain.getUsername();
+		// services
+		List<Service> services = instance.getServices();
 
-			// header
-			html.append("<tr>");
-			html.append("<td colspan='2'><h4>" + domain.toShortString() + "</h4></td>");
-			html.append("</tr>\n");
-
-			// loop over bookings
-			List<Booking> bookings = domain.getBookings();
-			for (Booking booking : bookings) {
-				Service service = booking.getService();
-
-				// check
-				Check check = Checks.getByDefinition(service.getCheckDefinition());
-				List<CheckResult> checkResults = null;
-				if (check == null) {
-					checkResults = new ArrayList<CheckResult>();
-				} else {
-					checkResults = check.run(domainname, username, properties);
-				}
-
-				html.append("<tr>");
-				html.append("<td>").append(service.getServicename()).append("</td>");
-				html.append("<td>");
-				for (CheckResult checkResult : checkResults) {
-					new CheckResultDiv(checkResult).appendEmbedableHtml(html, config, dict);
-				}
-				html.append("</td>");
-				html.append("</tr>\n");
-
-			}
-		}
-		html.append("</table>\n\n");
+		// check table
+		new DomainsServicesCheckTable(domains, services).appendHtml(html, config, dict);
 
 		return html.toString();
 	}

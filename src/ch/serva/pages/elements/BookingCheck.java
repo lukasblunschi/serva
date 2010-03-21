@@ -51,7 +51,7 @@ public class BookingCheck implements Element {
 			html.append("<div class='checkproblem'>" + dict.domainUsernameNotMapped() + "</div>\n");
 		} else {
 			Properties properties = Props.load(this.getClass());
-			List<CheckResult> results = check.run(domainname, username, properties);
+			List<CheckResult> results = check.runEnabled(domainname, username, properties);
 			for (CheckResult result : results) {
 				new CheckResultDiv(result).appendEmbedableHtml(html, config, dict);
 				html.append("\n");
