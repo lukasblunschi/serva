@@ -19,4 +19,7 @@ Releasing Serva Howto
 
    $ rsync --progress -e ssh /tmp/serva/serva-0.*.zip blukas,serva@frs.sf.net:/home/frs/project/s/se/serva/
 
+   test:
+   $ sftp blukas,serva@frs.sf.net:/home/frs/project/s/se/serva/
+
 Lukas, 2010-03-14
