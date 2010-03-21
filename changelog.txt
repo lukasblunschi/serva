@@ -1,4 +1,4 @@
-0.2.0 (ongoing)
+0.2.0 (revision 181, 2010-03-21)
 -----
 - domains services check table element added.
 - check for disabled added.
