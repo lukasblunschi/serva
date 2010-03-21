@@ -1,5 +1,9 @@
 0.2.0 (ongoing)
 -----
+- none and all constants added.
+- checks page added.
+- check result div extracted.
+- domain selector element added.
 - check results added.
 - booking check element added.
 - username added to domain entity.
