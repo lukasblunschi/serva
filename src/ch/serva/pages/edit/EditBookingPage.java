@@ -4,6 +4,8 @@ import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
 import ch.serva.ServaConstants;
+import ch.serva.checks.Check;
+import ch.serva.checks.Checks;
 import ch.serva.config.Config;
 import ch.serva.db.Booking;
 import ch.serva.localization.Dictionary;
@@ -66,7 +68,10 @@ public class EditBookingPage extends AbstractAdminPage {
 
 		// booking check
 		if (!isNew) {
-			new BookingCheck(booking).appendHtml(html, config, dict);
+			Check check = Checks.getByDefinition(booking.getService().getCheckDefinition());
+			if (check != null) {
+				new BookingCheck(booking).appendHtml(html, config, dict);
+			}
 		}
 
 		return html.toString();
