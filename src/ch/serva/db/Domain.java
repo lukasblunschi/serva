@@ -127,6 +127,16 @@ public class Domain {
 		return DomainToUsername.getInstance().getUsername(domainname);
 	}
 
+	public boolean isServiceBooked(Service service) {
+		for (Booking booking : bookings) {
+			Service curService = booking.getService();
+			if (service.getId().equals(curService.getId())) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public String toShortString() {
 		return domainname;
 	}
