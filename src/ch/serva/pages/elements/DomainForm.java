@@ -13,8 +13,8 @@ import ch.serva.db.Domain;
 import ch.serva.db.Instance;
 import ch.serva.db.User;
 import ch.serva.localization.Dictionary;
-import ch.serva.pages.EditDomainPage;
-import ch.serva.pages.ListDomainsPage;
+import ch.serva.pages.edit.EditDomainPage;
+import ch.serva.pages.list.ListDomainsPage;
 import ch.serva.tools.Escape;
 import ch.serva.tools.html.Select;
 

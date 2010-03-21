@@ -1,4 +1,4 @@
-package ch.serva.pages;
+package ch.serva.pages.list;
 
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +11,8 @@ import ch.serva.actions.RemoveServiceAction;
 import ch.serva.db.Instance;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
+import ch.serva.pages.AbstractAdminPage;
+import ch.serva.pages.edit.EditServicePage;
 import ch.serva.tools.Doubles;
 import ch.serva.tools.Escape;
 import ch.serva.tools.TextToHtml;

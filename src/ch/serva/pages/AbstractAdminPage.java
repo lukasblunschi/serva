@@ -5,6 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import ch.serva.actions.results.Result;
 import ch.serva.localization.Dictionary;
+import ch.serva.pages.list.ListBookingsPage;
+import ch.serva.pages.list.ListDomainsPage;
+import ch.serva.pages.list.ListPaymentsPage;
+import ch.serva.pages.list.ListServicesPage;
+import ch.serva.pages.list.ListUsersPage;
 
 /**
  * Base class for all admin pages.

@@ -9,8 +9,8 @@ import ch.serva.config.Config;
 import ch.serva.db.User;
 import ch.serva.localization.Dictionaries;
 import ch.serva.localization.Dictionary;
-import ch.serva.pages.EditUserPage;
-import ch.serva.pages.ListUsersPage;
+import ch.serva.pages.edit.EditUserPage;
+import ch.serva.pages.list.ListUsersPage;
 import ch.serva.tools.Escape;
 
 /**

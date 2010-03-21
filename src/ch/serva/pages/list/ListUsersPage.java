@@ -1,4 +1,4 @@
-package ch.serva.pages;
+package ch.serva.pages.list;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +13,8 @@ import ch.serva.db.User;
 import ch.serva.db.Users;
 import ch.serva.localization.Dictionaries;
 import ch.serva.localization.Dictionary;
+import ch.serva.pages.AbstractAdminPage;
+import ch.serva.pages.edit.EditUserPage;
 import ch.serva.tools.Escape;
 import ch.serva.tools.comparators.UserComparator;
 

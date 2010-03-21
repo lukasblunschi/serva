@@ -1,4 +1,4 @@
-package ch.serva.pages;
+package ch.serva.pages.list;
 
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +11,8 @@ import ch.serva.actions.RemoveBookingAction;
 import ch.serva.db.Booking;
 import ch.serva.db.Instance;
 import ch.serva.localization.Dictionary;
+import ch.serva.pages.AbstractAdminPage;
+import ch.serva.pages.edit.EditBookingPage;
 import ch.serva.tools.Dates;
 import ch.serva.tools.Escape;
 import ch.serva.tools.comparators.BookingComparator;

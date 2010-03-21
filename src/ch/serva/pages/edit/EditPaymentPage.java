@@ -1,4 +1,4 @@
-package ch.serva.pages;
+package ch.serva.pages.edit;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +7,7 @@ import ch.serva.ServaConstants;
 import ch.serva.config.Config;
 import ch.serva.db.Payment;
 import ch.serva.localization.Dictionary;
+import ch.serva.pages.AbstractAdminPage;
 import ch.serva.pages.elements.PaymentForm;
 
 /**

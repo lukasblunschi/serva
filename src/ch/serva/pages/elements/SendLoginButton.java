@@ -4,7 +4,7 @@ import ch.serva.actions.SendLoginAction;
 import ch.serva.config.Config;
 import ch.serva.db.User;
 import ch.serva.localization.Dictionary;
-import ch.serva.pages.EditUserPage;
+import ch.serva.pages.edit.EditUserPage;
 
 /**
  * The send login button.
