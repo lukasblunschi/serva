@@ -1,5 +1,8 @@
 0.2.2 (ongoing)
 -----
+- show password button on edit user page.
+- not showing password on list user page.
+- formatter profile updated.
 - domain selector fixed.
 
 
