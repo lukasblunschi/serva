@@ -46,6 +46,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String save();
 
+	String show();
+
 	String success();
 
 	String failure();

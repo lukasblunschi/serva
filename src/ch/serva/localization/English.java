@@ -71,6 +71,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Save";
 	}
 
+	public String show() {
+		return "Show";
+	}
+
 	public String success() {
 		return "Success";
 	}
