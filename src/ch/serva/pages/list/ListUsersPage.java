@@ -45,11 +45,11 @@ public class ListUsersPage extends AbstractAdminPage {
 		String removePrefix = "?" + pActionRemove + pPage + pUserIdPrefLong;
 
 		// users
+		// - do not show password
 		html.append("<!-- user -->\n");
 		html.append("<table class='tablecontent'>\n");
 		html.append("<tr>");
 		html.append("<td>").append(dict.username()).append("</td>");
-		html.append("<td>").append(dict.password()).append("</td>");
 		html.append("<td>").append(dict.isAdmin()).append("</td>");
 		html.append("<td>").append(dict.language()).append("</td>");
 		html.append("<td>").append(dict.nickname()).append("</td>");
@@ -72,8 +72,7 @@ public class ListUsersPage extends AbstractAdminPage {
 			html.append("</a>");
 			html.append("</td>");
 
-			// password, is admin, ...
-			html.append("<td>").append(Escape.safeXml(user.getPassword())).append("</td>");
+			// is admin, language, ...
 			html.append("<td>").append(user.getIsAdmin() ? dict.yes() : dict.no()).append("</td>");
 			html.append("<td>").append(Dictionaries.getDictionary(user.getLanguage()).getLanguageName()).append("</td>");
 			html.append("<td>").append(Escape.safeXml(user.getNickname())).append("</td>");
@@ -94,8 +93,7 @@ public class ListUsersPage extends AbstractAdminPage {
 		// actions
 		html.append("<!-- actions -->\n");
 		html.append("<div class='content actions'>\n");
-		html.append("<span><a href='?page=" + EditUserPage.NAME + "&amp;id=" + ServaConstants.NEW + "'>" + dict.add()
-				+ "</a></span>\n");
+		html.append("<span><a href='?page=" + EditUserPage.NAME + "&amp;id=" + ServaConstants.NEW + "'>" + dict.add() + "</a></span>\n");
 		html.append("</div>\n\n");
 
 		return html.toString();

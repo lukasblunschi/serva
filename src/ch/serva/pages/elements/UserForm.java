@@ -65,8 +65,7 @@ public class UserForm implements Element {
 		html.append("<tr>");
 		html.append("<td>").append(dict.username() + ":").append("</td>");
 		html.append("<td>");
-		html.append("<input id='focus_username' type='text' class='text' name='" + User.F_USERNAME + "' value='" + username
-				+ "' />");
+		html.append("<input id='focus_username' type='text' class='text' name='" + User.F_USERNAME + "' value='" + username + "' />");
 		html.append("</td>");
 		html.append("</tr>\n");
 
@@ -75,7 +74,17 @@ public class UserForm implements Element {
 		html.append("<tr>");
 		html.append("<td>").append(dict.password() + ":").append("</td>");
 		html.append("<td>");
-		html.append("<input type='text' class='text' name='" + User.F_PASSWORD + "' value='" + password + "' />");
+		html.append("<input id='show_password' type='text' class='text hidden' name='" + User.F_PASSWORD + "' value='" + password + "' />");
+		html.append("<script type='text/javascript'>");
+		html.append("function showPassword() {");
+		html.append(" document.getElementById(\"hide_show_button\").style.display = 'none';");
+		html.append(" document.getElementById(\"show_password\").style.display = 'inline';");
+		html.append(" document.getElementById(\"show_password\").focus();");
+		html.append("}");
+		html.append("</script>");
+		html.append("<span id='hide_show_button'>");
+		html.append("<input type='button' onclick='javascript:showPassword()' value='" + dict.show() + "'/>");
+		html.append("</span>");
 		html.append("</td>");
 		html.append("</tr>\n");
 
