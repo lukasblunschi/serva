@@ -68,8 +68,8 @@ public class ServiceForm implements Element {
 		html.append("<tr>");
 		html.append("<td>").append(dict.servicename() + ":").append("</td>");
 		html.append("<td>");
-		html.append("<input id='focus_servicename' type='text' class='text' name='" + Service.F_SERVICENAME + "' value='"
-				+ servicename + "' />");
+		html.append("<input id='focus_servicename' type='text' class='text' name='" + Service.F_SERVICENAME + "' value='" + servicename
+				+ "' />");
 		html.append("</td>");
 		html.append("</tr>\n");
 

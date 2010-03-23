@@ -73,8 +73,8 @@ public class DomainForm implements Element {
 		html.append("<tr>");
 		html.append("<td>").append(dict.domainname() + ":").append("</td>");
 		html.append("<td>");
-		html.append("<input id='focus_domainname' type='text' class='text' name='" + Domain.F_DOMAINNAME + "' value='"
-				+ domainname + "' />");
+		html.append("<input id='focus_domainname' type='text' class='text' name='" + Domain.F_DOMAINNAME + "' value='" + domainname
+				+ "' />");
 		html.append("</td>");
 		html.append("</tr>\n");
 
