@@ -78,6 +78,16 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String editPayment();
 
+	// ----------------------------------------------------------- cost related
+
+	String pricePerYear();
+
+	String totalCost();
+
+	String payed();
+
+	String openCost();
+
 	// ---------------------------------------------------------------- actions
 
 	String loginInformationSubject();

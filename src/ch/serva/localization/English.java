@@ -133,6 +133,24 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Edit Payment";
 	}
 
+	// ----------------------------------------------------------- cost related
+
+	public String pricePerYear() {
+		return "Price per Year";
+	}
+
+	public String totalCost() {
+		return "Total Cost";
+	}
+
+	public String payed() {
+		return "Payed";
+	}
+
+	public String openCost() {
+		return "Open Cost";
+	}
+
 	// ---------------------------------------------------------------- actions
 
 	public String loginInformationSubject() {
