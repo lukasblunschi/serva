@@ -10,6 +10,7 @@ import ch.serva.ServaConstants;
 import ch.serva.actions.RemoveDomainAction;
 import ch.serva.db.Domain;
 import ch.serva.db.Instance;
+import ch.serva.db.User;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.AbstractAdminPage;
 import ch.serva.pages.edit.EditDomainPage;
@@ -63,10 +64,10 @@ public class ListDomainsPage extends AbstractAdminPage {
 			html.append("</td>");
 
 			// holder, billing-, technical- and hosting contact
-			html.append("<td>").append(Escape.safeXml(domain.getHolder().toMiddleString())).append("</td>");
-			html.append("<td>").append(Escape.safeXml(domain.getBillingcontact().toMiddleString())).append("</td>");
-			html.append("<td>").append(Escape.safeXml(domain.getTechnicalcontact().toMiddleString())).append("</td>");
-			html.append("<td>").append(Escape.safeXml(domain.getHostingcontact().toMiddleString())).append("</td>");
+			appendUser(html, domain, domain.getHolder(), Domain.F_HOLDER);
+			appendUser(html, domain, domain.getBillingcontact(), Domain.F_BILLINGCONTACT);
+			appendUser(html, domain, domain.getTechnicalcontact(), Domain.F_TECHNICALCONTACT);
+			appendUser(html, domain, domain.getHostingcontact(), Domain.F_HOSTINGCONTACT);
 
 			// actions
 			if (domain.isRemovable()) {
@@ -87,6 +88,17 @@ public class ListDomainsPage extends AbstractAdminPage {
 		html.append("</div>\n\n");
 
 		return html.toString();
+	}
+
+	private void appendUser(StringBuffer html, Domain domain, User user, String prefix) {
+		String divId = prefix + domain.getId();
+		html.append("<td>");
+		html.append(Escape.safeXml(user.toShortString()));
+		html.append("<div class='tooltip' id='" + divId + "'>");
+		html.append(Escape.safeXml(user.toFullHtml()).replaceAll("\n", "<br />"));
+		html.append("</div>");
+		html.append("<span onmouseover='showTT(\"" + divId + "\")' onmouseout='hideTT()'> [+]</span>");
+		html.append("</td>");
 	}
 
 }

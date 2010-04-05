@@ -91,13 +91,13 @@ public class User {
 		generatePassword();
 	}
 
-	public User(String username, String password, boolean isadmin, String language, String nickname, String firstname,
-			String lastname, String address, String phone, String email) {
+	public User(String username, String password, boolean isadmin, String language, String nickname, String firstname, String lastname,
+			String address, String phone, String email) {
 		set(username, password, isadmin, language, nickname, firstname, lastname, address, phone, email);
 	}
 
-	public void set(String username, String password, boolean isadmin, String language, String nickname, String firstname,
-			String lastname, String address, String phone, String email) {
+	public void set(String username, String password, boolean isadmin, String language, String nickname, String firstname, String lastname,
+			String address, String phone, String email) {
 		this.username = username;
 		this.password = password;
 		this.isadmin = isadmin ? 1 : 0;
@@ -257,6 +257,20 @@ public class User {
 		return domains;
 	}
 
+	/**
+	 * Get user identification (nickname if available, username otherwise)
+	 * 
+	 * @return short name.
+	 */
+	public String toShortString() {
+		boolean hasNickname = nickname != null && nickname.trim().length() > 0;
+		if (hasNickname) {
+			return nickname;
+		} else {
+			return username;
+		}
+	}
+
 	public String toMiddleString() {
 		StringBuffer buf = new StringBuffer();
 		boolean hasNickname = nickname != null && nickname.trim().length() > 0;
@@ -270,6 +284,15 @@ public class User {
 		}
 		buf.append(email);
 		return buf.toString();
+	}
+
+	public String toFullHtml() {
+		StringBuffer html = new StringBuffer();
+		html.append(id + "/" + username + (isadmin > 0 ? "*" : "")).append("\n");
+		html.append(nickname).append("\n");
+		html.append(firstname + " " + lastname).append("\n");
+		html.append(email);
+		return html.toString();
 	}
 
 }
