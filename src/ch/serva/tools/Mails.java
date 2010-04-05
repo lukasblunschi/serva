@@ -44,8 +44,8 @@ public class Mails {
 	 *            true to send the message asynchronuously.
 	 * @return error message or null if successfully sent.
 	 */
-	public static String send(Properties props, List<String> replyToAddresses, List<String> toAddresses, String subject,
-			String body, boolean async) {
+	public static String send(Properties props, List<String> replyToAddresses, List<String> toAddresses, String subject, String body,
+			boolean async) {
 
 		// read configuration
 		final String from = props.getProperty("mail.from");

@@ -51,8 +51,7 @@ public class ServletResponseTools {
 	 * @return number of bytes streamed or -1 if exception while streaming.
 	 * @throws IOException
 	 */
-	public static long streamFile(File file, HttpServletRequest req, HttpServletResponse resp, int expireTime)
-			throws IOException {
+	public static long streamFile(File file, HttpServletRequest req, HttpServletResponse resp, int expireTime) throws IOException {
 
 		// find content type from filename
 		String filename = file.getName();
@@ -93,8 +92,8 @@ public class ServletResponseTools {
 	 * @throws IOException
 	 *             if string could not be written to the response.
 	 */
-	public static void streamStringBuffer(StringBuffer html, String contenttype, String encoding, double calcTime,
-			HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	public static void streamStringBuffer(StringBuffer html, String contenttype, String encoding, double calcTime, HttpServletRequest req,
+			HttpServletResponse resp) throws IOException {
 		String decodedURI = ServletTools.decodeURI(req.getRequestURI());
 		logger.info(req.getMethod() + " 200 " + html.length() + " " + calcTime + "ms " + decodedURI);
 		resp.setStatus(HttpServletResponse.SC_OK);
