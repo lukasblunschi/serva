@@ -5,7 +5,7 @@ import ch.serva.db.Domain;
 import ch.serva.localization.Dictionary;
 
 /**
- * An element which lists the users related to a domain.
+ * An embedable element which lists the users related to a domain.
  * 
  * @author Lukas Blunschi
  * 
