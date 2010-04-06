@@ -20,10 +20,12 @@ public class DomainRelationshipsBox implements Element {
 
 	public void appendHtml(StringBuffer html, Config config, Dictionary dict) {
 
+		// open div and subtitle
 		html.append("<!-- domain relationships box -->\n");
 		html.append("<div class='userinfobox'>\n");
 		html.append("<div class='subtitle'>").append(dict.relationships()).append("</div>\n");
 
+		// open table
 		html.append("<table>\n");
 
 		html.append("<tr>");
@@ -46,8 +48,10 @@ public class DomainRelationshipsBox implements Element {
 		html.append("<td>").append(domain.getHostingcontact().toFullName()).append("</td>");
 		html.append("</tr>\n");
 
+		// close table
 		html.append("</table>\n");
 
+		// close div
 		html.append("</div>\n\n");
 	}
 
