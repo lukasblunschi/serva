@@ -1,4 +1,4 @@
-0.2.2 (ongoing)
+0.2.2 (revision 217, 2010-04-07)
 -----
 - home page updated.
 - using serva.js.

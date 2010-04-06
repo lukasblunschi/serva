@@ -9,7 +9,7 @@ JAVAHOME=/usr/lib/jvm/java-1.5.0-sun-1.5.0.19
 # You don't need to edit the following lines
 #
 CLASSPATH=bin:\
-dist/serva-0.2.1.jar:\
+dist/serva-0.2.2.jar:\
 lib/activation-1.1.1.jar:\
 lib/commons-fileupload-1.2.1.jar:\
 lib/commons-io-1.4.jar:\
