@@ -18,6 +18,8 @@ Releasing Serva Howto
 6. upload to sourceforge
 
    $ rsync --progress -e ssh /tmp/serva/serva-0.*.zip blukas,serva@frs.sf.net:/home/frs/project/s/se/serva/
+   or
+   $ rsync --progress -e ssh /tmp/serva/serva-0.*.zip root@chnobli:/tmp/serva/
 
    test:
    $ sftp blukas,serva@frs.sf.net:/home/frs/project/s/se/serva/
