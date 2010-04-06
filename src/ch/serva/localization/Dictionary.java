@@ -80,6 +80,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	// ----------------------------------------------------------- cost related
 
+	String costs();
+
 	String cost();
 
 	String pricePerYear();
