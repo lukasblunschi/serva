@@ -1,8 +1,11 @@
 package ch.serva.db;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +15,7 @@ import javax.persistence.Table;
 
 import ch.serva.localization.Dictionary;
 import ch.serva.localization.English;
+import ch.serva.tools.comparators.DomainComparator;
 
 /**
  * An entity to store a user.
@@ -249,12 +253,23 @@ public class User {
 		setPassword(buf.toString());
 	}
 
+	/**
+	 * Get all domains related to this user.
+	 * 
+	 * @return list of domains (no duplicates, ordered).
+	 */
 	public List<Domain> getDomains() {
-		List<Domain> domains = new ArrayList<Domain>();
-		domains.addAll(domainsAsHolder);
-		domains.addAll(domainsAsBillingcontact);
-		domains.addAll(domainsAsTechnicalcontact);
-		domains.addAll(domainsAsHostingcontact);
+
+		// collect and remove duplicates
+		Set<Domain> domainSet = new HashSet<Domain>();
+		domainSet.addAll(domainsAsHolder);
+		domainSet.addAll(domainsAsBillingcontact);
+		domainSet.addAll(domainsAsTechnicalcontact);
+		domainSet.addAll(domainsAsHostingcontact);
+
+		// order
+		List<Domain> domains = new ArrayList<Domain>(domainSet);
+		Collections.sort(domains, new DomainComparator());
 		return domains;
 	}
 
@@ -313,6 +328,10 @@ public class User {
 		}
 		buf.append(email);
 		return buf.toString();
+	}
+
+	public String toFullName() {
+		return firstname + " " + lastname;
 	}
 
 	public String toFullHtml() {
