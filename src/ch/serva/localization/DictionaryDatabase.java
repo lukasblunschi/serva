@@ -38,6 +38,8 @@ public interface DictionaryDatabase {
 
 	// ---------------------------------------------------------------- domains
 
+	String yourDomains();
+
 	String domains();
 
 	String domain();

@@ -68,6 +68,10 @@ public class EnglishDatabase implements DictionaryDatabase {
 
 	// ---------------------------------------------------------------- domains
 
+	public String yourDomains() {
+		return "Your Domains";
+	}
+
 	public String domains() {
 		return "Domains";
 	}
