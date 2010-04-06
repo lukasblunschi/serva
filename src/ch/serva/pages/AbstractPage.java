@@ -81,6 +81,7 @@ public abstract class AbstractPage implements Page {
 		if (isLoggedIn) {
 			html.append("<ul>\n");
 			html.append("<li><a href='?page=" + HomePage.NAME + "'>" + dict.home() + "</a></li>\n");
+			html.append("<li><a href='?page=" + CostsUserPage.NAME + "'>" + dict.costs() + "</a></li>\n");
 			if (isAdmin) {
 				html.append("<li><a href='?page=" + AdminPage.NAME + "'>" + dict.admin() + "</a></li>\n");
 			}

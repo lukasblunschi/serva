@@ -33,6 +33,7 @@ import ch.serva.localization.Dictionary;
 import ch.serva.pages.AdminPage;
 import ch.serva.pages.ChecksPage;
 import ch.serva.pages.CostsPage;
+import ch.serva.pages.CostsUserPage;
 import ch.serva.pages.HomePage;
 import ch.serva.pages.LoginPage;
 import ch.serva.pages.Page;
@@ -166,6 +167,8 @@ public class ServaServlet extends HttpServlet {
 			} else if (isLoggedIn) {
 				if (pageStr.equals(HomePage.NAME)) {
 					page = new HomePage();
+				} else if (pageStr.equals(CostsUserPage.NAME)) {
+					page = new CostsUserPage();
 
 					// admin
 				} else if (isAdmin) {
