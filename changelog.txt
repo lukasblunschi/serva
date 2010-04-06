@@ -1,5 +1,12 @@
 0.2.2 (ongoing)
 -----
+- booking entity extended.
+- user entity extended.
+- domain and booking table added to home page.
+- multiple domain selector element added.
+- count full months added to date tools.
+- user entity extended.
+- short username on list domains page.
 - show password button on edit user page.
 - not showing password on list user page.
 - formatter profile updated.
