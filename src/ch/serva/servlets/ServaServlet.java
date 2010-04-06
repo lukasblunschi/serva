@@ -255,6 +255,7 @@ public class ServaServlet extends HttpServlet {
 		html.append("   <link rel='stylesheet' type='text/css' href='css/serva.css' />\n");
 		html.append("   <link rel='icon' type='image/gif' href='images/serva-icon.gif' />\n");
 		html.append("   <script type='text/javascript' src='js/tooltips.js'></script>\n");
+		html.append("   <script type='text/javascript' src='js/serva.js'></script>\n");
 		html.append("</head>\n");
 
 		return html;
