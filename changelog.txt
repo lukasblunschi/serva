@@ -1,5 +1,16 @@
 0.2.2 (ongoing)
 -----
+- home page updated.
+- using serva.js.
+- domain relationship user element added.
+- domain contact box added.
+- domain relationships box added.
+- domain services box added.
+- costs user page added.
+- costs page added.
+- domains services cost table extracted.
+- domain relationship list element added.
+- constants added to multiple domain selector.
 - booking entity extended.
 - user entity extended.
 - domain and booking table added to home page.
