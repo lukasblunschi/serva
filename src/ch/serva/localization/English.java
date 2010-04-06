@@ -135,6 +135,10 @@ public class English extends EnglishDatabase implements Dictionary {
 
 	// ----------------------------------------------------------- cost related
 
+	public String cost() {
+		return "Cost";
+	}
+
 	public String pricePerYear() {
 		return "Price per Year";
 	}
