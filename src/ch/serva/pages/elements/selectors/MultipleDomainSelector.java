@@ -18,6 +18,10 @@ import ch.serva.pages.elements.Element;
  */
 public class MultipleDomainSelector implements Element {
 
+	public static final String ID_FOCUS = "select_domain_ids";
+
+	public static final String P_DOMAIN_IDS = "domain_ids";
+
 	private final List<Domain> domainsAll;
 
 	private final String[] selDomainIdsArr;
@@ -57,7 +61,7 @@ public class MultipleDomainSelector implements Element {
 		html.append("</td>\n");
 		html.append("<td>\n");
 		String js = "javascript:document.getElementById(\"multiple_domain_selector_form\").submit()";
-		html.append("<select name='domain_ids' size='5' multiple='true' onchange='" + js + "'>\n");
+		html.append("<select id='" + ID_FOCUS + "' name='" + P_DOMAIN_IDS + "' size='5' multiple='true' onchange='" + js + "'>\n");
 		for (Map.Entry<String, String> entry : options.entrySet()) {
 			String value = entry.getValue();
 			if (selDomainIds.contains(value)) {
