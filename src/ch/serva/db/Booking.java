@@ -128,6 +128,19 @@ public class Booking {
 		return payments != null && payments.isEmpty();
 	}
 
+	/**
+	 * Get sum of all payments.
+	 * 
+	 * @return
+	 */
+	public double getPayed() {
+		double total = 0.0;
+		for (Payment payment : payments) {
+			total += payment.getAmount();
+		}
+		return total;
+	}
+
 	public String toShortString() {
 		return domain.toShortString() + " : " + service.toShortString();
 	}

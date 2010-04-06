@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import ch.serva.localization.Dictionary;
 import ch.serva.localization.English;
 
 /**
@@ -255,6 +256,34 @@ public class User {
 		domains.addAll(domainsAsTechnicalcontact);
 		domains.addAll(domainsAsHostingcontact);
 		return domains;
+	}
+
+	public boolean getAsBillingContact(Domain domain) {
+		return domainsAsBillingcontact.contains(domain);
+	}
+
+	/**
+	 * Get relationship string, e.g. [holder, hosting contact].
+	 * 
+	 * @param domain
+	 * @param dict
+	 * @return
+	 */
+	public String getRelationshipString(Domain domain, Dictionary dict) {
+		List<String> relationshipList = new ArrayList<String>();
+		if (domainsAsHolder.contains(domain)) {
+			relationshipList.add(dict.holder());
+		}
+		if (domainsAsBillingcontact.contains(domain)) {
+			relationshipList.add(dict.billingcontact());
+		}
+		if (domainsAsTechnicalcontact.contains(domain)) {
+			relationshipList.add(dict.technicalcontact());
+		}
+		if (domainsAsHostingcontact.contains(domain)) {
+			relationshipList.add(dict.hostingcontact());
+		}
+		return relationshipList.toString();
 	}
 
 	/**
