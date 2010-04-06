@@ -92,6 +92,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String openCost();
 
+	String sum();
+
 	// ---------------------------------------------------------------- actions
 
 	String loginInformationSubject();

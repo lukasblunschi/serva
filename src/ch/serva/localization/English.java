@@ -159,6 +159,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Open Cost";
 	}
 
+	public String sum() {
+		return "Sum";
+	}
+
 	// ---------------------------------------------------------------- actions
 
 	public String loginInformationSubject() {
