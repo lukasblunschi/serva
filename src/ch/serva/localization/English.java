@@ -37,6 +37,14 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "All";
 	}
 
+	public String relationships() {
+		return "Relationships";
+	}
+
+	public String contact() {
+		return "Contact";
+	}
+
 	// --------------------------------------------------------- common actions
 
 	public String actions() {

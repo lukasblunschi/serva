@@ -28,6 +28,10 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String all();
 
+	String relationships();
+
+	String contact();
+
 	// --------------------------------------------------------- common actions
 
 	String actions();
