@@ -2,6 +2,7 @@ Serva ToDo
 -----------------
 
 release critical:
+- add payments list to home page.
 
 
 important:
