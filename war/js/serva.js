@@ -31,7 +31,7 @@ function showDiv(divId) {
 	document.getElementById(divId).style.display = "block";
 }
 
-/*
+/**
  * Hide given div.
  */
 function hideDiv(divId) {

@@ -36,6 +36,7 @@ textarea { width: 500px; height: 110px; }
 .note { color: #aaaaaa; }
 .todo { background-color: #ffff66; }
 .info { width: 500px; }
+.currency { text-align: right; }
 
 .superscript { font-size: 58%; position: relative; bottom: 0.5em; }
 
@@ -71,3 +72,13 @@ td.gridcolheader { width:  30px; }
 td.gridrowheader { height: 30px; }
 
 .multipleselector td { border: 0; vertical-align: top; }
+
+div.domain { border: 1px solid #aaaaaa; }
+div.domain div.infolink { padding: 6px; }
+div.relationship { background-color: white; border: 1px solid #cccccc; width: 80px; text-align: center; margin: 5px; }
+
+div.userinfobox { float: left; border: 1px solid #cccccc; margin: 6px; }
+div.userinfobox .subtitle { font-weight: bold; margin: 2px; }
+div.userinfobox table { margin: 0 -1px -1px 0; }
+div.userinfobox td { padding: 2px; }
+
