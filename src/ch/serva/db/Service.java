@@ -116,4 +116,11 @@ public class Service {
 		return servicename;
 	}
 
+	// ------------------------------------------------------- object overrides
+
+	@Override
+	public String toString() {
+		return servicename;
+	}
+
 }

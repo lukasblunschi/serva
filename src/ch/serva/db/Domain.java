@@ -141,4 +141,11 @@ public class Domain {
 		return domainname;
 	}
 
+	// ------------------------------------------------------- object overrides
+
+	@Override
+	public String toString() {
+		return domainname;
+	}
+
 }
