@@ -1,6 +1,14 @@
 Serva ToDo
 -----------------
 
+user-interface:
+- edit domain > user selectors > ignore nickname if not set.
+
+
+logic:
+- users: add additional info textarea field (e.g. for switch-user-id)
+
+
 release critical:
 - add payments list to home page.
 
