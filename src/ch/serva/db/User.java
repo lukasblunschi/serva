@@ -15,6 +15,7 @@ import javax.persistence.Table;
 
 import ch.serva.localization.Dictionary;
 import ch.serva.localization.English;
+import ch.serva.tools.Escape;
 import ch.serva.tools.comparators.DomainComparator;
 
 /**
@@ -251,6 +252,22 @@ public class User {
 			}
 		}
 		setPassword(buf.toString());
+	}
+
+	public String getAddressAndPhoneAsHtml() {
+		StringBuffer html = new StringBuffer();
+		boolean hasAddress = address.trim().length() > 0;
+		boolean hasPhone = phone.trim().length() > 0;
+		if (hasAddress) {
+			html.append(Escape.safeXml(address).replaceAll(",", "<br/>"));
+		}
+		if (hasAddress && hasPhone) {
+			html.append("<br/>");
+		}
+		if (hasPhone) {
+			html.append(Escape.safeXml(phone));
+		}
+		return html.toString();
 	}
 
 	/**
