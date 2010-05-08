@@ -39,7 +39,7 @@ public class DomainsServicesCostTable implements Element {
 	public void appendHtml(StringBuffer html, Config config, Dictionary dict) {
 
 		// open table and header
-		html.append("<table class='tablecontent'>\n");
+		html.append("<table class='content'>\n");
 		html.append("<tr>");
 		html.append("<td>").append(dict.service()).append("</td>");
 		html.append("<td>").append(dict.from()).append("</td>");

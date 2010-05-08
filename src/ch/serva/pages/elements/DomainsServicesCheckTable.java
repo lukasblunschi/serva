@@ -32,7 +32,7 @@ public class DomainsServicesCheckTable implements Element {
 
 		// loop over domains
 		html.append("<!-- domains services check table -->\n");
-		html.append("<table class='tablecontent'>\n");
+		html.append("<table class='content'>\n");
 		for (Domain domain : domains) {
 			String domainname = domain.getDomainname();
 			String username = domain.getUsername();
