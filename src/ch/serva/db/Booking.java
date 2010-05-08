@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import ch.serva.tools.Dates;
+
 /**
  * An entity to store a booking.
  * 
@@ -125,7 +127,13 @@ public class Booking {
 	// ----------------------------------------------------- additional methods
 
 	public boolean isRemovable() {
-		return payments != null && payments.isEmpty();
+		boolean noPayments = payments != null && payments.isEmpty();
+		boolean fromToday = fromdate.getTime() == Dates.getToday().getTime();
+		return noPayments && fromToday;
+	}
+
+	public boolean isActive() {
+		return todate == null || todate.after(new Date());
 	}
 
 	/**
