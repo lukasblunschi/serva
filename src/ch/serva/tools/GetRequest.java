@@ -1,7 +1,9 @@
 package ch.serva.tools;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +18,28 @@ import ch.serva.ServaConstants;
 public class GetRequest {
 
 	/**
+	 * Get a list of all parameters.
+	 * 
+	 * @param req
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static List<RequestParam> getParameters(HttpServletRequest req) {
+		List<RequestParam> params = new ArrayList<RequestParam>();
+		Enumeration<String> enumNames = req.getParameterNames();
+		while (enumNames.hasMoreElements()) {
+			String name = enumNames.nextElement();
+			for (String value : req.getParameterValues(name)) {
+				params.add(new RequestParam(name, value));
+			}
+		}
+		return params;
+	}
+
+	/**
 	 * Create map containing all GET parameters of the given request.
+	 * <p>
+	 * TODO remove this: unsafe!
 	 * 
 	 * @param req
 	 * @return
@@ -44,32 +67,41 @@ public class GetRequest {
 	public static String reconstructParameters(HttpServletRequest req, String msg) {
 
 		// get parameters
-		Map<String, String> map = getParameterMap(req);
+		List<RequestParam> params = getParameters(req);
 
-		// add message
+		// add (or concat) message
 		if (msg != null && msg.trim().length() > 0) {
-			String prevMsg = map.get("msg");
-			if (prevMsg == null) {
-				map.put("msg", msg);
-			} else {
-				map.put("msg", prevMsg + "_" + msg);
+			boolean found = false;
+			for (RequestParam param : params) {
+				if (param.name.equals("msg")) {
+					found = true;
+					param.value += "_" + msg;
+				}
+			}
+			if (!found) {
+				params.add(new RequestParam("msg", msg));
+			}
+		}
+
+		// removing action and language parameters
+		for (int i = params.size() - 1; i >= 0; i--) {
+			String name = params.get(i).name;
+			if (name.equals("action") || name.equals(ServaConstants.A_LANGUAGE)) {
+				params.remove(i);
 			}
 		}
 
 		// recreate parameters string
-		// removing action and language parameters.
 		StringBuffer parameters = new StringBuffer();
-		map.remove("action");
-		map.remove(ServaConstants.A_LANGUAGE);
 		boolean first = true;
-		for (Map.Entry<String, String> entry : map.entrySet()) {
+		for (RequestParam param : params) {
 			if (first) {
 				first = false;
 				parameters.append("?");
 			} else {
 				parameters.append("&");
 			}
-			parameters.append(entry.getKey()).append("=").append(entry.getValue());
+			parameters.append(param);
 		}
 		return parameters.toString();
 	}
