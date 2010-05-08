@@ -50,13 +50,12 @@ public class ListUsersPage extends AbstractAdminPage {
 		html.append("<table class='tablecontent'>\n");
 		html.append("<tr>");
 		html.append("<td>").append(dict.username()).append("</td>");
-		html.append("<td>").append(dict.isAdmin()).append("</td>");
+		html.append("<td>").append(Escape.nonBreakingHtml(dict.isAdmin())).append("</td>");
 		html.append("<td>").append(dict.language()).append("</td>");
 		html.append("<td>").append(dict.nickname()).append("</td>");
 		html.append("<td>").append(dict.firstname()).append("</td>");
 		html.append("<td>").append(dict.lastname()).append("</td>");
 		html.append("<td>").append(dict.address()).append("</td>");
-		html.append("<td>").append(dict.phone()).append("</td>");
 		html.append("<td>").append(dict.email()).append("</td>");
 		html.append("<td>").append(dict.actions()).append("</td>");
 		html.append("</tr>\n");
@@ -72,14 +71,29 @@ public class ListUsersPage extends AbstractAdminPage {
 			html.append("</a>");
 			html.append("</td>");
 
-			// is admin, language, ...
+			// is admin, language, nickname, firstname, lastname
 			html.append("<td>").append(user.getIsAdmin() ? dict.yes() : dict.no()).append("</td>");
 			html.append("<td>").append(Dictionaries.getDictionary(user.getLanguage()).getLanguageName()).append("</td>");
 			html.append("<td>").append(Escape.safeXml(user.getNickname())).append("</td>");
 			html.append("<td>").append(Escape.safeXml(user.getFirstname())).append("</td>");
 			html.append("<td>").append(Escape.safeXml(user.getLastname())).append("</td>");
-			html.append("<td>").append(Escape.safeXml(user.getAddress())).append("</td>");
-			html.append("<td>").append(Escape.safeXml(user.getPhone())).append("</td>");
+
+			// address
+			String aDivId = "a_" + user.getId();
+			String addressDivId = "address_" + user.getId();
+			String address = user.getAddressAndPhoneAsHtml().trim();
+			html.append("<td>");
+			if (address.length() > 0) {
+				html.append("<a id='" + aDivId + "' href='javascript:hideDiv(\"" + aDivId + "\");showDiv(\"" + addressDivId + "\")'>");
+				html.append(dict.show());
+				html.append("</a>");
+				html.append("<div id='" + addressDivId + "' class='hidden'>");
+				html.append(address);
+				html.append("</div>");
+			}
+			html.append("</td>");
+
+			// email, actions
 			html.append("<td>").append(Escape.safeXml(user.getEmail())).append("</td>");
 			if (user.isRemovable(userLoggedIn)) {
 				html.append("<td><a href='" + removePrefix + user.getId() + "'>" + dict.remove() + "</a></td>");
