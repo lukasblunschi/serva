@@ -43,7 +43,7 @@ public class ListServicesPage extends AbstractAdminPage {
 
 		// services
 		html.append("<!-- services -->\n");
-		html.append("<table class='tablecontent'>\n");
+		html.append("<table class='content'>\n");
 		html.append("<tr>");
 		html.append("<td>").append(dict.servicename()).append("</td>");
 		html.append("<td>").append(dict.price()).append("</td>");

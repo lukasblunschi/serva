@@ -43,7 +43,7 @@ public class ListPaymentsPage extends AbstractAdminPage {
 
 		// payments
 		html.append("<!-- payments -->\n");
-		html.append("<table class='tablecontent'>\n");
+		html.append("<table class='content'>\n");
 		html.append("<tr>");
 		html.append("<td>").append(dict.booking()).append("</td>");
 		html.append("<td>").append(dict.date()).append("</td>");

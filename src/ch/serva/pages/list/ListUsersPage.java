@@ -47,7 +47,7 @@ public class ListUsersPage extends AbstractAdminPage {
 		// users
 		// - do not show password
 		html.append("<!-- user -->\n");
-		html.append("<table class='tablecontent'>\n");
+		html.append("<table class='content'>\n");
 		html.append("<tr>");
 		html.append("<td>").append(dict.username()).append("</td>");
 		html.append("<td>").append(Escape.nonBreakingHtml(dict.isAdmin())).append("</td>");

@@ -42,7 +42,7 @@ public class ListDomainsPage extends AbstractAdminPage {
 
 		// domains
 		html.append("<!-- domains -->\n");
-		html.append("<table class='tablecontent'>\n");
+		html.append("<table class='content'>\n");
 		html.append("<tr>");
 		html.append("<td>").append(dict.domainname()).append("</td>");
 		html.append("<td>").append(dict.holder()).append("</td>");
