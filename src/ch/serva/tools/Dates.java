@@ -73,4 +73,20 @@ public class Dates {
 		return count;
 	}
 
+	/**
+	 * Get today without time components.
+	 * 
+	 * @return today.
+	 */
+	public static Date getToday() {
+		Calendar cal1 = Calendar.getInstance();
+		Calendar cal2 = Calendar.getInstance();
+
+		cal1.setTime(new Date());
+		cal2.clear();
+		cal2.set(cal1.get(Calendar.YEAR), cal1.get(Calendar.MONTH), cal1.get(Calendar.DAY_OF_MONTH));
+
+		return cal2.getTime();
+	}
+
 }
