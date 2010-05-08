@@ -65,4 +65,15 @@ public class Escape {
 		return input;
 	}
 
+	/**
+	 * Create non-breaking HTML.
+	 * 
+	 * @param input
+	 * @return non-breaking HTML.
+	 */
+	public static String nonBreakingHtml(String input) {
+		input = input.replaceAll(" ", "&#160;");
+		return input;
+	}
+
 }
