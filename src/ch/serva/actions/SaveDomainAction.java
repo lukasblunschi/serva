@@ -49,8 +49,7 @@ public class SaveDomainAction implements Action {
 		if (billingContactIdStr == null || billingContactIdStr.length() > 100 || billingContactIdStr.trim().length() == 0) {
 			return new Failure("No or too long billing contact id given!");
 		}
-		if (technicalContactIdStr == null || technicalContactIdStr.length() > 100
-				|| technicalContactIdStr.trim().length() == 0) {
+		if (technicalContactIdStr == null || technicalContactIdStr.length() > 100 || technicalContactIdStr.trim().length() == 0) {
 			return new Failure("No or too long technical contact id given!");
 		}
 		if (hostingContactIdStr == null || hostingContactIdStr.length() > 100 || hostingContactIdStr.trim().length() == 0) {
