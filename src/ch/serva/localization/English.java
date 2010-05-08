@@ -83,6 +83,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Show";
 	}
 
+	public String toggle() {
+		return "Toggle";
+	}
+
 	public String success() {
 		return "Success";
 	}

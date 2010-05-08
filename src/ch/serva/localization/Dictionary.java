@@ -52,6 +52,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String show();
 
+	String toggle();
+
 	String success();
 
 	String failure();
