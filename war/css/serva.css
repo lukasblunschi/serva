@@ -47,7 +47,7 @@ div#menu { float: right; width: 260px; height: 36px; padding: 7px; text-align: r
 div#menu ul { padding: 0; display: inline; }
 div#menu li { display: inline; }
 
-div#adminmenu { position: absolute; top: 58px; bottom: 0px; left: 7px; width: 100px; }
+div#adminmenu { position: absolute; top: 58px; bottom: 0px; left: 7px; width: 100px; border-right: 1px solid #aaaaaa; }
 div#adminmenu ul { margin: 7px 0; padding: 0; list-style: none; }
 div#adminmenu li { margin: 0; padding: 0; }
 
