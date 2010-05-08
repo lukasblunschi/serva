@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ch.serva.actions.Action;
+import ch.serva.actions.AddBookingsAction;
 import ch.serva.actions.ChangeLanguageAction;
 import ch.serva.actions.LoginAction;
 import ch.serva.actions.LogoutAction;
@@ -122,6 +123,10 @@ public class ServaServlet extends HttpServlet {
 							action = new RemoveBookingAction();
 						} else if (actionStr.equals(RemovePaymentAction.NAME)) {
 							action = new RemovePaymentAction();
+
+							// add
+						} else if (actionStr.equals(AddBookingsAction.NAME)) {
+							action = new AddBookingsAction();
 
 							// special
 						} else if (actionStr.equals(SendLoginAction.NAME)) {
