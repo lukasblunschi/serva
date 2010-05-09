@@ -1,4 +1,4 @@
-0.2.3 (ongoing)
+0.2.3 (revision 243, 2010-05-09)
 -----
 - list bookings page is now filtered by domain.
 - check table element added.

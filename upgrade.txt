@@ -8,6 +8,10 @@ Usage:
   E.g. for update block "2.1.x", rename coach to nurse, then rename group to patient and so on.
 
 
+from 0.2.2 to 0.2.3:
+  - no schema changes.
+
+
 from 0.2.1 to 0.2.2:
   - no special changes.
 
