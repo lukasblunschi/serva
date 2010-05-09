@@ -12,6 +12,7 @@ import ch.serva.db.Domain;
 import ch.serva.db.Instance;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
+import ch.serva.pages.elements.CheckTable;
 import ch.serva.pages.elements.DomainsServicesCheckTable;
 import ch.serva.pages.elements.selectors.DomainSelector;
 
@@ -68,6 +69,11 @@ public class ChecksPage extends AbstractAdminPage {
 		List<Service> services = instance.getServices();
 
 		// check table
+		if (domains.size() == 0) {
+			new CheckTable(instance.getDomains()).appendHtml(html, config, dict);
+		}
+
+		// check table for domain services
 		new DomainsServicesCheckTable(domains, services).appendHtml(html, config, dict);
 
 		return html.toString();

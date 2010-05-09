@@ -1,6 +1,5 @@
 package ch.serva.pages;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import ch.serva.config.Config;
 import ch.serva.db.Domain;
-import ch.serva.db.Instance;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.elements.DomainsServicesCostTable;
+import ch.serva.pages.elements.common.Clearer;
 import ch.serva.pages.elements.selectors.MultipleDomainSelector;
 
 /**
@@ -33,17 +32,15 @@ public class CostsPage extends AbstractAdminPage {
 		// config
 		Config config = new Config();
 
+		// title
+		html.append("<!-- title -->\n");
+		html.append("<h3 class='content'>").append(dict.costs()).append("</h3>\n\n");
+
 		// domains
-		List<Domain> domainsAll = new Instance(em).getDomains();
-		List<Domain> domainsSel = new ArrayList<Domain>();
-		String[] selDomainIdsArr = req.getParameterValues(MultipleDomainSelector.P_DOMAIN_IDS);
-		new MultipleDomainSelector(domainsAll, selDomainIdsArr, CostsPage.NAME).appendHtml(html, config, dict);
-		if (selDomainIdsArr != null) {
-			for (String selDomainIdStr : selDomainIdsArr) {
-				Domain domain = em.find(Domain.class, Long.valueOf(selDomainIdStr));
-				domainsSel.add(domain);
-			}
-		}
+		List<Domain> domainsSel = MultipleDomainSelector.getSelectedDomains(req, em, dict, CostsPage.NAME, html);
+
+		// clearer
+		new Clearer().appendHtml(html, config, dict);
 
 		// cost table
 		new DomainsServicesCostTable(domainsSel, null).appendHtml(html, config, dict);
