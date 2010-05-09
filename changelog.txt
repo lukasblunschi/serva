@@ -1,3 +1,20 @@
+0.2.3 (ongoing)
+-----
+- list bookings page is now filtered by domain.
+- check table element added.
+- multiple domain selector updated.
+- check interface extended.
+- domain user check added.
+- bookings adder element added.
+- clearer element added.
+- only allow to remove bookings with from equals today.
+- add bookings action added.
+- fix: reconstruct multiple value get parameters.
+- css tablecontent fix.
+- css fix for admincontainer.
+- address and phone combined on list users page.
+
+
 0.2.2 (revision 217, 2010-04-07)
 -----
 - home page updated.
