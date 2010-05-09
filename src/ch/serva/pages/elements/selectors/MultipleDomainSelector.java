@@ -1,17 +1,24 @@
 package ch.serva.pages.elements.selectors;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
+
 import ch.serva.config.Config;
 import ch.serva.db.Domain;
+import ch.serva.db.Instance;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.elements.Element;
 
 /**
  * A domain selector which allows to select several domains.
+ * <p>
+ * TODO refactor to DomainsSelector
  * 
  * @author Lukas Blunschi
  * 
@@ -52,8 +59,9 @@ public class MultipleDomainSelector implements Element {
 
 		// html
 		html.append("<!-- multiple domain selector -->\n");
+		html.append("<div class='content floatleft module'>\n");
 		html.append("<form id='multiple_domain_selector_form' action='?' method='get'>\n");
-		html.append("<table class='content multipleselector'>\n");
+		html.append("<table>\n");
 		html.append("<tr>\n");
 		html.append("<td>\n");
 		html.append("<input type='hidden' name='page' value='" + pagename + "' />\n");
@@ -74,7 +82,40 @@ public class MultipleDomainSelector implements Element {
 		html.append("</td>\n");
 		html.append("</tr>\n");
 		html.append("</table>\n");
-		html.append("</form>\n\n");
+		html.append("</form>\n");
+		html.append("</div>\n\n");
+	}
+
+	public static List<Domain> getSelectedDomains(HttpServletRequest req, EntityManager em, Dictionary dict, String page, StringBuffer html) {
+		Config config = new Config();
+		List<Domain> domainsAll = new Instance(em).getDomains();
+		List<Domain> domainsSel = new ArrayList<Domain>();
+		String[] selDomainIdsArr = req.getParameterValues(MultipleDomainSelector.P_DOMAIN_IDS);
+		new MultipleDomainSelector(domainsAll, selDomainIdsArr, page).appendHtml(html, config, dict);
+		if (selDomainIdsArr != null) {
+			for (String selDomainIdStr : selDomainIdsArr) {
+				Domain domain = em.find(Domain.class, Long.valueOf(selDomainIdStr));
+				domainsSel.add(domain);
+			}
+		}
+		return domainsSel;
+	}
+
+	public static String getParameterStr(HttpServletRequest req) {
+		StringBuffer buf = new StringBuffer();
+		String[] selDomainIdsArr = req.getParameterValues(MultipleDomainSelector.P_DOMAIN_IDS);
+		if (selDomainIdsArr != null) {
+			boolean first = true;
+			for (String selDomainIdStr : selDomainIdsArr) {
+				if (first) {
+					first = false;
+				} else {
+					buf.append("&amp;");
+				}
+				buf.append(P_DOMAIN_IDS).append("=").append(selDomainIdStr);
+			}
+		}
+		return buf.toString();
 	}
 
 }
