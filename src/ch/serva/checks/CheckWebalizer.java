@@ -11,6 +11,7 @@ import ch.serva.checks.results.CheckProblem;
 import ch.serva.checks.results.CheckResult;
 import ch.serva.checks.results.CheckResultLevel;
 import ch.serva.config.Config;
+import ch.serva.db.Domain;
 
 /**
  * A check for webalizer.
@@ -20,9 +21,8 @@ import ch.serva.config.Config;
  */
 public class CheckWebalizer implements Check {
 
-	public List<String> getExternalConfigLines(String domainname) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<CheckResult> run(List<Domain> domains, Properties properties) {
+		return new ArrayList<CheckResult>();
 	}
 
 	public List<CheckResult> runEnabled(String domainname, String username, Properties properties) {
@@ -49,6 +49,11 @@ public class CheckWebalizer implements Check {
 		}
 
 		return results;
+	}
+
+	public List<String> getExternalConfigLines(String domainname) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private void checkConfigFile(String domainname, String username, Properties properties, List<CheckResult> results) {

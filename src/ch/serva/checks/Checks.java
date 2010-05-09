@@ -31,6 +31,7 @@ public class Checks {
 	public static List<String> getCheckDefinitions() {
 		List<String> checkDefinitions = new ArrayList<String>();
 		checkDefinitions.add("java:" + CheckWebalizer.class.getName());
+		checkDefinitions.add("java:" + CheckDomainUser.class.getName());
 		return checkDefinitions;
 	}
 
@@ -46,6 +47,8 @@ public class Checks {
 		}
 		if (checkDefinition.equals("java:" + CheckWebalizer.class.getName())) {
 			return new CheckWebalizer();
+		} else if (checkDefinition.equals("java:" + CheckDomainUser.class.getName())) {
+			return new CheckDomainUser();
 		} else {
 			return null;
 		}

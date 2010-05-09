@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Properties;
 
 import ch.serva.checks.results.CheckResult;
+import ch.serva.db.Domain;
 
 /**
  * Interface for all checks.
@@ -12,6 +13,21 @@ import ch.serva.checks.results.CheckResult;
  * 
  */
 public interface Check {
+
+	// -------------------------------------------------------- for all domains
+
+	/**
+	 * Run this check for all given domains.
+	 * 
+	 * @param domains
+	 *            domain names.
+	 * @param properties
+	 *            properties.
+	 * @return list of results (never null).
+	 */
+	List<CheckResult> run(List<Domain> domains, Properties properties);
+
+	// ------------------------------------------------------------- per domain
 
 	/**
 	 * Run this check to test if service is enabled.

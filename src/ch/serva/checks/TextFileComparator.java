@@ -61,8 +61,8 @@ public class TextFileComparator {
 						}
 					}
 					if (!matches) {
-						return new CheckProblem("config line '" + lineConfig + "' does not match expected template line '"
-								+ lineTemplate + "'.");
+						return new CheckProblem("config line '" + lineConfig + "' does not match expected template line '" + lineTemplate
+								+ "'.");
 					}
 				}
 			}
