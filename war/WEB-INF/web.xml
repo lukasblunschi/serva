@@ -9,10 +9,18 @@
 		<servlet-name>serva</servlet-name>
 		<servlet-class>ch.serva.servlets.ServaServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>pdf</servlet-name>
+		<servlet-class>ch.serva.servlets.PdfServlet</servlet-class>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>serva</servlet-name>
 		<url-pattern>/index.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>pdf</servlet-name>
+		<url-pattern>*.pdf</url-pattern>
 	</servlet-mapping>
 
 </web-app>

@@ -4,6 +4,7 @@ import org.mortbay.jetty.Server;
 import org.mortbay.jetty.servlet.Context;
 import org.mortbay.jetty.servlet.ServletHolder;
 
+import ch.serva.servlets.PdfServlet;
 import ch.serva.servlets.ResourcesServlet;
 import ch.serva.servlets.ServaServlet;
 
@@ -55,7 +56,8 @@ public class RunServaStandalone {
 			Context context = new Context(server, "/" + contextName, Context.SESSIONS);
 
 			// add servlet(s)
-			context.addServlet(new ServletHolder(new ServaServlet()), "/*");
+			context.addServlet(new ServletHolder(new ServaServlet()), "/");
+			context.addServlet(new ServletHolder(new PdfServlet()), "*.pdf");
 			context.addServlet(new ServletHolder(new ResourcesServlet()), "/css/*");
 			context.addServlet(new ServletHolder(new ResourcesServlet()), "/images/*");
 			context.addServlet(new ServletHolder(new ResourcesServlet()), "/js/*");
