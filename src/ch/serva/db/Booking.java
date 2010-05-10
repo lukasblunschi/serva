@@ -1,5 +1,6 @@
 package ch.serva.db;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -139,7 +140,7 @@ public class Booking {
 	/**
 	 * Get sum of all payments.
 	 * 
-	 * @return
+	 * @return payed cost.
 	 */
 	public double getPayed() {
 		double total = 0.0;
@@ -147,6 +148,47 @@ public class Booking {
 			total += payment.getAmount();
 		}
 		return total;
+	}
+
+	/**
+	 * Get total cost of this booking.
+	 * 
+	 * @return total cost.
+	 */
+	public double getTotalCost() {
+		Date dateTo = todate == null ? new Date() : todate;
+		int numMonths = Dates.getFullMonths(fromdate, dateTo);
+		double price = service.getPrice();
+		return numMonths > 0 && price > 0.0 ? numMonths * (price / 12.0) : 0.0;
+	}
+
+	/**
+	 * Get date from which on open cost is computed.
+	 * 
+	 * @return date open from.
+	 */
+	public Date getOpenFrom() {
+		double price = service.getPrice();
+		if (price > 0.0) {
+			double payed = getPayed();
+			int numMonthsPayed = (int) Math.round(payed / (price / 12.0));
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(fromdate);
+			cal.add(Calendar.MONTH, numMonthsPayed);
+			return Dates.getNextStartOfMonth(cal.getTime());
+		} else {
+			return new Date();
+		}
+	}
+
+	/**
+	 * Get date until which on open cost is computed.
+	 * 
+	 * @return date open until.
+	 */
+	public Date getOpenTo() {
+		Date dateTo = todate == null ? new Date() : todate;
+		return Dates.getPreviousEndOfMonth(dateTo);
 	}
 
 	public String toShortString() {
