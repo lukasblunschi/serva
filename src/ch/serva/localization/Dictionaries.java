@@ -20,6 +20,7 @@ public class Dictionaries {
 	static {
 		dictionaryMap = new TreeMap<String, Dictionary>();
 		dictionaryMap.put(English.LANGCODE, new English());
+		dictionaryMap.put(German.LANGCODE, new German());
 	}
 
 	public static Collection<String> getLanguageCodes() {
