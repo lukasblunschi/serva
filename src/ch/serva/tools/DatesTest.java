@@ -15,6 +15,7 @@ public class DatesTest extends TestCase {
 	public static void main(String[] args) throws Exception {
 		DatesTest test = new DatesTest();
 		test.testFullMonths();
+		test.testStartOfMonth();
 	}
 
 	public void testFullMonths() throws Exception {
@@ -44,6 +45,29 @@ public class DatesTest extends TestCase {
 			fail();
 		}
 		if (Dates.getFullMonths(d6, d7) != 0) {
+			fail();
+		}
+
+	}
+
+	public void testStartOfMonth() throws Exception {
+
+		Date d1 = Dates.dateFormat.parse("01.04.2010");
+		Date d2 = Dates.dateFormat.parse("02.04.2010");
+		Date d3 = Dates.dateFormat.parse("20.04.2010");
+		Date d4 = Dates.dateFormat.parse("30.04.2010");
+		Date d5 = Dates.dateFormat.parse("01.05.2010");
+
+		if (!Dates.getNextStartOfMonth(d1).equals(d1)) {
+			fail();
+		}
+		if (!Dates.getNextStartOfMonth(d2).equals(d5)) {
+			fail();
+		}
+		if (!Dates.getNextStartOfMonth(d3).equals(d5)) {
+			fail();
+		}
+		if (!Dates.getNextStartOfMonth(d4).equals(d5)) {
 			fail();
 		}
 

@@ -74,6 +74,29 @@ public class Dates {
 	}
 
 	/**
+	 * Get next start of month.
+	 * 
+	 * @param date
+	 * @return start of next month.
+	 */
+	public static Date getNextStartOfMonth(Date date) {
+
+		// test if already at start of month
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		if (day == 1) {
+			return date;
+		} else {
+
+			// forward to next start of month
+			cal.add(Calendar.MONTH, 1);
+			cal.set(Calendar.DAY_OF_MONTH, 1);
+			return cal.getTime();
+		}
+	}
+
+	/**
 	 * Get today without time components.
 	 * 
 	 * @return today.
