@@ -14,11 +14,11 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 /**
- * A class to handle POST requests.
+ * A POST request.
  * 
  * @author Lukas Blunschi
  */
-public class PostRequest {
+public class PostRequest implements Request {
 
 	private Map<String, String> formFields;
 
@@ -26,9 +26,16 @@ public class PostRequest {
 		formFields = new HashMap<String, String>();
 	}
 
-	public String getFormField(String name) {
-		return formFields.get(name);
+	public PostRequest(HttpServletRequest req, String uploadPath, boolean allowUpload) throws Exception {
+		this();
+		parse(req, uploadPath, allowUpload);
 	}
+
+	public String getParameter(String name) {
+		return getFormField(name);
+	}
+
+	// --------------------------------------------------------- helper methods
 
 	@SuppressWarnings("unchecked")
 	public void parse(HttpServletRequest request, String uploadPath, boolean allowUpload) throws Exception {
@@ -90,6 +97,10 @@ public class PostRequest {
 		} else {
 			throw new Exception("Not a multipart upload.");
 		}
+	}
+
+	public String getFormField(String name) {
+		return formFields.get(name);
 	}
 
 }
