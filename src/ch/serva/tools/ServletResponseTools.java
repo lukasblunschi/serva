@@ -38,6 +38,20 @@ public class ServletResponseTools {
 	}
 
 	/**
+	 * Write a log entry.
+	 * 
+	 * @param req
+	 * @param statusCode
+	 *            e.g. 200 for okay.
+	 * @param calcTimeMs
+	 * @param length
+	 */
+	public static void writeLog(HttpServletRequest req, int statusCode, double calcTimeMs, int length) {
+		String decodedURI = ServletTools.decodeURI(req.getRequestURI());
+		logger.info(req.getMethod() + " " + statusCode + " " + length + " " + calcTimeMs + "ms " + decodedURI);
+	}
+
+	/**
 	 * Stream given file to client.
 	 * 
 	 * @param file
@@ -124,9 +138,38 @@ public class ServletResponseTools {
 		try {
 			encodedLocation = new URI(location).toASCIIString();
 		} catch (Exception e) {
+			logger.warn(e.getMessage());
 			encodedLocation = location;
 		}
 		resp.addHeader("location", encodedLocation);
+	}
+
+	/**
+	 * Send bad request (400) to client.
+	 * 
+	 * @param req
+	 * @param resp
+	 * @param message
+	 */
+	public static void sendBadRequest(HttpServletRequest req, HttpServletResponse resp, String message) {
+		String decodedURI = ServletTools.decodeURI(req.getRequestURI());
+		logger.info(req.getMethod() + " 400 " + decodedURI);
+		resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+		saveWrite(resp, message);
+	}
+
+	/**
+	 * Send forbidden (403) to client.
+	 * 
+	 * @param req
+	 * @param resp
+	 * @param message
+	 */
+	public static void sendForbidden(HttpServletRequest req, HttpServletResponse resp, String message) {
+		String decodedURI = ServletTools.decodeURI(req.getRequestURI());
+		logger.info(req.getMethod() + " 403 " + decodedURI);
+		resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
+		saveWrite(resp, message);
 	}
 
 	/**
@@ -142,6 +185,20 @@ public class ServletResponseTools {
 		logger.info(req.getMethod() + " 404 " + decodedURI);
 		resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
 		String message = "The requested document '" + decodedURI + "' was not found.";
+		saveWrite(resp, message);
+	}
+
+	/**
+	 * Send internal server error (500) to client.
+	 * 
+	 * @param req
+	 * @param resp
+	 * @param message
+	 */
+	public static void sendInternalServerError(HttpServletRequest req, HttpServletResponse resp, String message) {
+		String decodedURI = ServletTools.decodeURI(req.getRequestURI());
+		logger.info(req.getMethod() + " 500 " + decodedURI);
+		resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 		saveWrite(resp, message);
 	}
 
