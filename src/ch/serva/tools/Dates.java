@@ -97,6 +97,30 @@ public class Dates {
 	}
 
 	/**
+	 * Get previous end of month.
+	 * 
+	 * @param date
+	 * @return end of previous month.
+	 */
+	public static Date getPreviousEndOfMonth(Date date) {
+
+		// test if already at end of month
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int day = cal.get(Calendar.DAY_OF_MONTH);
+		int dayMax = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+		if (day == dayMax) {
+			return date;
+		} else {
+
+			// return to previous end of month
+			cal.set(Calendar.DAY_OF_MONTH, 1);
+			cal.add(Calendar.DAY_OF_MONTH, -1);
+			return cal.getTime();
+		}
+	}
+
+	/**
 	 * Get today without time components.
 	 * 
 	 * @return today.
