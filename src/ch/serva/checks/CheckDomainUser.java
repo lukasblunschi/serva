@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import ch.serva.checks.results.CheckNoProblem;
 import ch.serva.checks.results.CheckProblem;
 import ch.serva.checks.results.CheckResult;
 import ch.serva.config.DomainToUsername;
@@ -62,6 +63,11 @@ public class CheckDomainUser implements Check {
 			}
 		} else {
 			results.add(new CheckProblem("Home directory ('" + homeDirPath + "') does not exist."));
+		}
+
+		// add no problem
+		if (results.size() == 0) {
+			results.add(new CheckNoProblem());
 		}
 
 		return results;
