@@ -1,6 +1,5 @@
 package ch.serva.pages.elements;
 
-import java.util.Date;
 import java.util.List;
 
 import ch.serva.config.Config;
@@ -83,10 +82,8 @@ public class DomainsServicesCostTable implements Element {
 
 				// cost related details
 				if (user == null || user.getAsBillingContact(domain)) {
-					Date dateTo = booking.getTo() == null ? new Date() : booking.getTo();
-					int numMonths = Dates.getFullMonths(booking.getFrom(), dateTo);
 					double price = service.getPrice();
-					double totalCost = numMonths > 0 && price > 0.0 ? numMonths * (price / 12.0) : 0.0;
+					double totalCost = booking.getTotalCost();
 					double payed = booking.getPayed();
 					double openCost = totalCost - payed;
 					html.append("<td>").append(Doubles.formatter.format(price)).append("</td>");
