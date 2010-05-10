@@ -254,6 +254,24 @@ public class User {
 		setPassword(buf.toString());
 	}
 
+	public String getStreet() {
+		String[] addressParts = address.split(",");
+		if (addressParts.length > 0) {
+			return addressParts[0];
+		} else {
+			return "";
+		}
+	}
+
+	public String getLocation() {
+		String[] addressParts = address.split(",");
+		if (addressParts.length > 1) {
+			return addressParts[1];
+		} else {
+			return "";
+		}
+	}
+
 	public String getAddressAndPhoneAsHtml() {
 		StringBuffer html = new StringBuffer();
 		boolean hasAddress = address.trim().length() > 0;
