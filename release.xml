@@ -33,11 +33,13 @@
 		<jar jarfile="dist/serva-${version}.jar">
 			<fileset dir="bin">
 				<include name="**" />
+				<exclude name="*.xsl" />
 				<exclude name="*.properties" />
 				<exclude name="META-INF/**" />
 			</fileset>
 			<fileset dir="src">
 				<include name="**" />
+				<exclude name="*.xsl" />
 				<exclude name="*.properties" />
 				<exclude name="META-INF/**" />
 			</fileset>

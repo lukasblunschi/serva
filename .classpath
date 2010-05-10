@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+
 	<classpathentry kind="lib" path="lib/activation-1.1.1.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/serva/lib/activation-1.1.1-javadoc.jar!/"/>
@@ -21,8 +23,10 @@
 	<classpathentry kind="lib" path="lib/servlet-api-2.5-6.1.21.jar" sourcepath="lib/servlet-api-2.5-sources.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.5.8.jar" sourcepath="lib/slf4j-api-1.5.8-sources.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.5.8.jar" sourcepath="lib/slf4j-log4j12-1.5.8-sources.jar"/>
+
 	<classpathentry kind="lib" path="lib/jetty/jetty-6.1.21.jar" sourcepath="lib/jetty/jetty-6.1.14-sources.jar"/>
 	<classpathentry kind="lib" path="lib/jetty/jetty-util-6.1.21.jar" sourcepath="lib/jetty/jetty-util-6.1.14-sources.jar"/>
+
 	<classpathentry kind="lib" path="lib/hibernate/antlr-2.7.6.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/c3p0-0.9.1.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/commons-collections-3.1.jar"/>
@@ -33,5 +37,14 @@
 	<classpathentry kind="lib" path="lib/hibernate/hibernate-entitymanager-3.4.0.GA.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/javassist-3.9.0.GA.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/jta-1.1.jar"/>
+
+	<classpathentry kind="lib" path="lib/fop/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/fop/fop-0.95.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/serva/lib/fop/fop-0.95-javadocs.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/fop/xmlgraphics-commons-1.3.1.jar"/>
+
 	<classpathentry kind="output" path="bin"/>
 </classpath>

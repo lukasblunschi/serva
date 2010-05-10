@@ -1,5 +1,19 @@
 0.2.4 (ongoing)
 -----
+- company.name property added.
+- company.account property added.
+- pdf servlet added.
+- pdf invoice added.
+- pdf invoice XSL added.
+- booking entity extended.
+- user entity extended.
+- request interface added.
+- servlet response tools extended.
+- FOP libraries added.
+- dates end of month added.
+- dates start of month added.
+- export package added.
+- german dictionary added.
 - added no problem output.
 
 
