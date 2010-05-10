@@ -11,11 +11,32 @@ import javax.servlet.http.HttpServletRequest;
 import ch.serva.ServaConstants;
 
 /**
- * Tools to help with a GET request.
+ * A GET request.
  * 
  * @author Lukas Blunschi
  */
-public class GetRequest {
+public class GetRequest implements Request {
+
+	private Map<String, String> parameterMap;
+
+	public GetRequest() {
+		this.parameterMap = new HashMap<String, String>();
+	}
+
+	public GetRequest(HttpServletRequest req) {
+		this();
+		parse(req);
+	}
+
+	public String getParameter(String name) {
+		return parameterMap.get(name);
+	}
+
+	// --------------------------------------------------------- helper methods
+
+	public void parse(HttpServletRequest req) {
+		parameterMap = GetRequest.getParameterMap(req);
+	}
 
 	/**
 	 * Get a list of all parameters.
