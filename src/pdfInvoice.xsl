@@ -22,9 +22,9 @@
 		<fo:page-sequence master-reference="A4">
 			<fo:flow flow-name="xsl-region-body">
 				<fo:table table-layout="fixed" width="100%">
-					<fo:table-column column-width="13cm" />
-					<fo:table-column column-width="2cm" />
-					<fo:table-column column-width="2cm" />
+					<fo:table-column column-width="11cm" />
+					<fo:table-column column-width="3cm" />
+					<fo:table-column column-width="3cm" />
 					<fo:table-body font-size="12pt" line-height="16pt">
 						<xsl:apply-templates select="company" />
 						<xsl:apply-templates select="customer" />
@@ -45,7 +45,7 @@
 				</fo:block>
 			</fo:table-cell>
 		</fo:table-row>
-		<fo:table-row line-height="3cm">
+		<fo:table-row>
 			<fo:table-cell number-columns-spanned="3">
 				<fo:block>
 					<xsl:value-of select="name" />
@@ -63,7 +63,7 @@
 				<fo:block>&#160;</fo:block>
 			</fo:table-cell>
 		</fo:table-row>
-		<fo:table-row line-height="2cm">
+		<fo:table-row>
 			<fo:table-cell number-columns-spanned="3">
 				<fo:block>
 					<xsl:value-of select="email" />
@@ -76,8 +76,11 @@
 	</xsl:template>
 
 	<xsl:template match="customer">
-		<fo:table-row line-height="3cm">
+		<fo:table-row>
 			<fo:table-cell>
+				<fo:block></fo:block>
+			</fo:table-cell>
+			<fo:table-cell number-columns-spanned="2">
 				<fo:block>
 					<xsl:value-of select="name" />
 				</fo:block>
@@ -89,61 +92,107 @@
 				</fo:block>
 			</fo:table-cell>
 		</fo:table-row>
+		<fo:table-row line-height="1cm">
+			<fo:table-cell number-columns-spanned="3">
+				<fo:block>&#160;</fo:block>
+			</fo:table-cell>
+		</fo:table-row>
 	</xsl:template>
 
 	<xsl:template match="date">
-		<fo:table-row line-height="2cm">
-			<fo:table-cell></fo:table-cell>
+		<fo:table-row>
 			<fo:table-cell>
+				<fo:block></fo:block>
+			</fo:table-cell>
+			<fo:table-cell number-columns-spanned="2">
 				<fo:block>
 					<xsl:value-of select="datestr" />
 				</fo:block>
 			</fo:table-cell>
-			<fo:table-cell></fo:table-cell>
+		</fo:table-row>
+		<fo:table-row line-height="1cm">
+			<fo:table-cell number-columns-spanned="3">
+				<fo:block>&#160;</fo:block>
+			</fo:table-cell>
 		</fo:table-row>
 	</xsl:template>
 
 	<xsl:template match="content">
-		<fo:table-row height="3">
-			<fo:table-cell>
+		<fo:table-row>
+			<fo:table-cell font-size="16pt">
 				<fo:block>
 					<xsl:value-of select="title" />
 				</fo:block>
 			</fo:table-cell>
 		</fo:table-row>
-		<fo:table-row>
-			<xsl:for-each select="service">
+		<fo:table-row line-height="0.5cm">
+			<fo:table-cell number-columns-spanned="3"
+				border-bottom="1pt solid black">
+				<fo:block>&#160;</fo:block>
+			</fo:table-cell>
+		</fo:table-row>
+		<xsl:for-each select="service">
+			<fo:table-row>
 				<fo:table-cell>
 					<fo:block>
 						<xsl:value-of select="item" />
 					</fo:block>
 				</fo:table-cell>
 				<fo:table-cell>
+					<fo:block></fo:block>
 				</fo:table-cell>
-				<fo:table-cell>
+				<fo:table-cell text-align="end">
 					<fo:block>
 						<xsl:value-of select="price" />
 					</fo:block>
 				</fo:table-cell>
-			</xsl:for-each>
+			</fo:table-row>
+		</xsl:for-each>
+		<fo:table-row line-height="0.1cm">
+			<fo:table-cell number-columns-spanned="3" border-top="1pt solid black">
+				<fo:block>&#160;</fo:block>
+			</fo:table-cell>
 		</fo:table-row>
 		<fo:table-row>
 			<fo:table-cell>
+				<fo:block></fo:block>
 			</fo:table-cell>
 			<fo:table-cell>
 				<fo:block>
 					<xsl:value-of select="total" />
 				</fo:block>
 			</fo:table-cell>
-			<fo:table-cell>
+			<fo:table-cell text-align="end">
 				<fo:block>
 					<xsl:value-of select="sum" />
 				</fo:block>
 			</fo:table-cell>
 		</fo:table-row>
+		<fo:table-row>
+			<fo:table-cell>
+				<fo:block></fo:block>
+			</fo:table-cell>
+			<fo:table-cell number-columns-spanned="2"
+				border-top="2pt double black">
+				<fo:block>&#160;</fo:block>
+			</fo:table-cell>
+		</fo:table-row>
+		<fo:table-row line-height="2cm">
+			<fo:table-cell number-columns-spanned="3">
+				<fo:block>&#160;</fo:block>
+			</fo:table-cell>
+		</fo:table-row>
 	</xsl:template>
 
 	<xsl:template match="account">
+		<fo:table-row>
+			<fo:table-cell number-columns-spanned="3"
+				border-bottom="1pt solid black">
+				<fo:block>
+					<xsl:value-of select="title" />
+				</fo:block>
+			</fo:table-cell>
+		</fo:table-row>
 		<xsl:for-each select="line">
 			<fo:table-row>
 				<fo:table-cell>
