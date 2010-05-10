@@ -45,6 +45,10 @@ public class German extends GermanDatabase implements Dictionary {
 		return "Kontakt";
 	}
 
+	public String invoiceFor() {
+		return "Rechnung für";
+	}
+
 	// --------------------------------------------------------- common actions
 
 	public String actions() {
