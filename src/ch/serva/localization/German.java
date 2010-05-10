@@ -49,6 +49,10 @@ public class German extends GermanDatabase implements Dictionary {
 		return "Rechnung für";
 	}
 
+	public String accountDetails() {
+		return "Kontoverbindungen";
+	}
+
 	// --------------------------------------------------------- common actions
 
 	public String actions() {

@@ -49,6 +49,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Invoice for";
 	}
 
+	public String accountDetails() {
+		return "Account Details";
+	}
+
 	// --------------------------------------------------------- common actions
 
 	public String actions() {

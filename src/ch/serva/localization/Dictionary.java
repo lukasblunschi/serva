@@ -34,6 +34,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String invoiceFor();
 
+	String accountDetails();
+
 	// --------------------------------------------------------- common actions
 
 	String actions();
