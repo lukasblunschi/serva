@@ -1,3 +1,8 @@
+0.2.4 (ongoing)
+-----
+- added no problem output.
+
+
 0.2.3 (revision 243, 2010-05-09)
 -----
 - list bookings page is now filtered by domain.
