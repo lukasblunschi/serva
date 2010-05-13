@@ -183,6 +183,10 @@ public class German extends GermanDatabase implements Dictionary {
 		return "Summe";
 	}
 
+	public String sumActive() {
+		return "Summe Aktiv";
+	}
+
 	// ---------------------------------------------------------------- actions
 
 	public String loginInformationSubject() {

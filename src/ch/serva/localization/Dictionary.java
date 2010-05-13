@@ -104,6 +104,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String sum();
 
+	String sumActive();
+
 	// ---------------------------------------------------------------- actions
 
 	String loginInformationSubject();

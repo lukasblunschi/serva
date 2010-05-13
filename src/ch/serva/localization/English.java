@@ -183,6 +183,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Sum";
 	}
 
+	public String sumActive() {
+		return "Sum Active";
+	}
+
 	// ---------------------------------------------------------------- actions
 
 	public String loginInformationSubject() {
