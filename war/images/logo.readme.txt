@@ -4,3 +4,8 @@ Logo Readme
 You can put an SVG image file called 'logo.svg' here which will be shown on
 invoices.
 
+NOTES:
+- The SVG image file must start and end with "<svg" and "</svg>" respectively.
+  Any xml or doctype tags must be removed.
+- The SVG image should be rendered 3cm height.
+  E.g. having <svg ... height="3cm" ...>
