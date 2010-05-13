@@ -2,6 +2,8 @@ package ch.serva.tools;
 
 import java.net.URLDecoder;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,6 +56,23 @@ public class ServletTools {
 			name = filename.substring(pos + 1);
 		}
 		return name;
+	}
+
+	/**
+	 * Get docroot of this webapp.
+	 * 
+	 * @param req
+	 * @return docroot (not ending with a slash).
+	 */
+	public static String getDocroot(HttpServletRequest req) {
+
+		// docroot
+		String docroot = req.getSession().getServletContext().getRealPath("/");
+		if (docroot == null) {
+			docroot = ".";
+		}
+
+		return docroot;
 	}
 
 }

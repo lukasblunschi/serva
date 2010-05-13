@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ch.serva.tools.ServletResponseTools;
+import ch.serva.tools.ServletTools;
 
 /**
  * A servlet to retrieve static resources.
@@ -33,11 +34,7 @@ public class ResourcesServlet extends HttpServlet {
 		// String servletPath = req.getServletPath();
 
 		// get requested resource
-		String docroot = req.getSession().getServletContext().getRealPath("/");
-		if (docroot == null) {
-			docroot = ".";
-		}
-		// if (docroot.endsWith("/")) docroot = docroot.substring(1);
+		String docroot = ServletTools.getDocroot(req);
 		String path = docroot + "/war" + uri.substring(ctxPath.length());
 		File resource = new File(path);
 
