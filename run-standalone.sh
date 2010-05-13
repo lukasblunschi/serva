@@ -21,6 +21,12 @@ lib/mysql-connector-java-5.1.10-bin.jar:\
 lib/servlet-api-2.5-6.1.21.jar:\
 lib/slf4j-api-1.5.8.jar:\
 lib/slf4j-log4j12-1.5.8.jar:\
+lib/fop/avalon-framework-4.2.0.jar:\
+lib/fop/batik-all-1.7.jar:\
+lib/fop/commons-logging-1.1.1.jar:\
+lib/fop/fop-0.95.jar:\
+lib/fop/xml-apis-ext-1.3.04.jar:\
+lib/fop/xmlgraphics-commons-1.3.1.jar:\
 lib/hibernate/antlr-2.7.6.jar:\
 lib/hibernate/c3p0-0.9.1.jar:\
 lib/hibernate/commons-collections-3.1.jar:\
