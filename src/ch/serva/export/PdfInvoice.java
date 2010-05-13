@@ -24,8 +24,11 @@ public class PdfInvoice implements PdfExport {
 
 	private final Domain domain;
 
-	public PdfInvoice(Domain domain) {
+	private final String docroot;
+
+	public PdfInvoice(Domain domain, String docroot) {
 		this.domain = domain;
+		this.docroot = docroot;
 	}
 
 	public String getXslFilename() {
@@ -43,7 +46,9 @@ public class PdfInvoice implements PdfExport {
 		// company
 		String companyName = props.getProperty("company.name");
 		User userCompany = domain.getHostingcontact();
+		Logo logo = new Logo(docroot);
 		xml.append("<company>\n");
+		xml.append("<logo>").append(logo.toXml()).append("</logo>");
 		xml.append("<companyname>" + companyName + "</companyname>\n");
 		xml.append("<name>" + userCompany.getFirstname() + " " + userCompany.getLastname() + "</name>\n");
 		xml.append("<address>" + userCompany.getStreet() + "</address>\n");

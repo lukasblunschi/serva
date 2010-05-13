@@ -35,6 +35,7 @@ import ch.serva.tools.EMF;
 import ch.serva.tools.GetRequest;
 import ch.serva.tools.Request;
 import ch.serva.tools.ServletResponseTools;
+import ch.serva.tools.ServletTools;
 
 /**
  * The PDF servlet.
@@ -92,6 +93,9 @@ public class PdfServlet extends HttpServlet {
 				return;
 			}
 
+			// docroot
+			String docroot = ServletTools.getDocroot(req);
+
 			// switch on export
 			PdfExport export = null;
 			StringBuffer xml = new StringBuffer();
@@ -99,7 +103,7 @@ public class PdfServlet extends HttpServlet {
 			if (exportName != null && exportName.equals(PdfInvoice.NAME)) {
 
 				// PDF invoice
-				export = new PdfInvoice(domain);
+				export = new PdfInvoice(domain, docroot);
 			} else {
 
 				// unknown export
