@@ -2,7 +2,7 @@
 
 <project name="Serva" default="release" basedir=".">
 
-	<property name="version" value="0.2.3" />
+	<property name="version" value="0.2.4" />
 
 	<description>
 		Release Serva

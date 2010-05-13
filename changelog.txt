@@ -1,4 +1,4 @@
-0.2.4 (ongoing)
+0.2.4 (revision 286, 2010-05-13)
 -----
 - logo added to PDF invoice.
 - extended XML apis lib added.
