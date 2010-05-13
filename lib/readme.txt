@@ -15,6 +15,14 @@ Library                                        What                             
 - slf4j-api-1.5.8.jar                          SLF4j                                   Logging
 - slf4j-log4j12-1.5.8.jar                      SLF4j binding to Log4j 1.2              Logging
 
+fop/:
+- avalon-framework-4.2.0.jar                   FOP                                     FOP
+- batik-all-1.7.jar                            FOP                                     FOP
+- commons-logging-1.1.1.jar                    Commons Logging                         FOP
+- fop-0.95.jar                                 FOP                                     FOP
+- xml-amix-ext-1.3.04.jar                      FOP                                     FOP (SVG rendering)
+- xmlgraphics-commons-1.3.1.jar                FOP                                     FOP
+
 jetty/:
 - jetty-6.1.21.jar                             Jetty                                   Web frontend (standalone)
 - jetty-util-6.1.21.jar                        Jetty Utilities                         Web frontend (standalone)
