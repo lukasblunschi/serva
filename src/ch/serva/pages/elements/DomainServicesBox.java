@@ -3,6 +3,7 @@ package ch.serva.pages.elements;
 import ch.serva.config.Config;
 import ch.serva.db.Booking;
 import ch.serva.db.Domain;
+import ch.serva.db.Payment;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
 import ch.serva.tools.Dates;
@@ -60,10 +61,10 @@ public class DomainServicesBox implements Element {
 			// booking
 			String fromStr = Dates.dateFormat.format(booking.getFrom());
 			String toStr = booking.getTo() == null ? "" : Dates.dateFormat.format(booking.getTo());
-			html.append("<tr>");
-			html.append("<td>").append(service.getServicename()).append("</td>");
-			html.append("<td>").append(fromStr).append("</td>");
-			html.append("<td>").append(toStr).append("</td>");
+			html.append("<tr>\n");
+			html.append("<td>").append(service.getServicename()).append("</td>\n");
+			html.append("<td>").append(fromStr).append("</td>\n");
+			html.append("<td>").append(toStr).append("</td>\n");
 
 			// cost
 			if (showCost) {
@@ -71,10 +72,33 @@ public class DomainServicesBox implements Element {
 				double totalCost = booking.getTotalCost();
 				double payed = booking.getPayed();
 				double openCost = totalCost - payed;
-				html.append("<td class='currency'>").append(Doubles.formatter.format(price)).append("</td>");
-				html.append("<td class='currency'>").append(Doubles.formatter.format(totalCost)).append("</td>");
-				html.append("<td class='currency'>").append(Doubles.formatter.format(payed)).append("</td>");
-				html.append("<td class='currency'>").append(Doubles.formatter.format(openCost)).append("</td>");
+				html.append("<td class='currency'>").append(Doubles.formatter.format(price)).append("</td>\n");
+				html.append("<td class='currency'>").append(Doubles.formatter.format(totalCost)).append("</td>\n");
+				html.append("<td class='currency'>");
+
+				// payments
+				if (payed > 0.0) {
+					String divId = "payments_" + booking.getId();
+					html.append("<a href='javascript:toggleDisplay(\"" + divId + "\")'>");
+					html.append(Doubles.formatter.format(payed));
+					html.append("</a>");
+					html.append("<div id='" + divId + "' class='payments' style='display:none'>");
+					html.append("<table>");
+					for (Payment payment : booking.getPayments()) {
+						html.append("<tr>");
+						html.append("<td>" + Dates.dateFormat.format(payment.getDate()) + "</td>");
+						html.append("<td>" + payment.getText() + "</td>");
+						html.append("<td>" + Doubles.formatter.format(payment.getAmount()) + "</td>");
+						html.append("</tr>");
+					}
+					html.append("</table>");
+					html.append("</div>");
+				} else {
+					html.append(Doubles.formatter.format(payed));
+				}
+
+				html.append("</td>\n");
+				html.append("<td class='currency'>").append(Doubles.formatter.format(openCost)).append("</td>\n");
 
 				// sum
 				sumPrice += price;
