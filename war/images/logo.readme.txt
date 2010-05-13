@@ -1,5 +1,6 @@
 Logo Readme
 -----------
 
-You can put a file called 'logo.svg' here which will be shown on invoices.
+You can put an SVG image file called 'logo.svg' here which will be shown on
+invoices.
 
