@@ -80,6 +80,7 @@
 				<include name="css/**" />
 				<include name="images/**" />
 				<include name="js/**" />
+				<exclude name="images/logo.svg" />
 			</fileset>
 		</copy>
 		<copy todir="${dir-standalone}">
@@ -101,7 +102,10 @@
 		<property name="dir-webapp" value="/tmp/serva/serva-webapp-${version}" />
 		<mkdir dir="${dir-webapp}" />
 		<copy todir="${dir-webapp}">
-			<fileset dir="war" includes="**" />
+			<fileset dir="war">
+				<include name="**" />
+				<exclude name="**logo.svg" />
+			</fileset>
 		</copy>
 		<copy todir="${dir-webapp}/WEB-INF">
 			<fileset dir=".">
