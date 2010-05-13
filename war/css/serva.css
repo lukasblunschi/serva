@@ -85,3 +85,5 @@ div.userinfobox .subtitle { font-weight: bold; margin: 2px; }
 div.userinfobox table { margin: -1px; }
 div.userinfobox td { padding: 2px; }
 
+div.payments { margin-top: 3px; }
+div.payments table { margin: 0; }
