@@ -32,6 +32,10 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String contact();
 
+	String invoices();
+
+	String invoice();
+
 	String invoiceFor();
 
 	String accountDetails();
