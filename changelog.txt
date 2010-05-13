@@ -1,5 +1,13 @@
 0.2.4 (ongoing)
 -----
+- logo added to PDF invoice.
+- extended XML apis lib added.
+- not including logo.svg in release.
+- get docroot extracted.
+- logo.readme.txt added.
+- invoice link added to home page.
+- payments table added to home page.
+- showing active price on domain services box.
 - company.name property added.
 - company.account property added.
 - pdf servlet added.
