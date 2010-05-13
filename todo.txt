@@ -3,6 +3,10 @@ Serva ToDo
 
 user-interface:
 - edit domain > user selectors > ignore nickname if not set.
+- order service bookings on homepage and invoice.
+- invoice font size: 11pt.
+- invoice logo: print using two last columns.
+- invoice account details: line thickness.
 
 
 logic:

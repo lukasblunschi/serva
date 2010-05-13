@@ -1,3 +1,9 @@
+0.2.5 (ongoing)
+-----
+- run-standalone.sh fixed.
+- release.xml fixed.
+
+
 0.2.4 (revision 286, 2010-05-13)
 -----
 - logo added to PDF invoice.
