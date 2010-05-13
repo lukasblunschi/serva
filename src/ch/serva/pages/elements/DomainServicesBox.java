@@ -1,7 +1,5 @@
 package ch.serva.pages.elements;
 
-import java.util.Date;
-
 import ch.serva.config.Config;
 import ch.serva.db.Booking;
 import ch.serva.db.Domain;
@@ -50,6 +48,7 @@ public class DomainServicesBox implements Element {
 
 		// sums
 		double sumPrice = 0.0;
+		double sumPriceActive = 0.0;
 		double sumTotalCost = 0.0;
 		double sumPayed = 0.0;
 		double sumOpenCost = 0.0;
@@ -68,10 +67,8 @@ public class DomainServicesBox implements Element {
 
 			// cost
 			if (showCost) {
-				Date dateTo = booking.getTo() == null ? new Date() : booking.getTo();
-				int numMonths = Dates.getFullMonths(booking.getFrom(), dateTo);
 				double price = service.getPrice();
-				double totalCost = numMonths > 0 && price > 0.0 ? numMonths * (price / 12.0) : 0.0;
+				double totalCost = booking.getTotalCost();
 				double payed = booking.getPayed();
 				double openCost = totalCost - payed;
 				html.append("<td class='currency'>").append(Doubles.formatter.format(price)).append("</td>");
@@ -81,6 +78,7 @@ public class DomainServicesBox implements Element {
 
 				// sum
 				sumPrice += price;
+				sumPriceActive += booking.isActive() ? price : 0.0;
 				sumTotalCost += totalCost;
 				sumPayed += payed;
 				sumOpenCost += openCost;
@@ -97,6 +95,11 @@ public class DomainServicesBox implements Element {
 			html.append("<td class='currency'>").append(Doubles.formatter.format(sumTotalCost)).append("</td>");
 			html.append("<td class='currency'>").append(Doubles.formatter.format(sumPayed)).append("</td>");
 			html.append("<td class='currency'>").append(Doubles.formatter.format(sumOpenCost)).append("</td>");
+			html.append("</tr>\n");
+			html.append("<tr>");
+			html.append("<td colspan='3'>").append(dict.sumActive() + ": ").append("</td>");
+			html.append("<td class='currency'>").append(Doubles.formatter.format(sumPriceActive)).append("</td>");
+			html.append("<td colspan='3' />");
 			html.append("</tr>\n");
 		}
 
