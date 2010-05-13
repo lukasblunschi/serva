@@ -1,10 +1,14 @@
 package ch.serva.pages.elements;
 
+import java.util.Date;
+
 import ch.serva.config.Config;
 import ch.serva.db.Booking;
 import ch.serva.db.Domain;
 import ch.serva.db.Payment;
 import ch.serva.db.Service;
+import ch.serva.export.Export;
+import ch.serva.export.PdfInvoice;
 import ch.serva.localization.Dictionary;
 import ch.serva.tools.Dates;
 import ch.serva.tools.Doubles;
@@ -127,11 +131,24 @@ public class DomainServicesBox implements Element {
 			html.append("</tr>\n");
 		}
 
+		// invoice
+		if (sumOpenCost > 0.0) {
+			String filename = Dates.dateFormatTechnical.format(new Date()) + "_" + dict.invoice() + "_" + domain.getDomainname() + ".pdf";
+			String domainIdStr = Domain.F_ID + "=" + domain.getId() + "&amp;";
+			String exportName = Export.P_NAME + "=" + PdfInvoice.NAME;
+			String href = filename + "?" + domainIdStr + exportName;
+			html.append("<tr>");
+			html.append("<td colspan='3'>").append(dict.invoice() + ": ").append("</td>");
+			html.append("<td colspan='4'>");
+			html.append("<a href='" + href + "'>PDF</a>");
+			html.append("</td>");
+			html.append("</tr>\n");
+		}
+
 		// close table
 		html.append("</table>\n");
 
 		// close div
 		html.append("</div>\n\n");
 	}
-
 }
