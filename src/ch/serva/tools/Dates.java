@@ -19,6 +19,11 @@ public class Dates {
 	public static DateFormat dateFormat = new SimpleDateFormat("dd.MM.yy");
 
 	/**
+	 * yyyy-MM-dd
+	 */
+	public static DateFormat dateFormatTechnical = new SimpleDateFormat("yyyy-MM-dd");
+
+	/**
 	 * Count the number of full months between the given dates.
 	 * 
 	 * @param dateFrom
