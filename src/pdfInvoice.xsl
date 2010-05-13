@@ -38,10 +38,15 @@
 	</xsl:template>
 
 	<xsl:template match="company">
-		<fo:table-row line-height="3cm">
-			<fo:table-cell number-columns-spanned="3" font-size="20pt">
+		<fo:table-row>
+			<fo:table-cell number-columns-spanned="2" font-size="20pt">
 				<fo:block>
 					<xsl:value-of select="companyname" />
+				</fo:block>
+			</fo:table-cell>
+			<fo:table-cell height="3cm">
+				<fo:block>
+					<xsl:apply-templates select="logo" />
 				</fo:block>
 			</fo:table-cell>
 		</fo:table-row>
@@ -73,6 +78,18 @@
 				</fo:block>
 			</fo:table-cell>
 		</fo:table-row>
+	</xsl:template>
+
+	<xsl:template match="logo">
+		<xsl:choose>
+			<xsl:when test="count(*) = 1">
+				<fo:instream-foreign-object>
+					<xsl:copy-of select="*|@*" />
+				</fo:instream-foreign-object>
+			</xsl:when>
+			<xsl:otherwise>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 	<xsl:template match="customer">
