@@ -58,7 +58,7 @@
 		<copy todir="${dir-standalone}/bin">
 			<fileset dir="bin">
 				<include name="**" />
-				<exclude name="ch**" />
+				<exclude name="ch/**" />
 			</fileset>
 		</copy>
 		<copy todir="${dir-standalone}/dist">
@@ -123,7 +123,7 @@
 		<copy todir="${dir-webapp}/WEB-INF/classes">
 			<fileset dir="bin">
 				<include name="**" />
-				<exclude name="ch**" />
+				<exclude name="ch/**" />
 			</fileset>
 		</copy>
 		<copy todir="${dir-webapp}/WEB-INF/lib">
