@@ -8,6 +8,10 @@ Usage:
   E.g. for update block "2.1.x", rename coach to nurse, then rename group to patient and so on.
 
 
+from 0.2.4 to 0.2.5:
+  - no special changes.
+
+
 from 0.2.3 to 0.2.4:
   - web.xml changed (pdf servlet added).
   - company.name property added.

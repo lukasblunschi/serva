@@ -3,13 +3,13 @@
 #
 # You may use the following variable to point your installation to the right location of your JVM
 #
-JAVAHOME=/usr/lib/jvm/java-1.5.0-sun-1.5.0.19
+JAVAHOME=/usr/lib/jvm/java-6-openjdk
 
 #
 # You don't need to edit the following lines
 #
 CLASSPATH=bin:\
-dist/serva-0.2.4.jar:\
+dist/serva-0.2.5.jar:\
 lib/activation-1.1.1.jar:\
 lib/commons-fileupload-1.2.1.jar:\
 lib/commons-io-1.4.jar:\

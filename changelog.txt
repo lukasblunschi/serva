@@ -1,4 +1,4 @@
-0.2.5 (ongoing)
+0.2.5 (revision 299, 2011-01-11)
 -----
 - forward links added to entity forms.
 - service bookings list element added.
