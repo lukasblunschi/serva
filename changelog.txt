@@ -1,5 +1,10 @@
 0.2.5 (ongoing)
 -----
+- forward links added to entity forms.
+- service bookings list element added.
+- booking payments list element added.
+- domain bookings list element added.
+- user domains list element added.
 - run-standalone.sh fixed.
 - release.xml fixed.
 
