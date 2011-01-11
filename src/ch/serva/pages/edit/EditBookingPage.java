@@ -12,6 +12,7 @@ import ch.serva.localization.Dictionary;
 import ch.serva.pages.AbstractAdminPage;
 import ch.serva.pages.elements.BookingCheck;
 import ch.serva.pages.elements.BookingForm;
+import ch.serva.pages.elements.lists.BookingPaymentsList;
 
 /**
  * A page to edit a booking.
@@ -72,6 +73,11 @@ public class EditBookingPage extends AbstractAdminPage {
 			if (check != null) {
 				new BookingCheck(booking).appendHtml(html, config, dict);
 			}
+		}
+
+		// list related payments
+		if (!isNew) {
+			new BookingPaymentsList(booking).appendHtml(html, config, dict);
 		}
 
 		return html.toString();

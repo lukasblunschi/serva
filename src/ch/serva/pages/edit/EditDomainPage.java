@@ -9,6 +9,7 @@ import ch.serva.db.Domain;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.AbstractAdminPage;
 import ch.serva.pages.elements.DomainForm;
+import ch.serva.pages.elements.lists.DomainBookingsList;
 
 /**
  * A page to edit a domain.
@@ -62,6 +63,11 @@ public class EditDomainPage extends AbstractAdminPage {
 
 		// domain form
 		new DomainForm(isNew, domain, em).appendHtml(html, config, dict);
+
+		// list related bookings
+		if (!isNew) {
+			new DomainBookingsList(domain).appendHtml(html, config, dict);
+		}
 
 		return html.toString();
 	}

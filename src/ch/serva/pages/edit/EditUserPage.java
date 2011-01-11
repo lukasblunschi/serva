@@ -10,6 +10,7 @@ import ch.serva.localization.Dictionary;
 import ch.serva.pages.AbstractAdminPage;
 import ch.serva.pages.elements.SendLoginButton;
 import ch.serva.pages.elements.UserForm;
+import ch.serva.pages.elements.lists.UserDomainsList;
 
 /**
  * A page to edit a user.
@@ -67,6 +68,11 @@ public class EditUserPage extends AbstractAdminPage {
 		// send login button
 		if (!isNew) {
 			new SendLoginButton(user).appendHtml(html, config, dict);
+		}
+
+		// list related domains
+		if (!isNew) {
+			new UserDomainsList(user).appendHtml(html, config, dict);
 		}
 
 		return html.toString();
