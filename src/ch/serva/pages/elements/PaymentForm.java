@@ -13,6 +13,7 @@ import ch.serva.db.Booking;
 import ch.serva.db.Instance;
 import ch.serva.db.Payment;
 import ch.serva.localization.Dictionary;
+import ch.serva.pages.edit.EditBookingPage;
 import ch.serva.pages.edit.EditPaymentPage;
 import ch.serva.pages.list.ListPaymentsPage;
 import ch.serva.tools.Dates;
@@ -81,6 +82,9 @@ public class PaymentForm implements Element {
 		html.append("<td>").append(dict.booking() + ":").append("</td>");
 		html.append("<td>");
 		new Select("focus_booking", Payment.F_BOOKING, options, selValue).appendHtml(html);
+		html.append("<a href='?page=" + EditBookingPage.NAME + "&amp;id=" + payment.getBooking().getId() + "'>");
+		html.append(" -> ");
+		html.append("</a>");
 		html.append("</td>");
 		html.append("</tr>\n");
 

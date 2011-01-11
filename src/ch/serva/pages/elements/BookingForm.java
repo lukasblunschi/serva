@@ -15,6 +15,8 @@ import ch.serva.db.Instance;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.edit.EditBookingPage;
+import ch.serva.pages.edit.EditDomainPage;
+import ch.serva.pages.edit.EditServicePage;
 import ch.serva.pages.list.ListBookingsPage;
 import ch.serva.tools.Dates;
 import ch.serva.tools.Escape;
@@ -81,6 +83,9 @@ public class BookingForm implements Element {
 		html.append("<td>").append(dict.domain() + ":").append("</td>");
 		html.append("<td>");
 		new Select("focus_domain", Booking.F_DOMAIN, options, selValue).appendHtml(html);
+		html.append("<a href='?page=" + EditDomainPage.NAME + "&amp;id=" + booking.getDomain().getId() + "'>");
+		html.append(" -> ");
+		html.append("</a>");
 		html.append("</td>");
 		html.append("</tr>\n");
 
@@ -95,6 +100,9 @@ public class BookingForm implements Element {
 		html.append("<td>").append(dict.service() + ":").append("</td>");
 		html.append("<td>");
 		new Select(Booking.F_SERVICE, options, selValue).appendHtml(html);
+		html.append("<a href='?page=" + EditServicePage.NAME + "&amp;id=" + booking.getService().getId() + "'>");
+		html.append(" -> ");
+		html.append("</a>");
 		html.append("</td>");
 		html.append("</tr>\n");
 
