@@ -26,6 +26,9 @@ public class UserDomainsList implements Element {
 
 	public void appendHtml(StringBuffer html, Config config, Dictionary dict) {
 
+		// domains
+		List<Domain> domains = user.getDomains();
+
 		// element
 		html.append("<!-- user domains list -->\n");
 		html.append("<div class='content floatleft'>\n");
@@ -42,7 +45,6 @@ public class UserDomainsList implements Element {
 		html.append("<td>").append(dict.technicalcontact().substring(0, 1)).append("</td>");
 		html.append("<td>").append(dict.hostingcontact().substring(0, 1)).append("</td>");
 		html.append("</tr>\n");
-		List<Domain> domains = user.getDomains();
 		for (Domain domain : domains) {
 			html.append("<tr>");
 
