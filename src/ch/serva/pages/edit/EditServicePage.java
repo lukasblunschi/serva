@@ -9,6 +9,7 @@ import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.AbstractAdminPage;
 import ch.serva.pages.elements.ServiceForm;
+import ch.serva.pages.elements.lists.ServiceBookingsList;
 
 /**
  * A page to edit a service.
@@ -62,6 +63,11 @@ public class EditServicePage extends AbstractAdminPage {
 
 		// service form
 		new ServiceForm(isNew, service).appendHtml(html, config, dict);
+
+		// list related bookings
+		if (!isNew) {
+			new ServiceBookingsList(service).appendHtml(html, config, dict);
+		}
 
 		return html.toString();
 	}
