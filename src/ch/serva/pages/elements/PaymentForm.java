@@ -82,9 +82,11 @@ public class PaymentForm implements Element {
 		html.append("<td>").append(dict.booking() + ":").append("</td>");
 		html.append("<td>");
 		new Select("focus_booking", Payment.F_BOOKING, options, selValue).appendHtml(html);
-		html.append("<a href='?page=" + EditBookingPage.NAME + "&amp;id=" + payment.getBooking().getId() + "'>");
-		html.append(" -> ");
-		html.append("</a>");
+		if (!isNew) {
+			html.append("<a href='?page=" + EditBookingPage.NAME + "&amp;id=" + payment.getBooking().getId() + "'>");
+			html.append(" -> ");
+			html.append("</a>");
+		}
 		html.append("</td>");
 		html.append("</tr>\n");
 
