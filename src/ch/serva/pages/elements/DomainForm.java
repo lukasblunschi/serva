@@ -92,9 +92,11 @@ public class DomainForm implements Element {
 		html.append("<td>").append(dict.holder() + ":").append("</td>");
 		html.append("<td>");
 		new Select(Domain.F_HOLDER, options, selValue).appendHtml(html);
-		html.append("<a href='?page=" + EditUserPage.NAME + "&amp;id=" + domain.getHolder().getId() + "'>");
-		html.append(" -> ");
-		html.append("</a>");
+		if (!isNew) {
+			html.append("<a href='?page=" + EditUserPage.NAME + "&amp;id=" + domain.getHolder().getId() + "'>");
+			html.append(" -> ");
+			html.append("</a>");
+		}
 		html.append("</td>");
 		html.append("</tr>\n");
 
@@ -104,9 +106,11 @@ public class DomainForm implements Element {
 		html.append("<td>").append(dict.billingcontact() + ":").append("</td>");
 		html.append("<td>");
 		new Select(Domain.F_BILLINGCONTACT, options, selValue).appendHtml(html);
-		html.append("<a href='?page=" + EditUserPage.NAME + "&amp;id=" + domain.getBillingcontact().getId() + "'>");
-		html.append(" -> ");
-		html.append("</a>");
+		if (!isNew) {
+			html.append("<a href='?page=" + EditUserPage.NAME + "&amp;id=" + domain.getBillingcontact().getId() + "'>");
+			html.append(" -> ");
+			html.append("</a>");
+		}
 		html.append("</td>");
 		html.append("</tr>\n");
 
@@ -116,9 +120,11 @@ public class DomainForm implements Element {
 		html.append("<td>").append(dict.technicalcontact() + ":").append("</td>");
 		html.append("<td>");
 		new Select(Domain.F_TECHNICALCONTACT, options, selValue).appendHtml(html);
-		html.append("<a href='?page=" + EditUserPage.NAME + "&amp;id=" + domain.getTechnicalcontact().getId() + "'>");
-		html.append(" -> ");
-		html.append("</a>");
+		if (!isNew) {
+			html.append("<a href='?page=" + EditUserPage.NAME + "&amp;id=" + domain.getTechnicalcontact().getId() + "'>");
+			html.append(" -> ");
+			html.append("</a>");
+		}
 		html.append("</td>");
 		html.append("</tr>\n");
 
@@ -135,9 +141,11 @@ public class DomainForm implements Element {
 		html.append("<td>").append(dict.hostingcontact() + ":").append("</td>");
 		html.append("<td>");
 		new Select(Domain.F_HOSTINGCONTACT, options, selValue).appendHtml(html);
-		html.append("<a href='?page=" + EditUserPage.NAME + "&amp;id=" + domain.getHostingcontact().getId() + "'>");
-		html.append(" -> ");
-		html.append("</a>");
+		if (!isNew) {
+			html.append("<a href='?page=" + EditUserPage.NAME + "&amp;id=" + domain.getHostingcontact().getId() + "'>");
+			html.append(" -> ");
+			html.append("</a>");
+		}
 		html.append("</td>");
 		html.append("</tr>\n");
 
