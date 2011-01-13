@@ -7,13 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import ch.serva.config.Config;
 import ch.serva.db.Domain;
+import ch.serva.db.Instance;
 import ch.serva.db.User;
 import ch.serva.db.Users;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.elements.DomainContactBox;
-import ch.serva.pages.elements.DomainRelationshipsBox;
 import ch.serva.pages.elements.DomainRelationshipUser;
+import ch.serva.pages.elements.DomainRelationshipsBox;
 import ch.serva.pages.elements.DomainServicesBox;
+import ch.serva.pages.elements.selectors.UserSelector;
 
 /**
  * Main page for the users which are not admins.
@@ -28,14 +30,31 @@ public class HomePage extends AbstractUserPage {
 	public String getUserContent(HttpServletRequest req, EntityManager em, Dictionary dict) {
 		StringBuffer html = new StringBuffer();
 
-		// user [not null here]
-		User userLoggedIn = Users.getUserFromSession(req, em);
-
 		// config
 		Config config = new Config();
 
+		// instance
+		Instance instance = new Instance(em);
+
+		// user [not null here]
+		User userLoggedIn = Users.getUserFromSession(req, em);
+
+		// user selection for admins
+		User userSel = null;
+		if (userLoggedIn.getIsAdmin()) {
+			String selUserIdStr = req.getParameter("user_" + User.F_ID);
+			if (selUserIdStr == null) {
+				userSel = userLoggedIn;
+			} else {
+				userSel = em.find(User.class, Long.valueOf(selUserIdStr));
+			}
+			new UserSelector(userSel, HomePage.NAME, instance).appendHtml(html, config, dict);
+		} else {
+			userSel = userLoggedIn;
+		}
+
 		// domains
-		List<Domain> domains = userLoggedIn.getDomains();
+		List<Domain> domains = userSel.getDomains();
 
 		// title
 		html.append("<!-- title -->\n");
@@ -52,7 +71,7 @@ public class HomePage extends AbstractUserPage {
 			// relationship
 			html.append("<!-- relationship -->\n");
 			html.append("<div class='floatright'>\n");
-			new DomainRelationshipUser(domain, userLoggedIn).appendEmbedableHtml(html, config, dict);
+			new DomainRelationshipUser(domain, userSel).appendEmbedableHtml(html, config, dict);
 			html.append("</div>\n\n");
 
 			// info link
@@ -71,7 +90,7 @@ public class HomePage extends AbstractUserPage {
 			new DomainRelationshipsBox(domain).appendHtml(html, config, dict);
 
 			// services
-			boolean showCost = userLoggedIn.getAsBillingContact(domain);
+			boolean showCost = userSel.getAsBillingContact(domain);
 			new DomainServicesBox(domain, showCost).appendHtml(html, config, dict);
 
 			// contact
