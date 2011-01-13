@@ -9,7 +9,7 @@ JAVAHOME=/usr/lib/jvm/java-6-openjdk
 # You don't need to edit the following lines
 #
 CLASSPATH=bin:\
-dist/serva-0.2.5.jar:\
+dist/serva-0.2.6.jar:\
 lib/activation-1.1.1.jar:\
 lib/commons-fileupload-1.2.1.jar:\
 lib/commons-io-1.4.jar:\

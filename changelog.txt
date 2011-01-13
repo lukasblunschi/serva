@@ -1,4 +1,4 @@
-0.2.6 (ongoing)
+0.2.6 (revision 307, 2011-01-14)
 -----
 - using user selector on home page.
 - user selector element added.
