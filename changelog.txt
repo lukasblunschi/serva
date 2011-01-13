@@ -1,3 +1,8 @@
+0.2.6 (ongoing)
+-----
+- bugfix in forward links.
+
+
 0.2.5 (revision 300, 2011-01-11)
 -----
 - forward links added to entity forms.
