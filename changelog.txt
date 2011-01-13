@@ -1,5 +1,7 @@
 0.2.6 (ongoing)
 -----
+- using user selector on home page.
+- user selector element added.
 - bugfix in forward links.
 
 
