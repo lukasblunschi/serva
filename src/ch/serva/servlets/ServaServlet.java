@@ -28,7 +28,7 @@ import ch.serva.actions.results.Failure;
 import ch.serva.actions.results.Result;
 import ch.serva.actions.results.Success;
 import ch.serva.db.User;
-import ch.serva.db.Users;
+import ch.serva.db.collections.Users;
 import ch.serva.localization.Dictionaries;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.AdminPage;

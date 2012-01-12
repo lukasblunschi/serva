@@ -1,4 +1,4 @@
-package ch.serva.db;
+package ch.serva.db.collections;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
 import ch.serva.ServaConstants;
+import ch.serva.db.User;
 
 /**
  * Tools to work with users.

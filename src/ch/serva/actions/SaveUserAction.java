@@ -12,7 +12,7 @@ import ch.serva.actions.results.Result;
 import ch.serva.actions.results.Success;
 import ch.serva.db.Instance;
 import ch.serva.db.User;
-import ch.serva.db.Users;
+import ch.serva.db.collections.Users;
 import ch.serva.tools.Mails;
 import ch.serva.tools.PostRequest;
 

@@ -12,7 +12,7 @@ import ch.serva.actions.ChangeLanguageAction;
 import ch.serva.actions.LogoutAction;
 import ch.serva.actions.results.Result;
 import ch.serva.db.User;
-import ch.serva.db.Users;
+import ch.serva.db.collections.Users;
 import ch.serva.localization.Dictionaries;
 import ch.serva.localization.Dictionary;
 import ch.serva.localization.English;

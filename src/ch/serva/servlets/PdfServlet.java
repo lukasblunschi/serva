@@ -25,7 +25,7 @@ import org.apache.fop.apps.MimeConstants;
 
 import ch.serva.db.Domain;
 import ch.serva.db.User;
-import ch.serva.db.Users;
+import ch.serva.db.collections.Users;
 import ch.serva.export.Export;
 import ch.serva.export.PdfExport;
 import ch.serva.export.PdfInvoice;

@@ -9,7 +9,7 @@ import ch.serva.config.Config;
 import ch.serva.db.Domain;
 import ch.serva.db.Instance;
 import ch.serva.db.User;
-import ch.serva.db.Users;
+import ch.serva.db.collections.Users;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.elements.DomainContactBox;
 import ch.serva.pages.elements.DomainRelationshipUser;

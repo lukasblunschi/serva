@@ -10,7 +10,7 @@ import ch.serva.ServaConstants;
 import ch.serva.actions.RemoveUserAction;
 import ch.serva.db.Instance;
 import ch.serva.db.User;
-import ch.serva.db.Users;
+import ch.serva.db.collections.Users;
 import ch.serva.localization.Dictionaries;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.AbstractAdminPage;

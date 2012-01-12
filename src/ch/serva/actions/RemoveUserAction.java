@@ -8,7 +8,7 @@ import ch.serva.actions.results.Failure;
 import ch.serva.actions.results.Result;
 import ch.serva.actions.results.Success;
 import ch.serva.db.User;
-import ch.serva.db.Users;
+import ch.serva.db.collections.Users;
 
 /**
  * An action to remove a user.
