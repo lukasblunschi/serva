@@ -23,7 +23,7 @@ import ch.serva.pages.elements.Element;
  * @author Lukas Blunschi
  * 
  */
-public class MultipleDomainSelector implements Element {
+public class DomainsSelector implements Element {
 
 	public static final String ID_FOCUS = "select_domain_ids";
 
@@ -35,7 +35,7 @@ public class MultipleDomainSelector implements Element {
 
 	private final String pagename;
 
-	public MultipleDomainSelector(List<Domain> domainsAll, String[] selDomainIdsArr, String pagename) {
+	public DomainsSelector(List<Domain> domainsAll, String[] selDomainIdsArr, String pagename) {
 		this.domainsAll = domainsAll;
 		this.selDomainIdsArr = selDomainIdsArr;
 		this.pagename = pagename;
@@ -69,7 +69,7 @@ public class MultipleDomainSelector implements Element {
 		html.append("</td>\n");
 		html.append("<td>\n");
 		String js = "javascript:document.getElementById(\"multiple_domain_selector_form\").submit()";
-		html.append("<select id='" + ID_FOCUS + "' name='" + P_DOMAIN_IDS + "' size='5' multiple='multiple' onchange='" + js + "'>\n");
+		html.append("<select id='" + ID_FOCUS + "' name='" + P_DOMAIN_IDS + "' size='10' multiple='multiple' onchange='" + js + "'>\n");
 		for (Map.Entry<String, String> entry : options.entrySet()) {
 			String value = entry.getValue();
 			if (selDomainIds.contains(value)) {
@@ -90,8 +90,8 @@ public class MultipleDomainSelector implements Element {
 		Config config = new Config();
 		List<Domain> domainsAll = new Instance(em).getDomains();
 		List<Domain> domainsSel = new ArrayList<Domain>();
-		String[] selDomainIdsArr = req.getParameterValues(MultipleDomainSelector.P_DOMAIN_IDS);
-		new MultipleDomainSelector(domainsAll, selDomainIdsArr, page).appendHtml(html, config, dict);
+		String[] selDomainIdsArr = req.getParameterValues(DomainsSelector.P_DOMAIN_IDS);
+		new DomainsSelector(domainsAll, selDomainIdsArr, page).appendHtml(html, config, dict);
 		if (selDomainIdsArr != null) {
 			for (String selDomainIdStr : selDomainIdsArr) {
 				Domain domain = em.find(Domain.class, Long.valueOf(selDomainIdStr));
@@ -103,7 +103,7 @@ public class MultipleDomainSelector implements Element {
 
 	public static String getParameterStr(HttpServletRequest req) {
 		StringBuffer buf = new StringBuffer();
-		String[] selDomainIdsArr = req.getParameterValues(MultipleDomainSelector.P_DOMAIN_IDS);
+		String[] selDomainIdsArr = req.getParameterValues(DomainsSelector.P_DOMAIN_IDS);
 		if (selDomainIdsArr != null) {
 			boolean first = true;
 			for (String selDomainIdStr : selDomainIdsArr) {

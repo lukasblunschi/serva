@@ -12,7 +12,7 @@ import ch.serva.db.User;
 import ch.serva.db.collections.Users;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.elements.DomainsServicesCostTable;
-import ch.serva.pages.elements.selectors.MultipleDomainSelector;
+import ch.serva.pages.elements.selectors.DomainsSelector;
 
 /**
  * A page to show the costs for the current user.
@@ -25,7 +25,7 @@ public class CostsUserPage extends AbstractUserPage {
 	public static final String NAME = "costsUser";
 
 	public String getOnloadJs(HttpServletRequest req, EntityManager em) {
-		return "document.getElementById(\"" + MultipleDomainSelector.ID_FOCUS + "\").focus();";
+		return "document.getElementById(\"" + DomainsSelector.ID_FOCUS + "\").focus();";
 	}
 
 	public String getUserContent(HttpServletRequest req, EntityManager em, Dictionary dict) {
@@ -44,8 +44,8 @@ public class CostsUserPage extends AbstractUserPage {
 			domainsSel = domainsAll;
 		} else {
 			domainsSel = new ArrayList<Domain>();
-			String[] selDomainIdsArr = req.getParameterValues(MultipleDomainSelector.P_DOMAIN_IDS);
-			new MultipleDomainSelector(domainsAll, selDomainIdsArr, CostsUserPage.NAME).appendHtml(html, config, dict);
+			String[] selDomainIdsArr = req.getParameterValues(DomainsSelector.P_DOMAIN_IDS);
+			new DomainsSelector(domainsAll, selDomainIdsArr, CostsUserPage.NAME).appendHtml(html, config, dict);
 			if (selDomainIdsArr != null) {
 				for (String selDomainIdStr : selDomainIdsArr) {
 					Domain domain = em.find(Domain.class, Long.valueOf(selDomainIdStr));

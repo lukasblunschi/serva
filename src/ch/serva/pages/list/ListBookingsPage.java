@@ -18,7 +18,7 @@ import ch.serva.pages.AbstractAdminPage;
 import ch.serva.pages.edit.EditBookingPage;
 import ch.serva.pages.elements.adders.BookingsAdder;
 import ch.serva.pages.elements.common.Clearer;
-import ch.serva.pages.elements.selectors.MultipleDomainSelector;
+import ch.serva.pages.elements.selectors.DomainsSelector;
 import ch.serva.tools.Dates;
 import ch.serva.tools.Escape;
 import ch.serva.tools.comparators.BookingComparator;
@@ -44,7 +44,7 @@ public class ListBookingsPage extends AbstractAdminPage {
 		html.append("<h3 class='content'>").append(dict.bookings()).append("</h3>\n\n");
 
 		// domains
-		List<Domain> domainsSel = MultipleDomainSelector.getSelectedDomains(req, em, dict, ListBookingsPage.NAME, html);
+		List<Domain> domainsSel = DomainsSelector.getSelectedDomains(req, em, dict, ListBookingsPage.NAME, html);
 
 		// multiple service adder
 		if (domainsSel.size() == 1) {
@@ -71,7 +71,7 @@ public class ListBookingsPage extends AbstractAdminPage {
 		// action prefixes
 		String pActionRemove = "action=" + RemoveBookingAction.NAME + "&amp;";
 		String pPage = "page=" + ListBookingsPage.NAME + "&amp;";
-		String pDomainIds = MultipleDomainSelector.getParameterStr(req) + "&amp;";
+		String pDomainIds = DomainsSelector.getParameterStr(req) + "&amp;";
 		String pBookingIdPrefLong = "booking_" + Booking.F_ID + "=";
 		String removePrefix = "?" + pActionRemove + pPage + pDomainIds + pBookingIdPrefLong;
 

@@ -10,7 +10,7 @@ import ch.serva.db.Domain;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.elements.Element;
-import ch.serva.pages.elements.selectors.MultipleDomainSelector;
+import ch.serva.pages.elements.selectors.DomainsSelector;
 import ch.serva.tools.Dates;
 
 /**
@@ -38,7 +38,7 @@ public class BookingsAdder implements Element {
 		// open
 		String pAction = "action=" + AddBookingsAction.NAME + "&amp;";
 		String pPage = "page=" + pagename + "&amp;";
-		String pDomainIds = MultipleDomainSelector.P_DOMAIN_IDS + "=" + domain.getId();
+		String pDomainIds = DomainsSelector.P_DOMAIN_IDS + "=" + domain.getId();
 		String action = "?" + pAction + pPage + pDomainIds;
 		String enc = "multipart/form-data";
 		html.append("<!-- bookings adder -->\n");
