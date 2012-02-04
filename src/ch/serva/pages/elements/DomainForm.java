@@ -43,7 +43,7 @@ public class DomainForm implements Element {
 
 		// element
 		html.append("<!-- domain form -->\n");
-		html.append("<div class='content floatleft'>\n");
+		html.append("<div class='content'>\n");
 
 		// element title
 		html.append("<h4>").append(dict.properties()).append("</h4>\n");
