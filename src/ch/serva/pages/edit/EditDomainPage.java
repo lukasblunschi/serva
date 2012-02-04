@@ -1,14 +1,19 @@
 package ch.serva.pages.edit;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
 import ch.serva.ServaConstants;
 import ch.serva.config.Config;
 import ch.serva.db.Domain;
+import ch.serva.db.Service;
+import ch.serva.db.collections.Services;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.AbstractAdminPage;
 import ch.serva.pages.elements.DomainForm;
+import ch.serva.pages.elements.adders.BookingsAdder;
 import ch.serva.pages.elements.lists.DomainBookingsList;
 
 /**
@@ -64,9 +69,18 @@ public class EditDomainPage extends AbstractAdminPage {
 		// domain form
 		new DomainForm(isNew, domain, em).appendHtml(html, config, dict);
 
-		// list related bookings
+		// switch on new
 		if (!isNew) {
-			new DomainBookingsList(domain).appendHtml(html, config, dict);
+
+			// pagelink
+			String pagelink = "page=" + NAME + "&amp;" + Domain.F_ID + "=" + domain.getId();
+
+			// list related bookings
+			new DomainBookingsList(domain, pagelink).appendHtml(html, config, dict);
+
+			// show bookings adder
+			List<Service> servicesNotActive = Services.getNotActive(domain, em);
+			new BookingsAdder(domain, servicesNotActive, pagelink).appendHtml(html, config, dict);
 		}
 
 		return html.toString();
