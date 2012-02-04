@@ -175,6 +175,10 @@ public class English extends EnglishDatabase implements Dictionary {
 		return "Price per Year";
 	}
 
+	public String totalPrice() {
+		return "Total Price";
+	}
+
 	public String totalCost() {
 		return "Total Cost";
 	}

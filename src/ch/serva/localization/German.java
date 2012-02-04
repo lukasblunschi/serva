@@ -175,6 +175,10 @@ public class German extends GermanDatabase implements Dictionary {
 		return "Preis pro Jahr";
 	}
 
+	public String totalPrice() {
+		return "Total";
+	}
+
 	public String totalCost() {
 		return "Total";
 	}

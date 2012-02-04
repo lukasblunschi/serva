@@ -100,6 +100,8 @@ public interface Dictionary extends DictionaryDatabase {
 
 	String pricePerYear();
 
+	String totalPrice();
+
 	String totalCost();
 
 	String payed();
