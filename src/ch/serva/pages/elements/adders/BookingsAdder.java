@@ -10,7 +10,6 @@ import ch.serva.db.Domain;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.elements.Element;
-import ch.serva.pages.elements.selectors.DomainsSelector;
 import ch.serva.tools.Dates;
 
 /**
@@ -25,39 +24,46 @@ public class BookingsAdder implements Element {
 
 	private final List<Service> services;
 
-	private final String pagename;
+	private final String pagelink;
 
-	public BookingsAdder(Domain domain, List<Service> services, String pagename) {
+	public BookingsAdder(Domain domain, List<Service> services, String pagelink) {
 		this.domain = domain;
 		this.services = services;
-		this.pagename = pagename;
+		this.pagelink = pagelink;
 	}
 
 	public void appendHtml(StringBuffer html, Config config, Dictionary dict) {
 
 		// open
 		String pAction = "action=" + AddBookingsAction.NAME + "&amp;";
-		String pPage = "page=" + pagename + "&amp;";
-		String pDomainIds = DomainsSelector.P_DOMAIN_IDS + "=" + domain.getId();
-		String action = "?" + pAction + pPage + pDomainIds;
+		String action = "?" + pAction + pagelink;
 		String enc = "multipart/form-data";
 		html.append("<!-- bookings adder -->\n");
 		html.append("<div class='content floatleft module'>\n");
 		html.append("<form id='bookings_adder_form' enctype='" + enc + "' action='" + action + "' method='post'>\n");
 		html.append("<table>\n");
+
+		// hidden row
+		// - domain
+		html.append("<tr>");
+		html.append("<td class='hidden'>");
+		html.append("<input type='hidden' name='" + Booking.F_DOMAIN + "' value='" + domain.getId() + "' />");
+		html.append("</td>");
+		html.append("</tr>\n");
+
+		// header row
+		html.append("<tr>");
+		html.append("<td>" + dict.services() + "</td>");
+		html.append("<td>" + dict.from() + "</td>");
+		html.append("<td>" + dict.actions() + "</td>");
+		html.append("</tr>");
+
+		// content row
+		// - services
+		// - from
+		// - submit
+		String fromStr = Dates.dateFormat.format(new Date());
 		html.append("<tr>\n");
-
-		// domain (hidden)
-		html.append("<td class='hidden'>\n");
-		html.append("<input type='hidden' name='" + Booking.F_DOMAIN + "' value='" + domain.getId() + "' />\n");
-		html.append("</td>\n");
-
-		// header
-		html.append("<td>\n");
-		html.append(dict.services() + ":\n");
-		html.append("</td>\n");
-
-		// services
 		html.append("<td>\n");
 		for (Service service : services) {
 			String serviceId = Booking.F_SERVICE + "_" + service.getId();
@@ -66,22 +72,17 @@ public class BookingsAdder implements Element {
 			html.append("<br/>\n");
 		}
 		html.append("</td>\n");
-
-		// from
-		String fromStr = Dates.dateFormat.format(new Date());
 		html.append("<td>\n");
 		html.append(dict.from() + ":");
 		html.append("<br/>");
 		html.append("<input type='text' name='" + Booking.F_FROM + "' value='" + fromStr + "' />\n");
 		html.append("</td>\n");
-
-		// submit
 		html.append("<td>\n");
 		html.append("<input type='submit' value='" + dict.add() + "' />\n");
 		html.append("</td>\n");
+		html.append("</tr>\n");
 
 		// close
-		html.append("</tr>\n");
 		html.append("</table>\n");
 		html.append("</form>\n");
 		html.append("</div>\n\n");
