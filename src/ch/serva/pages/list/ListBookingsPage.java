@@ -1,15 +1,18 @@
 package ch.serva.pages.list;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
 import ch.serva.config.Config;
+import ch.serva.db.Booking;
 import ch.serva.db.Domain;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.AbstractAdminPage;
+import ch.serva.pages.elements.BookingsTotalPrice;
 import ch.serva.pages.elements.common.Clearer;
 import ch.serva.pages.elements.lists.DomainBookingsList;
 import ch.serva.pages.elements.lists.ServiceBookingsList;
@@ -63,6 +66,19 @@ public class ListBookingsPage extends AbstractAdminPage {
 				new ServiceBookingsList(service, title, pagelink).appendHtml(html, config, dict);
 			}
 		}
+
+		// clearer
+		new Clearer().appendHtml(html, config, dict);
+
+		// price
+		List<Booking> bookings = new ArrayList<Booking>();
+		for (Domain domain : domainsSel) {
+			bookings.addAll(domain.getBookings());
+		}
+		for (Service service : servicesSel) {
+			bookings.addAll(service.getBookings());
+		}
+		new BookingsTotalPrice(bookings).appendHtml(html, config, dict);
 
 		return html.toString();
 	}
