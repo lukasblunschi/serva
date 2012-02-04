@@ -16,9 +16,7 @@ import ch.serva.localization.Dictionary;
 import ch.serva.pages.elements.Element;
 
 /**
- * A domain selector which allows to select several domains.
- * <p>
- * TODO refactor to DomainsSelector
+ * The domains selector allows to select several domains.
  * 
  * @author Lukas Blunschi
  * 
@@ -58,9 +56,9 @@ public class DomainsSelector implements Element {
 		}
 
 		// html
-		html.append("<!-- multiple domain selector -->\n");
+		html.append("<!-- domains selector -->\n");
 		html.append("<div class='content floatleft module'>\n");
-		html.append("<form id='multiple_domain_selector_form' action='?' method='get'>\n");
+		html.append("<form id='domains_selector_form' action='?' method='get'>\n");
 		html.append("<table>\n");
 		html.append("<tr>\n");
 		html.append("<td>\n");
@@ -68,7 +66,7 @@ public class DomainsSelector implements Element {
 		html.append(dict.domains() + ":");
 		html.append("</td>\n");
 		html.append("<td>\n");
-		String js = "javascript:document.getElementById(\"multiple_domain_selector_form\").submit()";
+		String js = "javascript:document.getElementById(\"domains_selector_form\").submit()";
 		html.append("<select id='" + ID_FOCUS + "' name='" + P_DOMAIN_IDS + "' size='10' multiple='multiple' onchange='" + js + "'>\n");
 		for (Map.Entry<String, String> entry : options.entrySet()) {
 			String value = entry.getValue();
