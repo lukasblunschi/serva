@@ -1,3 +1,19 @@
+0.2.7 (ongoing)
+-----
+- actions added to domain bookings list element.
+- layout of domain form changed.
+- layout of domain bookings list element changed.
+- layout of bookings adder element changed.
+- title added to domain bookings list element.
+- title added to service bookings list element.
+- pagelink added to bookings adder element.
+- pagelink added to service bookings list element.
+- pagelink added to domain bookings list element.
+- bookings adder element added to edit domain page.
+- services collection added.
+- domains selector size increased to 10.
+
+
 0.2.6 (revision 307, 2011-01-14)
 -----
 - using user selector on home page.
