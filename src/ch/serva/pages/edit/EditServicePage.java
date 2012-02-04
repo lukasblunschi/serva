@@ -64,9 +64,15 @@ public class EditServicePage extends AbstractAdminPage {
 		// service form
 		new ServiceForm(isNew, service).appendHtml(html, config, dict);
 
-		// list related bookings
+		// switch on new
 		if (!isNew) {
-			new ServiceBookingsList(service).appendHtml(html, config, dict);
+
+			// pagelink
+			String pagelink = "page=" + NAME + "&amp;" + Service.F_ID + "=" + service.getId();
+
+			// list related bookings
+			String title = dict.bookings();
+			new ServiceBookingsList(service, title, pagelink).appendHtml(html, config, dict);
 		}
 
 		return html.toString();

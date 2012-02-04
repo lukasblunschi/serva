@@ -76,7 +76,8 @@ public class EditDomainPage extends AbstractAdminPage {
 			String pagelink = "page=" + NAME + "&amp;" + Domain.F_ID + "=" + domain.getId();
 
 			// list related bookings
-			new DomainBookingsList(domain, pagelink).appendHtml(html, config, dict);
+			String title = dict.bookings();
+			new DomainBookingsList(domain, title, pagelink).appendHtml(html, config, dict);
 
 			// show bookings adder
 			List<Service> servicesNotActive = Services.getNotActive(domain, em);
