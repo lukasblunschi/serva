@@ -41,6 +41,8 @@ textarea { width: 500px; height: 110px; }
 .info { width: 500px; }
 .currency { text-align: right; }
 
+.inactive { background-color: #dddddd; color: #333; }
+
 .superscript { font-size: 58%; position: relative; bottom: 0.5em; }
 
 div#language { float: left; width: 260px; height: 36px; padding: 7px; }

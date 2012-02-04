@@ -41,7 +41,10 @@ public abstract class AbstractBookingsList {
 		html.append("<td>").append(dict.actions()).append("</td>");
 		html.append("</tr>\n");
 		for (Booking booking : bookings) {
-			html.append("<tr>");
+
+			// open row
+			String cssClazz = booking.isActive() ? "" : " class='inactive'";
+			html.append("<tr" + cssClazz + ">");
 
 			// domain and service
 			Domain domain = booking.getDomain();
