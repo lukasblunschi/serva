@@ -75,8 +75,10 @@ public class EditBookingPage extends AbstractAdminPage {
 			}
 		}
 
-		// list related payments
+		// switch on new
 		if (!isNew) {
+
+			// list related payments
 			new BookingPaymentsList(booking).appendHtml(html, config, dict);
 		}
 
