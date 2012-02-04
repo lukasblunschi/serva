@@ -5,13 +5,9 @@ import java.util.List;
 
 import ch.serva.config.Config;
 import ch.serva.db.Booking;
-import ch.serva.db.Domain;
 import ch.serva.db.Service;
 import ch.serva.localization.Dictionary;
-import ch.serva.pages.edit.EditBookingPage;
 import ch.serva.pages.elements.Element;
-import ch.serva.tools.Dates;
-import ch.serva.tools.Escape;
 import ch.serva.tools.comparators.BookingComparator;
 
 /**
@@ -20,12 +16,18 @@ import ch.serva.tools.comparators.BookingComparator;
  * @author Lukas Blunschi
  * 
  */
-public class ServiceBookingsList implements Element {
+public class ServiceBookingsList extends AbstractBookingsList implements Element {
 
 	private final Service service;
 
-	public ServiceBookingsList(Service service) {
+	private final String title;
+
+	private final String pagelink;
+
+	public ServiceBookingsList(Service service, String title, String pagelink) {
 		this.service = service;
+		this.title = title;
+		this.pagelink = pagelink;
 	}
 
 	public void appendHtml(StringBuffer html, Config config, Dictionary dict) {
@@ -39,44 +41,10 @@ public class ServiceBookingsList implements Element {
 		html.append("<div class='content floatleft'>\n");
 
 		// element title
-		html.append("<h4>").append(dict.bookings()).append("</h4>\n");
+		html.append("<h4>").append(title).append("</h4>\n");
 
-		// table
-		html.append("<table>\n");
-		html.append("<tr>");
-		html.append("<td>").append(dict.domain()).append("</td>");
-		html.append("<td>").append(dict.from()).append("</td>");
-		html.append("<td>").append(dict.to()).append("</td>");
-		html.append("<td>").append(dict.info()).append("</td>");
-		html.append("<td>").append(dict.payments()).append("</td>");
-		html.append("</tr>\n");
-		for (Booking booking : bookings) {
-			html.append("<tr>");
-
-			// domain
-			Domain domain = booking.getDomain();
-			html.append("<td>");
-			html.append("<a href='?page=" + EditBookingPage.NAME + "&amp;id=" + booking.getId() + "'>");
-			html.append(Escape.safeXml(domain.toShortString()));
-			html.append("</a>");
-			html.append("</td>");
-
-			// from, to and info
-			String fromStr = Dates.dateFormat.format(booking.getFrom());
-			String toStr = booking.getTo() == null ? "" : Dates.dateFormat.format(booking.getTo());
-			html.append("<td>").append(fromStr).append("</td>");
-			html.append("<td>").append(toStr).append("</td>");
-			html.append("<td>").append(Escape.safeXml(booking.getInfo())).append("</td>");
-
-			// payments
-			boolean hasPayments = booking.getPayments().size() > 0;
-			html.append("<td>").append(hasPayments ? dict.yes() : "").append("</td>");
-
-			html.append("</tr>\n");
-		}
-
-		// close table
-		html.append("</table>\n");
+		// bookings table
+		appendTable(bookings, pagelink, html, config, dict);
 
 		// close element
 		html.append("</div>\n\n");
