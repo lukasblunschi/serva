@@ -54,7 +54,10 @@ public class ListDomainsPage extends AbstractAdminPage {
 		List<Domain> domains = new Instance(em).getDomains();
 		Collections.sort(domains, new DomainComparator());
 		for (Domain domain : domains) {
-			html.append("<tr>");
+
+			// open row
+			String cssClazz = domain.isActive() ? "" : " class='inactive'";
+			html.append("<tr" + cssClazz + ">");
 
 			// domainname
 			html.append("<td>");

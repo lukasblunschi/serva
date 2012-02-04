@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import ch.serva.config.DomainToUsername;
+import ch.serva.db.collections.Services;
 
 /**
  * An entity to store a domain.
@@ -121,6 +122,10 @@ public class Domain {
 
 	public boolean isRemovable() {
 		return bookings != null && bookings.isEmpty();
+	}
+
+	public boolean isActive() {
+		return Services.getActive(this).size() > 0;
 	}
 
 	public String getUsername() {
