@@ -38,7 +38,7 @@ public class ServiceBookingsList extends AbstractBookingsList implements Element
 
 		// element
 		html.append("<!-- service bookings list -->\n");
-		html.append("<div class='content floatleft'>\n");
+		html.append("<div class='content'>\n");
 
 		// element title
 		html.append("<h4>").append(title).append("</h4>\n");
