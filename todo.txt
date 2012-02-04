@@ -2,6 +2,7 @@ Serva ToDo
 -----------------
 
 user-interface:
+- hide/separate inactive domains on domain list page.
 - edit domain > user selectors > ignore nickname if not set.
 - order service bookings on homepage and invoice.
 - invoice font size: 11pt.
