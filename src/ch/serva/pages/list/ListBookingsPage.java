@@ -1,6 +1,5 @@
 package ch.serva.pages.list;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,8 +10,8 @@ import ch.serva.actions.RemoveBookingAction;
 import ch.serva.config.Config;
 import ch.serva.db.Booking;
 import ch.serva.db.Domain;
-import ch.serva.db.Instance;
 import ch.serva.db.Service;
+import ch.serva.db.collections.Services;
 import ch.serva.localization.Dictionary;
 import ch.serva.pages.AbstractAdminPage;
 import ch.serva.pages.edit.EditBookingPage;
@@ -43,26 +42,17 @@ public class ListBookingsPage extends AbstractAdminPage {
 		html.append("<!-- title -->\n");
 		html.append("<h3 class='content'>").append(dict.bookings()).append("</h3>\n\n");
 
+		// TODO to work with booking, you can either select a domain OR a service to start with...
+
 		// domains
 		List<Domain> domainsSel = DomainsSelector.getSelectedDomains(req, em, dict, ListBookingsPage.NAME, html);
 
 		// multiple service adder
 		if (domainsSel.size() == 1) {
 			Domain domain = domainsSel.get(0);
-			List<Service> services = new Instance(em).getServices();
-			List<Service> servicesNotActive = new ArrayList<Service>();
-			for (Service service : services) {
-				boolean isActive = false;
-				for (Booking booking : domain.getBookings()) {
-					if (booking.getService().getId().equals(service.getId())) {
-						isActive |= booking.isActive();
-					}
-				}
-				if (!isActive) {
-					servicesNotActive.add(service);
-				}
-			}
-			new BookingsAdder(domain, servicesNotActive, ListBookingsPage.NAME).appendHtml(html, config, dict);
+			List<Service> servicesNotActive = Services.getNotActive(domain, em);
+			String pagelink = "page=" + NAME + "&amp;" + DomainsSelector.P_DOMAIN_IDS + "=" + domain.getId();
+			new BookingsAdder(domain, servicesNotActive, pagelink).appendHtml(html, config, dict);
 		}
 
 		// clearer
@@ -89,6 +79,8 @@ public class ListBookingsPage extends AbstractAdminPage {
 		for (Domain domain : domainsSel) {
 			List<Booking> bookings = domain.getBookings();
 			Collections.sort(bookings, new BookingComparator());
+
+			// TODO use DomainBookingsList here!
 
 			html.append("<tr><td colspan='6'>&#160;</td></tr>\n");
 			for (Booking booking : bookings) {
