@@ -1,0 +1,16 @@
+
+workflows in serva
+------------------
+
+(1) edit user details
+    - e.g. change contact information
+    - path: users -> user -> edit and save
+
+(2) add user
+    - path: users -> add -> enter and save
+
+(3) add bookings to a domain
+    - path: domains -> domain -> add
+
+
+

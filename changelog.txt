@@ -1,5 +1,10 @@
 0.2.7 (ongoing)
 -----
+- bookings total price element added.
+- highlight inactive bookings.
+- list bookings page overhauled.
+- services selector added.
+- abstract bookings list added.
 - actions added to domain bookings list element.
 - layout of domain form changed.
 - layout of domain bookings list element changed.
