@@ -8,6 +8,11 @@ Usage:
   E.g. for update block "2.1.x", rename coach to nurse, then rename group to patient and so on.
 
 
+from 0.2.6 to 0.2.7:
+  - code changes.
+  - css updated.
+
+
 from 0.2.5 to 0.2.6:
   - no special changes.
 
