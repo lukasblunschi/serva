@@ -23,6 +23,7 @@ important:
 
 
 standard:
+- some services (e.g. articlefox instance) might be booked more then once per domain at the same time.
 
 
 maybe:
