@@ -14,6 +14,7 @@ logic:
 
 
 release critical:
+- allow to produce invoices for a given date range. [saimira, 2013-06-03]
 - add payments list to home page.
 
 
