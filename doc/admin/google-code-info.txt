@@ -5,8 +5,6 @@ URL: https://code.google.com/p/serva/
 
 Name and tagline: serva - Service accounting
 
-Version control system: Mercurial
-
 License: Apache 2.0
 
 Labels:
@@ -15,4 +13,14 @@ Labels:
 - hosting
 - java
 - java servlets
+
+Member:
+- me (owner)
+- robert
+
+Wiki: <not used>
+
+Issues: <overview exported>
+
+Version control system: Mercurial
 
