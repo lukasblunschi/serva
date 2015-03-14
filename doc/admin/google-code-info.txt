@@ -43,3 +43,16 @@ Repositories
 
 -- Administer
 
+Summary: Service accounting
+
+Description: As a webhoster, you need to do accounting for your provided services. Serva is a web application which does this for you.
+
+License: see above
+
+Labels: see above
+
+Moved to: https://sourceforge.net/projects/serva
+
+
+
+Lukas, 2015-03-14
