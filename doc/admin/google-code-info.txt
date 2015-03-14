@@ -5,6 +5,9 @@ URL: https://code.google.com/p/serva/
 
 Name and tagline: serva - Service accounting
 
+
+-- Project Home
+
 License: Apache 2.0
 
 Labels:
@@ -18,9 +21,25 @@ Member:
 - me (owner)
 - robert
 
+
+-- Wiki 
+
 Wiki: <not used>
+
+
+-- Issues
 
 Issues: <overview exported>
 
+
+-- Source
+
 Version control system: Mercurial
+
+Repositories
+- default     (last commit: 2010-03-23, tests only)
+- wiki        (no commit)
+
+
+-- Administer
 
