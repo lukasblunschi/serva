@@ -1,3 +1,9 @@
+Serva - Google Code Info
+------------------------
+
+URL: https://code.google.com/p/serva/
+
+Name and tagline: serva - Service accounting
 
 Version control system: Mercurial
 
@@ -9,3 +15,4 @@ Labels:
 - hosting
 - java
 - java servlets
+
