@@ -25,6 +25,8 @@ important:
 
 standard:
 - some services (e.g. articlefox instance) might be booked more then once per domain at the same time.
+- Besides services there should also be tasks which are single work items.
+  These tasks can be added to a domain and will appear on the next invoice.
 
 
 maybe:
