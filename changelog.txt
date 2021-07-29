@@ -1,5 +1,6 @@
 0.2.8 (ongoing)
 -----
+- code: upgrade JavaMail from v1.4.2 to v1.4.5.
 - code: drop support for Java 5 (no longer include activation-1.1.1.jar).
 
 
