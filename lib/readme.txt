@@ -3,7 +3,6 @@ Readme Libraries of Serva
 
 Library                                        What                                    Use
 
-- activation-1.1.1.jar                         JavaBeans Activation Framework (JAF)    Email notifications (implicitly used by mail-1.4.2.jar)
 - commons-fileupload-1.2.1.jar                 Commons File Upload                     Post requests
 - commons-io-1.4.jar                           Commons I/O                             Post requests
 - ejb3-persistence-1.0.2-GA.jar                EJB Persistence API                     Database
@@ -39,8 +38,4 @@ hibernate/:
 - javaassist-3.9.0.GA.jar
 - jta-1.1.jar
 
-
-Notes:
-- activation-1.1.1.jar is included in Java SE 6. But since we want Serva to be
-  runnable on Java SE 5, we still have to include it here.
 

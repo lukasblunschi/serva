@@ -4,11 +4,6 @@
 
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 
-	<classpathentry kind="lib" path="lib/activation-1.1.1.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/serva/lib/activation-1.1.1-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="lib/commons-fileupload-1.2.1.jar" sourcepath="lib/commons-fileupload-1.2.1-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-1.4.jar" sourcepath="lib/commons-io-1.4-sources.jar"/>
 	<classpathentry kind="lib" path="lib/ejb3-persistence-1.0.2-GA.jar" sourcepath="lib/ejb3-persistence-1.0.2-GA-sources.jar"/>
