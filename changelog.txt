@@ -1,4 +1,10 @@
-0.2.8 (ongoing)
+0.3.0 (ongoing)
+-----
+- allow longer info in booking.
+- code: use git.
+
+
+0.2.8 (revision 341, not released)
 -----
 - code: upgrade JavaMail from v1.4.2 to v1.4.5.
 - code: drop support for Java 5 (no longer include activation-1.1.1.jar).

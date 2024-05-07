@@ -56,7 +56,7 @@ public class SaveBookingAction implements Action {
 		if (toStr == null || toStr.length() > 100) {
 			return new Failure("No or too long to date given!");
 		}
-		if (info == null || info.length() > 100) {
+		if (info == null || info.length() > 250) {
 			return new Failure("No or too long info given!");
 		}
 
