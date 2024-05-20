@@ -9,7 +9,7 @@ JAVAHOME=/usr/lib/jvm/java-11-openjdk-amd64
 # You don't need to edit the following lines
 #
 CLASSPATH=bin:\
-dist/serva-0.2.7.jar:\
+dist/serva-0.3.0.jar:\
 lib/commons-fileupload-1.5.jar:\
 lib/commons-io-2.15.1.jar:\
 lib/commons-logging-1.3.0.jar:\
