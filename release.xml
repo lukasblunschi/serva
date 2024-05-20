@@ -67,11 +67,6 @@
 		<copy todir="${dir-standalone}/lib">
 			<fileset dir="lib">
 				<include name="**" />
-				<exclude name="jetty/jetty*6.1.14*" />
-				<exclude name="**javadoc*" />
-				<exclude name="**/*javadoc*" />
-				<exclude name="**sources*" />
-				<exclude name="**/*sources*" />
 			</fileset>
 		</copy>
 		<copy todir="${dir-standalone}/scripts">
@@ -130,18 +125,14 @@
 			<fileset dir="lib">
 				<include name="*" />
 				<exclude name="fop" />
-				<exclude name="jetty" />
 				<exclude name="hibernate" />
-				<exclude name="servlet-api*" />
-				<exclude name="*javadoc*" />
-				<exclude name="*sources*" />
-			</fileset>
-			<fileset dir="lib/hibernate">
-				<include name="*" />
+				<exclude name="jetty" />
 			</fileset>
 			<fileset dir="lib/fop">
 				<include name="*" />
-				<exclude name="*javadoc*" />
+			</fileset>
+			<fileset dir="lib/hibernate">
+				<include name="*" />
 			</fileset>
 			<fileset dir="dist" includes="*" />
 		</copy>
