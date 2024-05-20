@@ -1,7 +1,8 @@
 0.3.0 (ongoing)
 -----
 - allow longer info in booking.
-- code: use git.
+- use java 11.
+- use git.
 
 
 0.2.8 (revision 341, not released)
