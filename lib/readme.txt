@@ -10,7 +10,6 @@ Library                                        What                             
 - javax.mail-1.6.2.jar                           Java Mail                               Sending mails
 - junit-4.5.jar                                JUnit                                   Testing
 - mariadb-java-client-3.3.2.jar                  MariaDB Java Client                     Database
-- servlet-api-2.5-6.1.21.jar                   Java Servlet API (from Jetty 6.1.21)    Web frontend
 - reload4j-1.2.25.jar                            Reload4j                                Logging
 
 fop/:
@@ -41,7 +40,13 @@ hibernate/:
 - mchange-commons-java-0.2.19.jar
 
 jetty/:
-- jetty-6.1.21.jar                             Jetty                                   Web frontend (standalone)
-- jetty-util-6.1.21.jar                        Jetty Utilities                         Web frontend (standalone)
+- jetty-continuation-7.6.7.jar                   Jetty                                   Web frontend (standalone)
+- jetty-http-7.6.7.jar                           Jetty                                   Web frontend (standalone)
+- jetty-io-7.6.7.jar                             Jetty                                   Web frontend (standalone)
+- jetty-security-7.6.7.jar                       Jetty                                   Web frontend (standalone)
+- jetty-server-7.6.7.jar                         Jetty                                   Web frontend (standalone)
+- jetty-servlet-7.6.7.jar                        Jetty                                   Web frontend (standalone)
+- jetty-util-7.6.7.jar                           Jetty                                   Web frontend (standalone)
+- servlet-api-2.5-jetty-7.6.7.jar                Java Servlet API (from Jetty 7.4.5)     Web frontend
 
 

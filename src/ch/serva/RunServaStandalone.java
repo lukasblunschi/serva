@@ -1,8 +1,8 @@
 package ch.serva;
 
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.servlet.Context;
-import org.mortbay.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 
 import ch.serva.servlets.PdfServlet;
 import ch.serva.servlets.ResourcesServlet;
@@ -53,7 +53,11 @@ public class RunServaStandalone {
 		// start jetty
 		try {
 			Server server = new Server(port);
-			Context context = new Context(server, "/" + contextName, Context.SESSIONS);
+
+			// create context
+			ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+			context.setContextPath("/" + contextName);
+			server.setHandler(context);
 
 			// add servlet(s)
 			context.addServlet(new ServletHolder(new ServaServlet()), "/");
