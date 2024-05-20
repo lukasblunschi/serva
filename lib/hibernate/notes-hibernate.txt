@@ -1,0 +1,11 @@
+Notes for hibernate
+-------------------
+
+which release to choose:
+  https://hibernate.org/orm/releases/
+  -> last release with javax.persistence support is 5.6
+
+user guide:
+  https://docs.jboss.org/hibernate/orm/5.6/userguide/html_single/Hibernate_User_Guide.html
+
+

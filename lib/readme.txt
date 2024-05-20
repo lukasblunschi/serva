@@ -6,7 +6,6 @@ Library                                        What                             
 - commons-fileupload-1.2.1.jar                 Commons File Upload                     Post requests
 - commons-io-1.4.jar                           Commons I/O                             Post requests
 - commons-logging-1.3.0.jar                      Apache Commons Logging                  Used by Apache FOP
-- ejb3-persistence-1.0.2-GA.jar                EJB Persistence API                     Database
 - junit-4.5.jar                                JUnit                                   Testing
 - log4j-1.2.15.jar                             Log4j                                   Logging
 - mail-1.4.2.jar                               JavaMail                                Email notifications
@@ -25,20 +24,25 @@ fop/:
 - qdox-1.12.jar                                  ?                                       Used by Apache FOP
 - xmlgraphics-commons-2.9.jar                    Apache XML Graphics Commons             Used by Apache FOP
 
+hibernate/:
+- antlr-2.7.7.jar
+- byte-buddy-1.12.18.jar
+- c3p0-0.9.5.5.jar                               Connection pool
+- classmate-1.5.1.jar
+- hibernate-c3p0-5.6.15.Final.jar
+- hibernate-commons-annotations-5.1.2.Final.jar
+- hibernate-core-5.6.15.Final.jar                Hibernate Core
+- hibernate-entitymanager-5.6.15.Final.jar       Hibernate Entity Manager
+- jandex-2.4.2.Final.jar
+- javax.activation-api-1.2.0.jar
+- javax.persistence-api-2.2.jar
+- jaxb-api-2.3.1.jar
+- jboss-logging-3.4.3.Final.jar
+- jboss-transaction-api_1.2_spec-1.1.1.Final.jar
+- mchange-commons-java-0.2.19.jar
+
 jetty/:
 - jetty-6.1.21.jar                             Jetty                                   Web frontend (standalone)
 - jetty-util-6.1.21.jar                        Jetty Utilities                         Web frontend (standalone)
-
-hibernate/:
-- antlr-2.7.6.jar
-- c3p0-0.9.1.jar                               Connection pool
-- commons-collections-3.1.jar
-- dom4j-1.6.1.jar
-- hibernate-annotations-3.4.0.GA.jar           Hibernate Annotations
-- hibernate-commons-annotations-3.4.0.GA.jar
-- hibernate-core-3.3.2.GA.jar
-- hibernate-entitymanager-3.4.0.GA.jar
-- javaassist-3.9.0.GA.jar
-- jta-1.1.jar
 
 

@@ -1,5 +1,6 @@
 0.3.0 (ongoing)
 -----
+- lib upgrade: hibernate: 3.4.0 -> 5.6.15.
 - lib upgrade: fop: 0.95 -> 2.9.
 - allow longer info in booking.
 - use java 11.
