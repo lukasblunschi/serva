@@ -3,8 +3,8 @@ Readme Libraries of Serva
 
 Library                                        What                                    Use
 
-- commons-fileupload-1.2.1.jar                 Commons File Upload                     Post requests
-- commons-io-1.4.jar                           Commons I/O                             Post requests
+- commons-fileupload-1.5.jar                     Apache Commons FileUpload               POST request
+- commons-io-2.15.1.jar                          Apache Commons IO                       Used by Commons FileUpload
 - commons-logging-1.3.0.jar                      Apache Commons Logging                  Used by Apache FOP
 - junit-4.5.jar                                JUnit                                   Testing
 - log4j-1.2.15.jar                             Log4j                                   Logging
