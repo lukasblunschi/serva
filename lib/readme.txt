@@ -8,7 +8,6 @@ Library                                        What                             
 - commons-logging-1.3.0.jar                      Apache Commons Logging                  Used by Apache FOP
 - javax.activation-1.1.1.jar                     JavaBeans Activation Framework          Used by Java Mail
 - javax.mail-1.6.2.jar                           Java Mail                               Sending mails
-- junit-4.5.jar                                JUnit                                   Testing
 - mariadb-java-client-3.3.2.jar                  MariaDB Java Client                     Database
 - reload4j-1.2.25.jar                            Reload4j                                Logging
 
