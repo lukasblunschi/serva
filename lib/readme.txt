@@ -5,6 +5,7 @@ Library                                        What                             
 
 - commons-fileupload-1.2.1.jar                 Commons File Upload                     Post requests
 - commons-io-1.4.jar                           Commons I/O                             Post requests
+- commons-logging-1.3.0.jar                      Apache Commons Logging                  Used by Apache FOP
 - ejb3-persistence-1.0.2-GA.jar                EJB Persistence API                     Database
 - junit-4.5.jar                                JUnit                                   Testing
 - log4j-1.2.15.jar                             Log4j                                   Logging
@@ -15,12 +16,14 @@ Library                                        What                             
 - slf4j-log4j12-1.5.8.jar                      SLF4j binding to Log4j 1.2              Logging
 
 fop/:
-- avalon-framework-4.2.0.jar                   FOP                                     FOP
-- batik-all-1.7.jar                            FOP                                     FOP
-- commons-logging-1.1.1.jar                    Commons Logging                         FOP
-- fop-0.95.jar                                 FOP                                     FOP
-- xml-amix-ext-1.3.04.jar                      FOP                                     FOP (SVG rendering)
-- xmlgraphics-commons-1.3.1.jar                FOP                                     FOP
+- batik-all-1.17.jar                             Batik SVG Toolkit                       Used by Apache FOP
+- fontbox-2.0.27.jar                             ?                                       Used by Apache FOP
+- fop-2.9.jar                                    Apache FOP                              PDF rendering
+- fop-core-2.9.jar                               Apache FOP                              PDF rendering
+- fop-events-2.9.jar                             Apache FOP                              PDF rendering
+- fop-util-2.9.jar                               Apache FOP                              PDF rendering
+- qdox-1.12.jar                                  ?                                       Used by Apache FOP
+- xmlgraphics-commons-2.9.jar                    Apache XML Graphics Commons             Used by Apache FOP
 
 jetty/:
 - jetty-6.1.21.jar                             Jetty                                   Web frontend (standalone)
