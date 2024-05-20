@@ -1,0 +1,13 @@
+Notes for MariaDB
+-----------------
+
+check releases:
+  - https://mariadb.org/connector-java/all-releases/
+
+download:
+  - https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client
+
+user guide:
+  - https://mariadb.com/kb/en/about-mariadb-connector-j/
+
+

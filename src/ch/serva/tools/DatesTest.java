@@ -2,15 +2,17 @@ package ch.serva.tools;
 
 import java.util.Date;
 
-import junit.framework.TestCase;
-
 /**
  * Test dates tools.
  * 
  * @author Lukas Blunschi
  * 
  */
-public class DatesTest extends TestCase {
+public class DatesTest {
+
+	private void fail() throws Exception {
+		throw new Exception();
+	}
 
 	public static void main(String[] args) throws Exception {
 		DatesTest test = new DatesTest();
