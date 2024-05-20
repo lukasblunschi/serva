@@ -1,5 +1,6 @@
 package ch.serva.servlets;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -47,7 +48,7 @@ public class PdfServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private FopFactory fopFactory = FopFactory.newInstance();
+	private FopFactory fopFactory = FopFactory.newInstance(new File(".").toURI());
 
 	private TransformerFactory tFactory = TransformerFactory.newInstance();
 
