@@ -15,10 +15,10 @@
 
 			<!-- MySQL connection properties -->
 
-			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/serva" />
-			<property name="hibernate.connection.username" value="serva" />
-			<property name="hibernate.connection.password" value="123" />
+			<property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost/serva" />
+			<property name="javax.persistence.jdbc.user" value="serva" />
+			<property name="javax.persistence.jdbc.password" value="123" />
 
 
 			<!-- C3P0 connection pool provider -->

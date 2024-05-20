@@ -9,7 +9,7 @@ Library                                        What                             
 - javax.activation-1.1.1.jar                     JavaBeans Activation Framework          Used by Java Mail
 - javax.mail-1.6.2.jar                           Java Mail                               Sending mails
 - junit-4.5.jar                                JUnit                                   Testing
-- mysql-connector-java-5.1.10.jar              MySQL JDBC Connector                    Database
+- mariadb-java-client-3.3.2.jar                  MariaDB Java Client                     Database
 - servlet-api-2.5-6.1.21.jar                   Java Servlet API (from Jetty 6.1.21)    Web frontend
 - slf4j-api-1.5.8.jar                          SLF4j                                   Logging
 - slf4j-log4j12-1.5.8.jar                      SLF4j binding to Log4j 1.2              Logging
