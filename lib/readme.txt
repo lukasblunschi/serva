@@ -6,8 +6,9 @@ Library                                        What                             
 - commons-fileupload-1.5.jar                     Apache Commons FileUpload               POST request
 - commons-io-2.15.1.jar                          Apache Commons IO                       Used by Commons FileUpload
 - commons-logging-1.3.0.jar                      Apache Commons Logging                  Used by Apache FOP
+- javax.activation-1.1.1.jar                     JavaBeans Activation Framework          Used by Java Mail
+- javax.mail-1.6.2.jar                           Java Mail                               Sending mails
 - junit-4.5.jar                                JUnit                                   Testing
-- mail-1.4.2.jar                               JavaMail                                Email notifications
 - mysql-connector-java-5.1.10.jar              MySQL JDBC Connector                    Database
 - servlet-api-2.5-6.1.21.jar                   Java Servlet API (from Jetty 6.1.21)    Web frontend
 - slf4j-api-1.5.8.jar                          SLF4j                                   Logging

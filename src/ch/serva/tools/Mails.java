@@ -75,6 +75,9 @@ public class Mails {
 			// create SMTP session
 			Properties props2 = new Properties();
 			props2.setProperty("mail.smtp.host", host);
+			props2.setProperty("mail.smtp.auth", "true");
+			props2.setProperty("mail.smtp.starttls.enable", "true");
+			props2.setProperty("mail.smtp.port", "587");
 			mailSession = Session.getInstance(props2);
 
 			// create message
@@ -83,7 +86,7 @@ public class Mails {
 			message.setReplyTo(replyTos);
 			message.setRecipients(Message.RecipientType.TO, Tos);
 			message.setSentDate(new Date());
-			message.setSubject(subject);
+			message.setSubject(subject, "utf-8");
 			message.setText(body, "utf-8");
 
 		} catch (MessagingException me) {
