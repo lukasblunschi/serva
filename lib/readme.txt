@@ -7,12 +7,12 @@ Library                                        What                             
 - commons-io-2.15.1.jar                          Apache Commons IO                       Used by Commons FileUpload
 - commons-logging-1.3.0.jar                      Apache Commons Logging                  Used by Apache FOP
 - junit-4.5.jar                                JUnit                                   Testing
-- log4j-1.2.15.jar                             Log4j                                   Logging
 - mail-1.4.2.jar                               JavaMail                                Email notifications
 - mysql-connector-java-5.1.10.jar              MySQL JDBC Connector                    Database
 - servlet-api-2.5-6.1.21.jar                   Java Servlet API (from Jetty 6.1.21)    Web frontend
 - slf4j-api-1.5.8.jar                          SLF4j                                   Logging
 - slf4j-log4j12-1.5.8.jar                      SLF4j binding to Log4j 1.2              Logging
+- reload4j-1.2.25.jar                            Reload4j                                Logging
 
 fop/:
 - batik-all-1.17.jar                             Batik SVG Toolkit                       Used by Apache FOP
