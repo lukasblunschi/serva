@@ -37,7 +37,6 @@ public class PostRequest implements Request {
 
 	// --------------------------------------------------------- helper methods
 
-	@SuppressWarnings("unchecked")
 	public void parse(HttpServletRequest request, String uploadPath, boolean allowUpload) throws Exception {
 
 		// Check that we have a file upload request

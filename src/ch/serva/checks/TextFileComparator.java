@@ -3,6 +3,7 @@ package ch.serva.checks;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.Map;
 
 import ch.serva.checks.results.CheckNoProblem;
@@ -29,11 +30,13 @@ public class TextFileComparator {
 	 * @return success if equal, failure if not equal.
 	 */
 	public static CheckResult compare(File configFile, File templateFile, Map<String, String> replacementMap) {
+		BufferedReader readerConfig = null;
+		BufferedReader readerTemplate = null;
 		try {
 
 			// readers
-			BufferedReader readerConfig = new BufferedReader(new FileReader(configFile));
-			BufferedReader readerTemplate = new BufferedReader(new FileReader(templateFile));
+			readerConfig = new BufferedReader(new FileReader(configFile));
+			readerTemplate = new BufferedReader(new FileReader(templateFile));
 
 			// loop over all lines in config file
 			String lineConfig = null;
@@ -75,6 +78,21 @@ public class TextFileComparator {
 
 		} catch (Exception e) {
 			return new CheckProblem("exception in text file comparer: " + e.getMessage());
+		} finally {
+			try {
+				if (readerConfig != null) {
+					readerConfig.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			try {
+				if (readerTemplate != null) {
+					readerTemplate.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 		return new CheckNoProblem();

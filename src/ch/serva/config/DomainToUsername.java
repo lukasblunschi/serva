@@ -76,8 +76,7 @@ public class DomainToUsername {
 			// reload
 			// format: 10000: template.domain
 			mapping.clear();
-			try {
-				BufferedReader reader = new BufferedReader(new FileReader(mappingFile));
+			try (BufferedReader reader = new BufferedReader(new FileReader(mappingFile))) {
 				String line = null;
 				while ((line = reader.readLine()) != null) {
 

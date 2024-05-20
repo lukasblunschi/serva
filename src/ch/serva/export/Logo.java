@@ -22,8 +22,7 @@ public class Logo {
 		StringBuffer xml = new StringBuffer();
 		File file = getLogoFile();
 		if (file != null) {
-			try {
-				BufferedReader reader = new BufferedReader(new FileReader(file));
+			try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 				String line = null;
 				while ((line = reader.readLine()) != null) {
 					xml.append(line);
