@@ -13,9 +13,12 @@ Releasing Serva Howto
 
 4. commit "releasing ..."
 
-5. run release.xml
+5. create git tag
 
-6. upload to sourceforge
+6. run release.xml
+   $ ant -f release.xml
+
+7. upload to sourceforge
+   - using web interface
 
 
-Lukas, 2010-03-14
