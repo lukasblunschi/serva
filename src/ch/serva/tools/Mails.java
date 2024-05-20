@@ -13,8 +13,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * Helper class to send emails.
@@ -25,7 +24,7 @@ public class Mails {
 
 	public static final String EMAIL_REGEX = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*$";
 
-	private static final Logger logger = LoggerFactory.getLogger(Mails.class);
+	private static final Logger logger = Logger.getLogger(Mails.class);
 
 	/**
 	 * Send an email.

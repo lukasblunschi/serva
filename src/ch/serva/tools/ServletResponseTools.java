@@ -14,8 +14,7 @@ import java.util.TimeZone;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * Tools to work with servlet responses.
@@ -27,7 +26,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ServletResponseTools {
 
-	private static final Logger logger = LoggerFactory.getLogger(ServletResponseTools.class);
+	private static final Logger logger = Logger.getLogger(ServletResponseTools.class);
 
 	private static SimpleDateFormat cacheFormatter;
 

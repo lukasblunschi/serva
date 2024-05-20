@@ -4,8 +4,7 @@ import java.net.URLDecoder;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 /**
  * These servlet tools help to retrieve parameters inside a HTTP request or to dump such a request.
@@ -14,7 +13,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ServletTools {
 
-	private static final Logger logger = LoggerFactory.getLogger(ServletTools.class);
+	private static final Logger logger = Logger.getLogger(ServletTools.class);
 
 	/**
 	 * Decode the given URI using UTF-8 charset.

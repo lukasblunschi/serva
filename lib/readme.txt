@@ -11,8 +11,6 @@ Library                                        What                             
 - junit-4.5.jar                                JUnit                                   Testing
 - mariadb-java-client-3.3.2.jar                  MariaDB Java Client                     Database
 - servlet-api-2.5-6.1.21.jar                   Java Servlet API (from Jetty 6.1.21)    Web frontend
-- slf4j-api-1.5.8.jar                          SLF4j                                   Logging
-- slf4j-log4j12-1.5.8.jar                      SLF4j binding to Log4j 1.2              Logging
 - reload4j-1.2.25.jar                            Reload4j                                Logging
 
 fop/:

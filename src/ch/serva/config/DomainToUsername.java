@@ -8,8 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 
 import ch.serva.tools.Props;
 
@@ -21,7 +20,7 @@ import ch.serva.tools.Props;
  */
 public class DomainToUsername {
 
-	private static final Logger logger = LoggerFactory.getLogger(DomainToUsername.class);
+	private static final Logger logger = Logger.getLogger(DomainToUsername.class);
 
 	private final String pathMapping;
 
