@@ -1,3 +1,9 @@
+0.3.1 (ongoing)
+-----
+- doc: replace MySQL with MariaDB in documentation. (PR 1)
+- admin: moved git repository from sourceforge to github.
+
+
 0.3.0 (2024-05-20)
 -----
 - code: fix compiler warnings.
