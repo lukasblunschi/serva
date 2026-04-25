@@ -8,6 +8,6 @@ if [ -z $filename ]; then
 fi
 
 # restore database
-mysql -u serva --password=123 serva < $filename
+mariadb -u serva --password=123 serva < $filename
 
 echo "Database from $filename restored."

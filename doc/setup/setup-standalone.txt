@@ -3,20 +3,19 @@ Setup of Serva as a standalone application
 
 1. Create database
 
-   $ mysql -u root -p
-   (Enter MySQL root password)
-   mysql> status
+   $ sudo mariadb
+   > status
      (check that everything is stored in utf8)
-   mysql> create database serva;
-   mysql> grant all on serva.* to serva@localhost identified by '123';
-   mysql> flush privileges;
-   mysql> exit
+   > create database serva;
+   > grant all on serva.* to serva@localhost identified by '123';
+   > flush privileges;
+   > exit
 
-   $ mysql -u serva --password=123 serva
-   mysql> show databases;
-   mysql> status
+   $ mariadb -u serva --password=123 serva
+   > show databases;
+   > status
      (check that everything is stored in utf8)
-   mysql> exit
+   > exit
 
 
 2. Restore empty database
@@ -39,4 +38,4 @@ Setup of Serva as a standalone application
 5. Enjoy!
 
 
-Lukas, 2010-03-14
+Lukas, 2026-04-25
