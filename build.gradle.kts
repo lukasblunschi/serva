@@ -44,6 +44,7 @@ war {
 }
 
 repositories {
+    // Use Maven Central for resolving dependencies.
     mavenCentral()
     // Some older JBoss-spec artifacts may be available from the JBoss releases repo
     maven("https://repository.jboss.org/nexus/content/repositories/releases/")
@@ -108,8 +109,8 @@ dependencies {
 // Copy runtime jars and the produced project jar into build/lib/ so the
 // existing run script can use separate jars (no fat jar).
 tasks.register<Copy>("copyRuntimeLibs") {
-    // depend only on the project JAR so we don't trigger the WAR task (avoids
-    // duplicate packaging issues during migration)
+    // depend only on the project JAR so we don't trigger the WAR task
+    // (avoids duplicate packaging issues during migration)
     dependsOn("jar")
     from(configurations.runtimeClasspath)
     from(tasks.named("jar"))
