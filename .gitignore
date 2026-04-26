@@ -1,3 +1,10 @@
+
+# Eclipse compile dir
 bin/
+
+# Gradle build dirs
+.gradle/
+build/
+
 dist/
 upload/

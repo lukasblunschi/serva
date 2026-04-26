@@ -64,9 +64,27 @@ MariaDB database.
   ch.serva.RunServaStandalone
   ```
 
-- A distribution jar is present under `dist/` in released archives (example:
-  `dist/serva-0.3.0.jar`). Alternatively, build/release steps may be in other
-  tooling you use.
+ - A distribution jar is present under `dist/` in released archives (example:
+   `dist/serva-0.3.0.jar`). Alternatively, build/release steps may be in other
+   tooling you use.
+
+## Build with Gradle
+
+This repository now contains a Gradle Kotlin DSL build.
+To build the project and populate the runtime libraries used by the standalone script, run:
+
+```sh
+./gradlew clean assemble copyRuntimeLibs
+```
+
+Then start the standalone server with:
+
+```sh
+./run-standalone.sh
+```
+
+The standalone script expects Java 11. You can set `JAVAHOME` in
+`run-standalone.sh` to point to your Java 11 installation.
 
 ## Troubleshooting
 
