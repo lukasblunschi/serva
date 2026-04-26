@@ -1,9 +1,11 @@
 
-# Eclipse compile dir
+# ignore Eclipse compile directory
 bin/
 
-# Gradle build dirs
+# ignore Gradle project-specific cache directory
 .gradle/
+
+# ignore Gradle build output directory
 build/
 
 dist/
