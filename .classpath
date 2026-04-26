@@ -4,9 +4,14 @@
 
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11"/>
 
+	<!-- Web Tools Platform (WTP) classpath container for Java EE projects -->
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+
+	<!-- Gradle classpath container for managing dependencies -->
 	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer">
 		<attributes>
+
+			<!-- Custom attributes for Gradle dependencies -->
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
