@@ -1,0 +1,61 @@
+
+PR 7 (6 commits): 3-migrate-to-gradle
+
+oo .settings/org.eclipse.buildship.core.prefs   [1, 3]
+
+oo gradle/wrapper/
+   oo gradle-wrapper.jar                        [1, 3]
+   oo gradle-wrapper.properties                 [1, 3]
+
+oo .classpath                                   [   3]
+   -> remove
+      -  7 libs from lib/
+      -  8 libs from lib/fop/
+      - 15 libs from lib/hibernate/
+      -  8 libs from lib/jetty/
+   -> add
+      - con j2ee.internal.web.container
+      - con gradleclasspathcontainer
+oo .gitignore                                   [ 2,3]
+   -> ignore .gradle/ and build/
+oo .project                                     [   3]
+   -> 3 builders added (2 wst, gradle)
+   -> gradle nature added
+oo build.gradle.kts                             [1]
+   -> deps
+      -  7 commons:     OK
+      -  8 fop:         OK
+      - 15 hibernate:   OK
+      -  7 jetty:       OK
+      -  1 servlet API: OK
+   -> copyRuntimeLibs: 37 + 1 items
+-- DEPENDENCY-MAPPING.md
+oo gradlew                                      [1, 3]
+oo gradlew.bat                                  [1, 3]
+-- README.md
+-- run-standalone.sh
+oo settings.gradle.kts                          [1, 3]
+
+[1] added
+[2] comments
+[3] compared to default Gradle project
+
+
+questions:
+- should I use a gradle/libs.versions.toml file?
+  -> maybe later
+- should I move source files into src/main/java?
+  -> yes, but in a 2nd PR
+
+
+todos:
+=> check if mariadb-java-client should be included in WAR
+=> check if jboss-transaction-api should be included in WAR
+
+
+follow-ups:
+=> remove flatDir repo in build.gradle.kts
+=> remove JAR files in lib/
+=> move source files into src/main/java?
+   -> see default Gradle project (lib/.classpath)
+
