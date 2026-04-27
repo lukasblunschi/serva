@@ -64,9 +64,9 @@ MariaDB database.
   ch.serva.RunServaStandalone
   ```
 
- - A distribution jar is present under `dist/` in released archives (example:
-   `dist/serva-0.3.0.jar`). Alternatively, build/release steps may be in other
-   tooling you use.
+- A distribution jar is present under `dist/` in released archives (example:
+  `dist/serva-0.3.0.jar`). Alternatively, build/release steps may be in other
+  tooling you use.
 
 ## Build with Gradle
 
