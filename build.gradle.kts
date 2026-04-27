@@ -137,6 +137,7 @@ dependencies {
 
     // Servlet API is provided by container for WARs
     compileOnly("javax.servlet:servlet-api:2.5")
+    add("jettyRuntime", "javax.servlet:servlet-api:2.5")
 }
 
 // Copy runtime jars and the produced project jar into build/lib/ so the
