@@ -9,13 +9,13 @@ JAVAHOME=/usr/lib/jvm/java-11-openjdk-amd64
 # You don't need to edit the following lines
 #
 # classpath is now produced by Gradle.
-# Run './gradlew assemble copyRuntimeLibs'
+# Run './gradlew clean assemble copyRuntimeLibs'
 # to create the application JAR and populate `build/lib/` with runtime jars.
 #
 # Ensure the application jar exists (produced by Gradle)
 APP_JAR=$(ls build/libs/serva-*.jar 2>/dev/null | head -n1)
 if [ -z "$APP_JAR" ]; then
-  echo "Application JAR not found. Run './gradlew assemble' first."
+  echo "Application JAR not found. Run './gradlew clean assemble copyRuntimeLibs' first."
   exit 1
 fi
 

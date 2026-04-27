@@ -34,6 +34,23 @@ java {
     }
 }
 
+// Project has sources laid out in `src/` (legacy layout) instead of the standard
+// `src/main/java`. Configure the Java source sets so Gradle compiles the
+// existing sources and packages them into the JAR.
+sourceSets {
+    named("main") {
+        java {
+            setSrcDirs(listOf("src"))
+        }
+        resources {
+            // include non-Java resources that live alongside sources, but
+            // exclude .java files so they are not treated as resources.
+            setSrcDirs(listOf("src"))
+            exclude("**/*.java")
+        }
+    }
+}
+
 application {
     mainClass.set("ch.serva.RunServaStandalone")
 }
@@ -53,6 +70,12 @@ repositories {
         dirs("lib", "lib/hibernate", "lib/fop", "lib/jetty")
     }
 }
+
+// Dedicated configuration for Jetty runtime artifacts used by the
+// standalone distribution. We keep Jetty off the main runtime classpath
+// to avoid polluting other consumers but still copy the jars into
+// `build/lib` so the standalone launcher can use them.
+val jettyRuntime by configurations.creating
 
 dependencies {
     // Commons
@@ -93,14 +116,24 @@ dependencies {
     runtimeOnly("org.jboss.spec:jboss-transaction-api_1.2_spec:1.1.1.Final")
     implementation("antlr:antlr:2.7.7")
 
-    // Jetty (runtime only for standalone)
-    runtimeOnly("org.eclipse.jetty:jetty-continuation:7.6.7.v20120910")
-    runtimeOnly("org.eclipse.jetty:jetty-http:7.6.7.v20120910")
-    runtimeOnly("org.eclipse.jetty:jetty-io:7.6.7.v20120910")
-    runtimeOnly("org.eclipse.jetty:jetty-security:7.6.7.v20120910")
-    runtimeOnly("org.eclipse.jetty:jetty-server:7.6.7.v20120910")
-    runtimeOnly("org.eclipse.jetty:jetty-servlet:7.6.7.v20120910")
-    runtimeOnly("org.eclipse.jetty:jetty-util:7.6.7.v20120910")
+    // Jetty: compile against the API but place actual runtime jars into
+    // the `jettyRuntime` configuration so they are copied into the
+    // standalone `build/lib` without appearing on the normal project
+    // runtimeClasspath.
+    compileOnly("org.eclipse.jetty:jetty-continuation:7.6.7.v20120910")
+    add("jettyRuntime", "org.eclipse.jetty:jetty-continuation:7.6.7.v20120910")
+    compileOnly("org.eclipse.jetty:jetty-http:7.6.7.v20120910")
+    add("jettyRuntime", "org.eclipse.jetty:jetty-http:7.6.7.v20120910")
+    compileOnly("org.eclipse.jetty:jetty-io:7.6.7.v20120910")
+    add("jettyRuntime", "org.eclipse.jetty:jetty-io:7.6.7.v20120910")
+    compileOnly("org.eclipse.jetty:jetty-security:7.6.7.v20120910")
+    add("jettyRuntime", "org.eclipse.jetty:jetty-security:7.6.7.v20120910")
+    compileOnly("org.eclipse.jetty:jetty-server:7.6.7.v20120910")
+    add("jettyRuntime", "org.eclipse.jetty:jetty-server:7.6.7.v20120910")
+    compileOnly("org.eclipse.jetty:jetty-servlet:7.6.7.v20120910")
+    add("jettyRuntime", "org.eclipse.jetty:jetty-servlet:7.6.7.v20120910")
+    compileOnly("org.eclipse.jetty:jetty-util:7.6.7.v20120910")
+    add("jettyRuntime", "org.eclipse.jetty:jetty-util:7.6.7.v20120910")
 
     // Servlet API is provided by container for WARs
     compileOnly("javax.servlet:servlet-api:2.5")
@@ -113,6 +146,10 @@ tasks.register<Copy>("copyRuntimeLibs") {
     // (avoids duplicate packaging issues during migration)
     dependsOn("jar")
     from(configurations.runtimeClasspath)
+    // include the dedicated jettyRuntime jars so the standalone runtime
+    // distribution contains Jetty without polluting the main runtime
+    // configuration.
+    from(configurations.named("jettyRuntime"))
     from(tasks.named("jar"))
     into(layout.buildDirectory.dir("lib"))
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
