@@ -1,7 +1,9 @@
 
-PR 7 (6 commits): 3-migrate-to-gradle
+PR 7 (12 commits): 3-migrate-to-gradle
 
 oo .settings/org.eclipse.buildship.core.prefs   [1, 3]
+
+oo doc/notes/pr-7.txt                           [1]
 
 oo gradle/wrapper/
    oo gradle-wrapper.jar                        [1, 3]
@@ -28,12 +30,18 @@ oo build.gradle.kts                             [1]
       - 15 hibernate:   OK
       -  7 jetty:       OK
       -  1 servlet API: OK
-   -> copyRuntimeLibs: 37 + 1 items
--- DEPENDENCY-MAPPING.md
+   -> copyRuntimeLibs: 38 items
 oo gradlew                                      [1, 3]
 oo gradlew.bat                                  [1, 3]
--- README.md
--- run-standalone.sh
+oo README.md
+   -> subsection Build with Gradle added:71
+oo run-standalone.sh
+   -> removed bin, dist/serva.jar plus...
+      -  7 lib
+      -  8 lib/fop
+      - 15 lib/hibernate
+      -  8 lib/jetty
+   -> generate CLASSPATH dynamically:11
 oo settings.gradle.kts                          [1, 3]
 
 [1] added
@@ -56,6 +64,7 @@ todos:
 follow-ups:
 => remove flatDir repo in build.gradle.kts
 => remove JAR files in lib/
+o> remove DEPENDENCY-MAPPING.md
 => move source files into src/main/java?
    -> see default Gradle project (lib/.classpath)
 
