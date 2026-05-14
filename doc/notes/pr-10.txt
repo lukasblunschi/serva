@@ -1,0 +1,9 @@
+
+PR 10 (1 commits): 9-use-wst
+
+-- TODO
+
+notes:
+- tomcat 9
+  -> servlet api 4.0
+  -> javax.servlet.* namespace
