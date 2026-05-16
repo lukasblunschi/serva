@@ -1,9 +1,35 @@
 
-PR 10 (1 commits): 9-use-wst
+PR 10 (11 commits): 9-use-wst
 
--- TODO
+oo .settings/
+   oo org.eclipse.core.resources.prefs                [1]
+   oo org.eclipse.jdt.core.prefs
+      -> enabled --release:14
+      -> upgrade formatter to v23
+   oo org.eclipse.jdt.ui.prefs
+      -> upgrade formatter to v23
+   oo org.eclipse.wst.common.component                [1]
+   oo org.eclipse.wst.common.project.facet.core.xml   [1]
+
+-- doc/notes/pr-10.txt
+
+-- doc/setup/setup-dev.md
+
+oo war/WEB-INF/web.xml
+   -> upgrade from v2.4 to v4.0
+
+oo .classpath
+   -> add 1 library
+oo .project
+   -> remove 1 builder (validation for JS nature)
+   -> add 2 natures
+
+[1] added
 
 notes:
 - tomcat 9
   -> servlet api 4.0
   -> javax.servlet.* namespace
+
+todos:
+=> use log4j for Tomcat
