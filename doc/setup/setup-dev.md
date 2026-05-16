@@ -69,7 +69,7 @@ $ ./restore-db.sh empty.sql
      (the tar.gz version was not recognized by Eclipse)
 - unpack under /opt/apache-tomcat/
 - configure: Window > Preferences... > Server > Runtime Environments > Add...
-- TODO use Log4j 2 instead of JULI (https://tomcat.apache.org/tomcat-9.0-doc/logging.html)
+- TODO use Log4j instead of JULI (https://tomcat.apache.org/tomcat-9.0-doc/logging.html)
 
 ## 7. Add Server
 
