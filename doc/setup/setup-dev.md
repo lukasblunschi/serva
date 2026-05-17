@@ -68,8 +68,48 @@ $ ./restore-db.sh empty.sql
   -> Download > Tomcat 9 > Binary Distributions > Core > zip
      (the tar.gz version was not recognized by Eclipse)
 - unpack under /opt/apache-tomcat/
+- configure to use Log4j
+  - see https://tomcat.apache.org/tomcat-9.0-doc/logging.html
+  - see https://logging.apache.org/log4j/2.x/jakarta.html#replace-tomcat
+  - create log4j dir inside unpack dir, e.g.
+
+```
+$ mkdir /opt/apache-tomcat/apache-tomcat-9.0.118/log4j
+```
+
+  - copy libs into log4j dir
+
+```
+$ cd    /opt/apache-tomcat/apache-tomcat-9.0.118/log4j/
+$ cp log4j-appserver-2.26.0.jar .
+$ cp log4j-api-2.26.0.jar       .
+$ cp log4j-core-2.26.0.jar      .
+```
+
+  - add log4j2.xml into log4j dir
+
+```
+$ nano log4j2.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="https://logging.apache.org/xml/ns"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="
+                   https://logging.apache.org/xml/ns
+                   https://logging.apache.org/xml/ns/log4j-config-2.xsd">
+  <Appenders>
+    <Console name="CONSOLE">
+      <PatternLayout pattern="%d [%t] %p %c - %m%n"/>
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Root level="DEBUG">
+      <AppenderRef ref="CONSOLE"/>
+    </Root>
+  </Loggers>
+</Configuration>
+```
+
 - configure: Window > Preferences... > Server > Runtime Environments > Add...
-- TODO use Log4j instead of JULI (https://tomcat.apache.org/tomcat-9.0-doc/logging.html)
 
 ## 7. Add Server
 
