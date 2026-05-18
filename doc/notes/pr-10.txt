@@ -1,5 +1,5 @@
 
-PR 10 (11 commits): 9-use-wst
+PR 10 (16 commits): 9-use-wst
 
 oo .settings/
    oo org.eclipse.core.resources.prefs                [1]
@@ -13,7 +13,13 @@ oo .settings/
 
 -- doc/notes/pr-10.txt
 
--- doc/setup/setup-dev.md
+oo doc/setup/tomcat/
+   oo context.xml_tomcat9-default.xml                 [1]
+   oo context.xml_tomcat9-dev.xml                     [1]
+   oo server.xml_tomcat9-default.xml                  [1]
+   oo server.xml_tomcat9-dev.xml                      [1]
+
+oo doc/setup/setup-dev.md                             [1]
 
 oo war/WEB-INF/web.xml
    -> upgrade from v2.4 to v4.0
@@ -21,8 +27,10 @@ oo war/WEB-INF/web.xml
 oo .classpath
    -> add 1 library
 oo .project
-   -> remove 1 builder (validation for JS nature)
+   -> move 1 builder (gradle before wst)
    -> add 2 natures
+oo build.gradle.kts
+   -> comments only
 
 [1] added
 
@@ -31,5 +39,3 @@ notes:
   -> servlet api 4.0
   -> javax.servlet.* namespace
 
-todos:
-=> use log4j for Tomcat
