@@ -1,0 +1,45 @@
+
+PR 10 (20 commits): 9-use-wst
+
+oo .settings/
+   oo org.eclipse.core.resources.prefs                [1]
+   oo org.eclipse.jdt.core.prefs
+      -> enabled --release:14
+      -> upgrade formatter to v23
+   oo org.eclipse.jdt.ui.prefs
+      -> upgrade formatter to v23
+   oo org.eclipse.wst.common.component                [1]
+   oo org.eclipse.wst.common.project.facet.core.xml   [1]
+
+oo doc/notes/pr-10.txt
+
+oo doc/setup/tomcat/
+   oo context.xml_tomcat9-default.xml                 [1]
+   oo context.xml_tomcat9-dev.xml                     [1]
+   oo server.xml_tomcat9-default.xml                  [1]
+   oo server.xml_tomcat9-dev.xml                      [1]
+
+oo doc/setup/setup-dev.md                             [1]
+
+oo war/WEB-INF/web.xml
+   -> upgrade from v2.4 to v4.0
+
+oo .classpath
+   -> add 1 library
+oo .project
+   -> re-order builders:
+      - gradle
+      - facet
+      - java
+      - validation
+   -> add 2 natures
+oo build.gradle.kts
+   -> comments only
+
+[1] added
+
+notes:
+- tomcat 9
+  -> servlet api 4.0
+  -> javax.servlet.* namespace
+

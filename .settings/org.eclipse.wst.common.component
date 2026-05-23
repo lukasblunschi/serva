@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+
+	<wb-module deploy-name="serva">
+
+		<wb-resource source-path="/war"                deploy-path="/" tag="defaultRootSource" />
+
+		<wb-resource source-path="/src/main/java"      deploy-path="/WEB-INF/classes" />
+		<wb-resource source-path="/src/main/resources" deploy-path="/WEB-INF/classes" />
+
+		<property name="context-root" value="serva" />
+
+		<property name="java-output-path" value="/serva/bin/default" />
+
+	</wb-module>
+
+</project-modules>

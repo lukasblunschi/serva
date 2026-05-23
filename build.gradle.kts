@@ -59,6 +59,11 @@ dependencies {
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client:3.3.2")                   { isTransitive = false }
     implementation("io.github.reload4j:reload4j:1.2.25")                        { isTransitive = false }
 
+    // Logging
+    //implementation("org.apache.logging.log4j:log4j-core:2.26.0")                { isTransitive = false }
+    //implementation("org.apache.logging.log4j:log4j-api:2.26.0")                 { isTransitive = false }
+    //implementation("org.apache.logging.log4j:log4j-appserver:2.26.0")           { isTransitive = false }
+
     // FOP and related
     implementation("org.apache.xmlgraphics:fop:2.9")                            { isTransitive = false }
     implementation("org.apache.xmlgraphics:fop-core:2.9")                       { isTransitive = false }
