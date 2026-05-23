@@ -117,7 +117,7 @@ $ nano log4j2.xml
     </Console>
   </Appenders>
   <Loggers>
-    <Root level="DEBUG">
+    <Root level="INFO">
       <AppenderRef ref="CONSOLE"/>
     </Root>
   </Loggers>
