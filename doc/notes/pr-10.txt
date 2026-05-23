@@ -1,5 +1,5 @@
 
-PR 10 (16 commits): 9-use-wst
+PR 10 (20 commits): 9-use-wst
 
 oo .settings/
    oo org.eclipse.core.resources.prefs                [1]
@@ -11,7 +11,7 @@ oo .settings/
    oo org.eclipse.wst.common.component                [1]
    oo org.eclipse.wst.common.project.facet.core.xml   [1]
 
--- doc/notes/pr-10.txt
+oo doc/notes/pr-10.txt
 
 oo doc/setup/tomcat/
    oo context.xml_tomcat9-default.xml                 [1]
@@ -27,7 +27,11 @@ oo war/WEB-INF/web.xml
 oo .classpath
    -> add 1 library
 oo .project
-   -> move 1 builder (gradle before wst)
+   -> re-order builders:
+      - gradle
+      - facet
+      - java
+      - validation
    -> add 2 natures
 oo build.gradle.kts
    -> comments only
