@@ -39,14 +39,4 @@ hibernate/:
 - jboss-transaction-api_1.2_spec-1.1.1.Final.jar
 - mchange-commons-java-0.2.19.jar
 
-jetty/:
-- jetty-continuation-7.6.7.jar                   Jetty                                   Web frontend (standalone)
-- jetty-http-7.6.7.jar                           Jetty                                   Web frontend (standalone)
-- jetty-io-7.6.7.jar                             Jetty                                   Web frontend (standalone)
-- jetty-security-7.6.7.jar                       Jetty                                   Web frontend (standalone)
-- jetty-server-7.6.7.jar                         Jetty                                   Web frontend (standalone)
-- jetty-servlet-7.6.7.jar                        Jetty                                   Web frontend (standalone)
-- jetty-util-7.6.7.jar                           Jetty                                   Web frontend (standalone)
-- servlet-api-2.5-jetty-7.6.7.jar                Java Servlet API (from Jetty 7.4.5)     Web frontend
-
 

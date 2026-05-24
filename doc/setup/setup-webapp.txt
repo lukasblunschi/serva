@@ -3,12 +3,25 @@ Setup of Serva as a web application
 
 1. Create database
 
-   (see setup-standalone.txt step 1)
+   $ sudo mariadb
+   > status
+     (check that everything is stored in utf8)
+   > create database serva;
+   > grant all on serva.* to serva@localhost identified by '123';
+   > flush privileges;
+   > exit
+
+   $ mariadb -u serva --password=123 serva
+   > show databases;
+   > status
+     (check that everything is stored in utf8)
+   > exit
 
 
 2. Restore empty database
 
-   (see setup-standalone.txt step 2)
+   $ cd serva/scripts/
+   $ ./restore-db.sh empty.sql
 
 
 3. TODO

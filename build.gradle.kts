@@ -22,10 +22,6 @@ java {
     }
 }
 
-application {
-    mainClass.set("ch.serva.RunServaStandalone")
-}
-
 war {
     // package the existing `war/` directory into the produced WAR
     webAppDirName = "war"
@@ -38,15 +34,9 @@ repositories {
     maven("https://repository.jboss.org/nexus/content/repositories/releases/")
     // Fallback to local vendor jars while migrating: do not overwrite existing lib/
     flatDir {
-        dirs("lib", "lib/hibernate", "lib/fop", "lib/jetty")
+        dirs("lib", "lib/hibernate", "lib/fop")
     }
 }
-
-// Dedicated configuration for Jetty runtime artifacts used by the
-// standalone distribution. We keep Jetty off the main runtime classpath
-// to avoid polluting other consumers but still copy the jars into
-// `build/lib` so the standalone launcher can use them.
-val jettyRuntime by configurations.creating
 
 dependencies {
 
@@ -93,28 +83,8 @@ dependencies {
     runtimeOnly("org.jboss.spec:jboss-transaction-api_1.2_spec:1.1.1.Final")    { isTransitive = false }
     implementation("antlr:antlr:2.7.7")                                         { isTransitive = false }
 
-    // Jetty: compile against the API but place actual runtime jars into
-    // the `jettyRuntime` configuration so they are copied into the
-    // standalone `build/lib` without appearing on the normal project
-    // runtimeClasspath.
-    compileOnly("org.eclipse.jetty:jetty-continuation:7.6.7.v20120910")         { isTransitive = false }
-    add("jettyRuntime", "org.eclipse.jetty:jetty-continuation:7.6.7.v20120910") { isTransitive = false }
-    compileOnly("org.eclipse.jetty:jetty-http:7.6.7.v20120910")                 { isTransitive = false }
-    add("jettyRuntime", "org.eclipse.jetty:jetty-http:7.6.7.v20120910")         { isTransitive = false }
-    compileOnly("org.eclipse.jetty:jetty-io:7.6.7.v20120910")                   { isTransitive = false }
-    add("jettyRuntime", "org.eclipse.jetty:jetty-io:7.6.7.v20120910")           { isTransitive = false }
-    compileOnly("org.eclipse.jetty:jetty-security:7.6.7.v20120910")             { isTransitive = false }
-    add("jettyRuntime", "org.eclipse.jetty:jetty-security:7.6.7.v20120910")     { isTransitive = false }
-    compileOnly("org.eclipse.jetty:jetty-server:7.6.7.v20120910")               { isTransitive = false }
-    add("jettyRuntime", "org.eclipse.jetty:jetty-server:7.6.7.v20120910")       { isTransitive = false }
-    compileOnly("org.eclipse.jetty:jetty-servlet:7.6.7.v20120910")              { isTransitive = false }
-    add("jettyRuntime", "org.eclipse.jetty:jetty-servlet:7.6.7.v20120910")      { isTransitive = false }
-    compileOnly("org.eclipse.jetty:jetty-util:7.6.7.v20120910")                 { isTransitive = false }
-    add("jettyRuntime", "org.eclipse.jetty:jetty-util:7.6.7.v20120910")         { isTransitive = false }
-
     // Servlet API is provided by container for WARs
     compileOnly("javax.servlet:servlet-api:2.5")                                { isTransitive = false }
-    add("jettyRuntime", "javax.servlet:servlet-api:2.5")                        { isTransitive = false }
 
     // JUnit for testing
     // Source: https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter
@@ -132,10 +102,6 @@ tasks.register<Copy>("copyRuntimeLibs") {
     // (avoids duplicate packaging issues during migration)
     dependsOn("jar")
     from(configurations.runtimeClasspath)
-    // include the dedicated jettyRuntime jars so the standalone runtime
-    // distribution contains Jetty without polluting the main runtime
-    // configuration.
-    from(configurations.named("jettyRuntime"))
     from(tasks.named("jar"))
     into(layout.buildDirectory.dir("lib"))
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
