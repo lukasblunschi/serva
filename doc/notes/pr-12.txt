@@ -1,5 +1,7 @@
 
-PR 12 (1 commits): 9-remove-jetty
+PR 12 (2 commits): 9-remove-jetty
+
+oo doc/notes/pr-12.txt                              [ 2]
 
 oo doc/setup/
    oo setup-standalone.txt                          [1]
@@ -22,6 +24,7 @@ oo build.gradle.kts
    -> remove jetty libs:37
    -> remove jettyRuntime:45+117+135
    -> remove jetty libs:96
+oo changelog.txt
 oo README.md
    -> remove intro standalone:6
    -> remove quickstart standalone:15
@@ -31,3 +34,4 @@ oo README.md
 oo run-standalone.sh                                [1]
 
 [1] removed
+[2] added
