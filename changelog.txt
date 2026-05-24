@@ -1,5 +1,6 @@
 0.3.1 (ongoing)
 -----
+- change: remove jetty and everything standalone related. (PR 12)
 - doc: replace MySQL with MariaDB in documentation. (PR 1)
 - admin: moved git repository from sourceforge to github.
 

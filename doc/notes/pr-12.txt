@@ -1,0 +1,33 @@
+
+PR 12 (1 commits): 9-remove-jetty
+
+oo doc/setup/
+   oo setup-standalone.txt                          [1]
+   oo setup-webapp.txt
+      -> moved content from setup-standalone.txt
+
+oo doc/technical/jetty-ssl.txt                      [1]
+
+oo lib-sources/jetty/servlet-api-2.5-sources.jar    [1]
+
+oo lib/jetty/* [9]                                  [1]
+
+oo lib/readme.txt
+   -> remove jetty/*
+
+oo RunServaStandalone                               [1]
+
+oo build.gradle.kts
+   -> remove app:25
+   -> remove jetty libs:37
+   -> remove jettyRuntime:45+117+135
+   -> remove jetty libs:96
+oo README.md
+   -> remove intro standalone:6
+   -> remove quickstart standalone:15
+   -> remove reqs standalone:43+46
+   -> remove running details:58
+   -> update build with gradle:35
+oo run-standalone.sh                                [1]
+
+[1] removed
