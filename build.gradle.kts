@@ -45,15 +45,10 @@ tasks.named<Jar>("jar") {
     archiveVersion.set(project.version.toString())
 
     // Exclude resources that originate from the main resources source dirs (src/main/resources/**).
-    // Those resources will be kept in the WAR under WEB-INF/classes/,
-    // so they must not be duplicated inside the project JAR.
     //
     // Processed resources are copied to build/resources/main by the resources task.
     // Exclude files coming from that output directory.
-    // Use the build output resource directory here.
     val resourceOutputDir = layout.buildDirectory.dir("resources/main").get().asFile.toPath().toAbsolutePath().normalize()
-
-    // Exclude any file that comes from one of the resources source dirs.
     exclude { fileTreeElement ->
         val file = fileTreeElement.file
         val path = file.toPath().toAbsolutePath().normalize()
