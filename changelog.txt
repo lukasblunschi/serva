@@ -1,5 +1,6 @@
 0.3.1 (ongoing)
 -----
+- code:    release using Gradle. (PR 13)
 - change:  remove jetty and everything standalone related. (PR 12)
 - code:    enable Eclipse WST components for development. (PR 10)
 - code:    adopt standard Gradle directory layout. (PR 8)
