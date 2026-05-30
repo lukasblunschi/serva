@@ -59,17 +59,10 @@ tasks.named<Jar>("jar") {
     }
 }
 
-// Some containers (and existing deployment scripts) expect the WAR to contain
-// the project JAR under WEB-INF/lib instead of unpacked classes under
-// WEB-INF/classes. The War task is configured above to add the JAR, but the
-// default War creation still adds sourceSet outputs in some Gradle versions.
-// To guarantee the final WAR has no WEB-INF/classes and does contain the
-// project JAR, create a repacked WAR from the produced WAR and overwrite
-// the WAR in build/libs. This keeps the regular war task but replaces its
-// output with the cleaned-up archive.
-// Create a task that rewrites the produced WAR: remove WEB-INF/classes and
-// add the project JAR under WEB-INF/lib. This uses a manual ZIP rewrite so
-// we avoid Gradle CopySpec timing/expansion issues.
+// I prefer to have a single JAR in WEB-INF/lib instead of many unpacked classes in WEB-INF/classes.
+// Create a repacked WAR from the produced WAR and overwrite the WAR in build/libs.
+// This keeps the regular war task but replaces its output with the cleaned-up archive.
+// This uses a manual ZIP rewrite so we avoid Gradle CopySpec timing/expansion issues.
 tasks.register("repackedWar") {
     val warTask = tasks.named<org.gradle.api.tasks.bundling.War>("war")
     val jarTask = tasks.named<Jar>("jar")
