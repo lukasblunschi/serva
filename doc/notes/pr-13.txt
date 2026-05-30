@@ -1,0 +1,20 @@
+
+PR 13 (7 commits): 3-update-releasing
+
+o- build.gradle.kts
+   -> import stmts:8-15
+   -> bump version:26
+   -> update jar task:39-57
+   -> add repackedWar task:59-113
+   -> update assemble task:115-119
+oo changelog.txt
+   -> cleanup
+   -> add missing PRs: 6, 7, 8, 10
+   -> PR 13
+
+notes:
+- show entries in WAR
+  $ jar -tf serva-0.3.1-beta1-repacked.war
+
+todos:
+=> do I need META-INF/MANIFEST.MF in war file?
