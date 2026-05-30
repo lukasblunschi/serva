@@ -69,7 +69,7 @@ tasks.register("repackedWar") {
     doLast {
         val warFile = warTask.get().archiveFile.get().asFile
         val jarFile = jarTask.get().archiveFile.get().asFile
-        val tmp = file("${layout.buildDirectory.asFile.get()}/libs/${warFile.name}.tmp")
+        val tmp = file("${layout.buildDirectory.asFile.get()}/libs/serva-${project.version.toString()}-repacked.war")
 
         ZipFile(warFile).use { zipIn ->
             BufferedOutputStream(FileOutputStream(tmp)).use { fos ->
@@ -108,14 +108,6 @@ tasks.register("repackedWar") {
                     }
                 }
             }
-        }
-
-        // Replace the original war with the rewritten one
-        if (!warFile.delete()) {
-            throw IOException("Failed to delete original WAR: ${warFile.absolutePath}")
-        }
-        if (!tmp.renameTo(warFile)) {
-            throw IOException("Failed to move rewritten WAR to final destination")
         }
     }
 }
