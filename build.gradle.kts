@@ -59,22 +59,6 @@ tasks.named<Jar>("jar") {
     }
 }
 
-// TODO is this needed? maybe the "repackedWAR" task below is good enough...
-// Adjust the WAR so that we do not pack compiled .class files under
-// `WEB-INF/classes/` but we keep non-class resources (e.g. files from
-// src/main/resources) in WEB-INF/classes. The project JAR is added to
-// `WEB-INF/lib/`.
-tasks.named<org.gradle.api.tasks.bundling.War>("war") {
-    // exclude only compiled class files from WEB-INF/classes so resources
-    // (persistence.xml, properties, xsl, etc.) remain in WEB-INF/classes.
-    exclude("WEB-INF/classes/**/*.class")
-
-    // Put the produced project JAR into WEB-INF/lib
-    into("WEB-INF/lib") {
-        from(tasks.named("jar"))
-    }
-}
-
 // Some containers (and existing deployment scripts) expect the WAR to contain
 // the project JAR under WEB-INF/lib instead of unpacked classes under
 // WEB-INF/classes. The War task is configured above to add the JAR, but the
