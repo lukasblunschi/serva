@@ -36,6 +36,8 @@ war {
     webAppDirName = "war"
 }
 
+// I only want the JAR file to contain Java classes.
+// Resources should be kept in the WAR under WEB-INF/classes/.
 tasks.named<Jar>("jar") {
 
     // Ensure the produced project JAR has a predictable name like `serva-<version>.jar`.
