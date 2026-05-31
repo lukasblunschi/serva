@@ -1,12 +1,13 @@
 
-PR 13 (13 commits): 3-update-releasing
+PR 13 (14 commits): 3-update-releasing
 
-o- doc/notes/
-   o- entries-in-jar.txt                     [1]
-   o- entries-in-war.txt                     [1]
-   o- pr-13.txt                              [1]
+oo doc/notes/
+   oo entries-in-howto-recreate.txt          [1]
+   oo entries-in-jar.txt                     [1]
+   oo entries-in-war.txt                     [1]
+   oo pr-13.txt                              [1]
 
-o- build.gradle.kts
+oo build.gradle.kts
    -> import stmts:8-15
    -> bump version:26
    -> update jar task:39-57
