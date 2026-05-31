@@ -1,0 +1,24 @@
+
+PR 13 (14 commits): 3-update-releasing
+
+oo doc/notes/
+   oo entries-in-howto-recreate.txt          [1]
+   oo entries-in-jar.txt                     [1]
+   oo entries-in-war.txt                     [1]
+   oo pr-13.txt                              [1]
+
+oo build.gradle.kts
+   -> import stmts:8-15
+   -> bump version:26
+   -> update jar task:39-57
+   -> add repackedWar task:59-119
+   -> update assemble task:121-124
+oo changelog.txt
+   -> cleanup
+   -> add missing PRs: 6, 7, 8, 10
+   -> PR 13
+
+[1] added
+
+todos:
+o> do I need META-INF/MANIFEST.MF in war file? no

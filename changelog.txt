@@ -1,8 +1,13 @@
 0.3.1 (ongoing)
 -----
-- change: remove jetty and everything standalone related. (PR 12)
-- doc: replace MySQL with MariaDB in documentation. (PR 1)
-- admin: moved git repository from sourceforge to github.
+- code:    release using Gradle. (PR 13)
+- change:  remove jetty and everything standalone related. (PR 12)
+- code:    enable Eclipse WST components for development. (PR 10)
+- code:    adopt standard Gradle directory layout. (PR 8)
+- code:    introduce Gradle build. (PR 7)
+- code:    start GitHub Copilot instructions and add README.md. (PR 6)
+- doc:     replace MySQL with MariaDB in documentation and scripts. (PR 1)
+- admin:   moved git repository from sourceforge to github.
 
 
 0.3.0 (2024-05-20)

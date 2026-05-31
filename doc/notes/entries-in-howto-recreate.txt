@@ -1,0 +1,19 @@
+How to recreate the lists of entries in the WAR and JAR files:
+
+1. Build the WAR file as described in the README.md:
+
+   $ cd /path/to/serva
+   $ ./gradlew clean assemble
+
+2. Extract the lists of entries in the WAR and JAR files:
+
+   - entries in WAR
+     $ unzip -Z -1 build/libs/serva-0.3.1-beta1-repacked.war \
+         | sort > doc/notes/entries-in-war.txt
+
+   - entries in JAR
+     $ unzip       build/libs/serva-0.3.1-beta1-repacked.war \
+                     WEB-INF/lib/serva-0.3.1-beta1.jar && \
+         unzip -Z -1 WEB-INF/lib/serva-0.3.1-beta1.jar \
+         | sort > doc/notes/entries-in-jar.txt &&
+         rm -rf WEB-INF

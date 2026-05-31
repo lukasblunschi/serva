@@ -5,6 +5,15 @@ plugins {
     distribution
 }
 
+import java.io.BufferedOutputStream
+import java.io.FileOutputStream
+import java.io.FileInputStream
+import java.io.IOException
+import java.util.zip.ZipFile
+import java.util.zip.ZipOutputStream
+import java.util.zip.ZipEntry
+import org.gradle.api.tasks.SourceSetContainer
+
 distributions {
     named("main") {
         contents {
@@ -14,7 +23,7 @@ distributions {
 }
 
 group = "ch.serva"
-version = "0.3.0"
+version = "0.3.1-beta1"
 
 java {
     toolchain {
@@ -25,6 +34,93 @@ java {
 war {
     // package the existing `war/` directory into the produced WAR
     webAppDirName = "war"
+}
+
+// I only want the JAR file to contain Java classes.
+// Resources should be kept in the WAR under WEB-INF/classes/.
+tasks.named<Jar>("jar") {
+
+    // Ensure the produced project JAR has a predictable name like `serva-<version>.jar`.
+    archiveBaseName.set("serva")
+    archiveVersion.set(project.version.toString())
+
+    // Exclude resources that originate from the main resources source dirs (src/main/resources/**).
+    //
+    // Processed resources are copied to build/resources/main by the resources task.
+    // Exclude files coming from that output directory.
+    val resourceOutputDir = layout.buildDirectory.dir("resources/main").get().asFile.toPath().toAbsolutePath().normalize()
+    exclude { fileTreeElement ->
+        val file = fileTreeElement.file
+        val path = file.toPath().toAbsolutePath().normalize()
+        path.startsWith(resourceOutputDir)
+    }
+}
+
+// I prefer to have a single JAR in WEB-INF/lib instead of many unpacked classes in WEB-INF/classes.
+// Create a repacked WAR from the produced WAR and add it in build/libs.
+// This keeps the regular war task as is.
+tasks.register("repackedWar") {
+    val warTask = tasks.named<org.gradle.api.tasks.bundling.War>("war")
+    val jarTask = tasks.named<Jar>("jar")
+    dependsOn(warTask)
+    dependsOn(jarTask)
+
+    doLast {
+        val warFile = warTask.get().archiveFile.get().asFile
+        val jarFile = jarTask.get().archiveFile.get().asFile
+        val tmp = file("${layout.buildDirectory.asFile.get()}/libs/serva-${project.version.toString()}-repacked.war")
+
+        ZipFile(warFile).use { zipIn ->
+            BufferedOutputStream(FileOutputStream(tmp)).use { fos ->
+                ZipOutputStream(fos).use { zipOut ->
+                    val entries = zipIn.entries()
+                    val existingNames = mutableSetOf<String>()
+                    while (entries.hasMoreElements()) {
+                        val entry = entries.nextElement()
+                        val name = entry.name
+                        existingNames.add(name)
+
+                        // skip compiled class files but keep non-class resources
+                        // (e.g. persistence.xml, properties, xsl, etc.)
+                        if (name.startsWith("WEB-INF/classes/ch/")) {
+                            continue
+                        }
+
+                        // no META-INF/ entries needed in the WAR
+                        if (name.startsWith("META-INF/")) {
+                            continue
+                        }
+
+                        // copy all other entries as-is (preserve timestamps)
+                        val newEntry = ZipEntry(name)
+                        newEntry.time = entry.time
+                        zipOut.putNextEntry(newEntry)
+                        zipIn.getInputStream(entry).use { ins ->
+                            ins.copyTo(zipOut)
+                        }
+                        zipOut.closeEntry()
+                    }
+
+                    // add the project JAR into WEB-INF/lib/ if it's not already
+                    val jarEntryName = "WEB-INF/lib/${jarFile.name}"
+                    if (!existingNames.contains(jarEntryName)) {
+                        val jarEntry = ZipEntry(jarEntryName)
+                        jarEntry.time = jarFile.lastModified()
+                        zipOut.putNextEntry(jarEntry)
+                        FileInputStream(jarFile).use { jfis ->
+                            jfis.copyTo(zipOut)
+                        }
+                        zipOut.closeEntry()
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Make the assemble lifecycle produce the repacked WAR
+tasks.named("assemble") {
+    dependsOn(tasks.named("repackedWar"))
 }
 
 repositories {
