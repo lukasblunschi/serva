@@ -57,9 +57,8 @@ tasks.named<Jar>("jar") {
 }
 
 // I prefer to have a single JAR in WEB-INF/lib instead of many unpacked classes in WEB-INF/classes.
-// Create a repacked WAR from the produced WAR and overwrite the WAR in build/libs.
-// This keeps the regular war task but replaces its output with the cleaned-up archive.
-// This uses a manual ZIP rewrite so we avoid Gradle CopySpec timing/expansion issues.
+// Create a repacked WAR from the produced WAR and add it in build/libs.
+// This keeps the regular war task as is.
 tasks.register("repackedWar") {
     val warTask = tasks.named<org.gradle.api.tasks.bundling.War>("war")
     val jarTask = tasks.named<Jar>("jar")
