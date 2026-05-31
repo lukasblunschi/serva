@@ -118,8 +118,7 @@ tasks.register("repackedWar") {
     }
 }
 
-// Make the assemble lifecycle produce the repacked WAR so `./gradlew assemble`
-// yields the final artifact with the project JAR in WEB-INF/lib.
+// Make the assemble lifecycle produce the repacked WAR
 tasks.named("assemble") {
     dependsOn(tasks.named("repackedWar"))
 }
