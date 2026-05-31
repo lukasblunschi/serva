@@ -79,13 +79,20 @@ tasks.register("repackedWar") {
                         val entry = entries.nextElement()
                         val name = entry.name
                         existingNames.add(name)
+
+                        // skip compiled class files but keep non-class resources
+                        // (e.g. persistence.xml, properties, xsl, etc.)
                         if (name.startsWith("WEB-INF/classes/ch/")) {
-                            // skip compiled class files but keep non-class resources
-                            // (e.g. persistence.xml, properties, xsl, etc.)
                             continue
                         }
+
+                        // no META-INF/ entries needed in the WAR
+                        if (name.startsWith("META-INF/")) {
+                            continue
+                        }
+
+                        // copy all other entries as-is (preserve timestamps)
                         val newEntry = ZipEntry(name)
-                        // preserve timestamps
                         newEntry.time = entry.time
                         zipOut.putNextEntry(newEntry)
                         zipIn.getInputStream(entry).use { ins ->
