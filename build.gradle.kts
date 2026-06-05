@@ -143,10 +143,7 @@ dependencies {
     implementation("com.sun.mail:javax.mail:1.6.2")                             { isTransitive = false }
     implementation("javax.activation:activation:1.1.1")                         { isTransitive = false }
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client:3.3.2")                   { isTransitive = false }
-    // TODO this does not exist: https://mvnrepository.com/artifact/io.github.reload4j/reload4j
-    implementation("io.github.reload4j:reload4j:1.2.25")                        { isTransitive = false }
-    // Source: https://mvnrepository.com/artifact/ch.qos.reload4j/reload4j
-    //implementation("ch.qos.reload4j:reload4j:1.2.26")                        { isTransitive = false }
+    implementation("ch.qos.reload4j:reload4j:1.2.25")                           { isTransitive = false }
 
     // Logging
     //implementation("org.apache.logging.log4j:log4j-core:2.26.0")                { isTransitive = false }
@@ -155,8 +152,8 @@ dependencies {
 
     // FOP and related
     // notes:
-    // - fop-2.9.jar has no sources - it only contains a manifest
-    // - batik-all-1.17.jar also has no sources - no sources found
+    // - fop-2.9.jar         has no sources - it only contains a manifest
+    // - batik-all-1.17.jar  has no sources - no sources found
     implementation("org.apache.xmlgraphics:fop:2.9")                            { isTransitive = false }
     implementation("org.apache.xmlgraphics:fop-core:2.9")                       { isTransitive = false }
     implementation("org.apache.xmlgraphics:fop-events:2.9")                     { isTransitive = false }
@@ -167,6 +164,10 @@ dependencies {
     implementation("com.thoughtworks.qdox:qdox:1.12")                           { isTransitive = false }
 
     // Hibernate and persistence
+    // notes:
+    // - jboss-transaction-api_1.2_spec-1.1.1.Final.jar not found
+    // - antlr-2.7.7.jar     has no sources - no sources found
+    //   -> newer versions relocated to https://mvnrepository.com/artifact/org.antlr/antlr
     implementation("org.hibernate:hibernate-core:5.6.15.Final")                 { isTransitive = false }
     implementation("org.hibernate:hibernate-entitymanager:5.6.15.Final")        { isTransitive = false }
     implementation("org.hibernate:hibernate-c3p0:5.6.15.Final")                 { isTransitive = false }
