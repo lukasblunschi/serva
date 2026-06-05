@@ -1,0 +1,24 @@
+
+PR 14 (5 commits): 3-remove-libs
+
+oo doc/notes/
+   oo pr-14.txt                                  [1]
+
+oo lib-sources/
+   oo fop/*       ( 6 jars removed, 2 no sources)
+   oo hibernate/* ( 3 jars removed)
+   oo *           ( 6 jars removed)
+
+-- lib/
+   oo fop/*       ( 8 jars removed)
+   oo hibernate/* (14 jars removed - only 3 sources)
+   oo *           ( 6 jars removed)
+
+oo build.gradle.kts
+   -> fix reload4j:146
+   -> notes:154+167
+oo changelog.txt
+   -> PR 14
+
+[1] added
+

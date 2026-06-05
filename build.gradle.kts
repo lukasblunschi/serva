@@ -130,7 +130,7 @@ repositories {
     maven("https://repository.jboss.org/nexus/content/repositories/releases/")
     // Fallback to local vendor jars while migrating: do not overwrite existing lib/
     flatDir {
-        dirs("lib", "lib/hibernate", "lib/fop")
+        dirs("lib", "lib/hibernate")
     }
 }
 
