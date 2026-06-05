@@ -137,6 +137,11 @@ repositories {
 dependencies {
 
     // Commons
+    implementation("commons-fileupload:commons-fileupload:1.5")                 { isTransitive = false }
+    implementation("commons-io:commons-io:2.15.1")                              { isTransitive = false }
+    implementation("commons-logging:commons-logging:1.3.0")                     { isTransitive = false }
+    implementation("com.sun.mail:javax.mail:1.6.2")                             { isTransitive = false }
+    implementation("javax.activation:activation:1.1.1")                         { isTransitive = false }
     runtimeOnly("org.mariadb.jdbc:mariadb-java-client:3.3.2")                   { isTransitive = false }
     // TODO this does not exist: https://mvnrepository.com/artifact/io.github.reload4j/reload4j
     implementation("io.github.reload4j:reload4j:1.2.25")                        { isTransitive = false }
@@ -149,6 +154,9 @@ dependencies {
     //implementation("org.apache.logging.log4j:log4j-appserver:2.26.0")           { isTransitive = false }
 
     // FOP and related
+    // notes:
+    // - fop-2.9.jar has no sources - it only contains a manifest
+    // - batik-all-1.17.jar also has no sources - no sources found
     implementation("org.apache.xmlgraphics:fop:2.9")                            { isTransitive = false }
     implementation("org.apache.xmlgraphics:fop-core:2.9")                       { isTransitive = false }
     implementation("org.apache.xmlgraphics:fop-events:2.9")                     { isTransitive = false }
