@@ -126,12 +126,6 @@ tasks.named("assemble") {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-    // Some older JBoss-spec artifacts may be available from the JBoss releases repo
-    maven("https://repository.jboss.org/nexus/content/repositories/releases/")
-    // Fallback to local vendor jars while migrating: do not overwrite existing lib/
-    flatDir {
-        dirs("lib/hibernate")
-    }
 }
 
 dependencies {
