@@ -126,12 +126,6 @@ tasks.named("assemble") {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-    // Some older JBoss-spec artifacts may be available from the JBoss releases repo
-    maven("https://repository.jboss.org/nexus/content/repositories/releases/")
-    // Fallback to local vendor jars while migrating: do not overwrite existing lib/
-    flatDir {
-        dirs("lib/hibernate")
-    }
 }
 
 dependencies {
@@ -163,28 +157,12 @@ dependencies {
     implementation("org.apache.pdfbox:fontbox:2.0.27")                          { isTransitive = false }
     implementation("com.thoughtworks.qdox:qdox:1.12")                           { isTransitive = false }
 
-    // Hibernate and persistence
+    // Hibernate
     // notes:
-    // - jboss-transaction-api_1.2_spec-1.1.1.Final.jar not found
     // - antlr-2.7.7.jar     has no sources - no sources found
     //   -> newer versions relocated to https://mvnrepository.com/artifact/org.antlr/antlr
-    implementation("org.hibernate:hibernate-core:5.6.15.Final")                 { isTransitive = false }
-    implementation("org.hibernate:hibernate-entitymanager:5.6.15.Final")        { isTransitive = false }
-    implementation("org.hibernate:hibernate-c3p0:5.6.15.Final")                 { isTransitive = false }
-    implementation("org.hibernate.common:hibernate-commons-annotations:5.1.2.Final")  { isTransitive = false }
-    implementation("org.jboss.logging:jboss-logging:3.4.3.Final")               { isTransitive = false }
-    implementation("org.jboss:jandex:2.4.2.Final")                              { isTransitive = false }
-    implementation("net.bytebuddy:byte-buddy:1.12.18")                          { isTransitive = false }
-    implementation("com.mchange:mchange-commons-java:0.2.19")                   { isTransitive = false }
-    implementation("com.mchange:c3p0:0.9.5.5")                                  { isTransitive = false }
-    implementation("com.fasterxml:classmate:1.5.1")                             { isTransitive = false }
-    implementation("javax.persistence:javax.persistence-api:2.2")               { isTransitive = false }
-    implementation("javax.xml.bind:jaxb-api:2.3.1")                             { isTransitive = false }
-    implementation("javax.activation:javax.activation-api:1.2.0")               { isTransitive = false }
-    // mark transaction API as runtime-only so the standalone includes it, but
-    // exclude it from the WAR (container should provide this)
-    runtimeOnly("org.jboss.spec:jboss-transaction-api_1.2_spec:1.1.1.Final")    { isTransitive = false }
-    implementation("antlr:antlr:2.7.7")                                         { isTransitive = false }
+    implementation("org.hibernate:hibernate-entitymanager:5.6.15.Final")        { isTransitive = true }
+    implementation("org.hibernate:hibernate-c3p0:5.6.15.Final")                 { isTransitive = true }
 
     // Servlet API is provided by container for WARs
     compileOnly("javax.servlet:servlet-api:2.5")                                { isTransitive = false }

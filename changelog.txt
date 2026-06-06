@@ -1,5 +1,6 @@
 0.3.1 (ongoing)
 -----
+- code:    fix Hibernate libs by using transitive dependencies. (PR 16)
 - code:    remove library JARs from repository. (PR 14)
 - code:    release using Gradle. (PR 13)
 - change:  remove jetty and everything standalone related. (PR 12)
