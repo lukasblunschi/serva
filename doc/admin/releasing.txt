@@ -1,24 +1,26 @@
 Releasing Serva Howto
 ---------------------
 
-1. update changelog.txt.
+1. update changelog.txt
 
-2. update upgrade.txt.
+2. update upgrade.txt
 
 3. increase version number in:
-   - src/ch/serva/ServaConstants.java
+   - src/main/java/ch/serva/ServaConstants.java
    - war/WEB-INF/web.xml
-   - release.xml
-   - run-standalone.sh
+   - build.gradle.kts
 
 4. commit "releasing ..."
 
 5. create git tag
 
-6. run release.xml
-   $ ant -f release.xml
+6. build WAR
+   - run Gradle
+     $ ./gradlew clean assemble
+   - check the generated WAR file
+     -> see doc/notes/entries-in-howto-recreate.txt
 
-7. upload to sourceforge
+7. upload to github release page
    - using web interface
 
 

@@ -1,0 +1,32 @@
+
+PR 14 (8 commits): 3-remove-libs
+
+oo doc/admin/releasing.txt
+   -> update
+
+oo doc/notes/
+   oo pr-14.txt                                  [1]
+
+oo lib-sources/   (=15 files)
+   oo fop/*       ( 6 jars removed, 2 no sources)
+   oo hibernate/* ( 3 jars removed)
+   oo *           ( 6 jars removed)
+
+o- lib/           (=29 files)
+   oo fop/*       ( 8 jars removed)
+   oo hibernate/* (14 jars removed - only 3 sources)
+   oo *           ( 7 jars removed)
+
+oo build.gradle.kts
+   -> remove lib + lib/fop:133
+   -> fix reload4j:146
+   -> notes:154+167
+oo changelog.txt
+   -> PR 14
+oo release.xml
+   -> removed
+
+[1] added
+
+todos:
+=> test if jboss-transaction-api_1.2_spec JAR is needed at all
