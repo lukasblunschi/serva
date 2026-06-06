@@ -7,7 +7,7 @@
 			 http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 		 version="4.0">
 
-	<display-name>Serva (0.3.0)</display-name>
+	<display-name>Serva (0.3.1)</display-name>
 
 	<servlet>
 		<servlet-name>serva</servlet-name>

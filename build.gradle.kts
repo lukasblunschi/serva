@@ -11,7 +11,7 @@ import java.util.zip.ZipOutputStream
 import java.util.zip.ZipEntry
 
 group = "ch.serva"
-version = "0.3.1-beta1"
+version = "0.3.1"
 
 java {
     toolchain {

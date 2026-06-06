@@ -8,6 +8,10 @@ Usage:
   E.g. for update block "2.1.x", rename coach to nurse, then rename group to patient and so on.
 
 
+from 0.3.0 to 0.3.1:
+  - lib and code changes only.
+
+
 from 0.2.7 to 0.3.0:
   - lib and code changes only.
   - this version now requires Java 11 or later.
