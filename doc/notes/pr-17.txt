@@ -1,0 +1,18 @@
+
+PR 17 (2 commits): 3-finalize-migration
+
+oo doc/notes/
+   oo pr-17.txt                                 [1]
+
+oo .gitignore
+   -> remove dist/ + upload/
+oo build.gradle.kts
+   -> remove unneeded stuff:4+11+15+178
+   -> upgrade war task:22+24
+oo changelog.txt
+oo NOTICE.txt
+oo README.md
+   -> cleanup
+
+[1] added
+

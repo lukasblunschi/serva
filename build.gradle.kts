@@ -1,26 +1,14 @@
 plugins {
     java
     war
-    application
-    distribution
 }
 
 import java.io.BufferedOutputStream
 import java.io.FileOutputStream
 import java.io.FileInputStream
-import java.io.IOException
 import java.util.zip.ZipFile
 import java.util.zip.ZipOutputStream
 import java.util.zip.ZipEntry
-import org.gradle.api.tasks.SourceSetContainer
-
-distributions {
-    named("main") {
-        contents {
-            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-        }
-    }
-}
 
 group = "ch.serva"
 version = "0.3.1-beta1"
@@ -31,9 +19,9 @@ java {
     }
 }
 
-war {
+tasks.war {
     // package the existing `war/` directory into the produced WAR
-    webAppDirName = "war"
+    webAppDirectory.set(file("war"))
 }
 
 // I only want the JAR file to contain Java classes.
@@ -175,22 +163,3 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.3")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
-
-// Copy runtime jars and the produced project jar into build/lib/ so the
-// existing run script can use separate jars (no fat jar).
-tasks.register<Copy>("copyRuntimeLibs") {
-    // depend only on the project JAR so we don't trigger the WAR task
-    // (avoids duplicate packaging issues during migration)
-    dependsOn("jar")
-    from(configurations.runtimeClasspath)
-    from(tasks.named("jar"))
-    into(layout.buildDirectory.dir("lib"))
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}
-
-// Avoid duplicate file errors when distributions also copy runtime libraries
-tasks.withType<Copy> {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}
-
-// distribution duplicatesStrategy configured above in `distributions` block

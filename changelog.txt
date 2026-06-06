@@ -1,5 +1,6 @@
 0.3.1 (ongoing)
 -----
+- code:    finalize migration to Gradle. (PR 17)
 - code:    fix Hibernate libs by using transitive dependencies. (PR 16)
 - code:    remove library JARs from repository. (PR 14)
 - code:    release using Gradle. (PR 13)
