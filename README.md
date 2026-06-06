@@ -23,11 +23,7 @@ Data is stored in a MariaDB database.
 
 ## Configuration
 
-- The default configuration template is at `src/serva.properties`.
-- Important values:
-  - `company.name` — company name on invoices.
-  - `mail.*` — SMTP settings for outgoing email.
-  - `path.*` — various application paths.
+- The default configuration template is at `src/main/resources/serva.properties`.
 - Copy and edit the properties file as needed for your deployment.
 
 ## Build with Gradle
@@ -47,8 +43,8 @@ The WAR file can now be found under `build/libs/`.
 - If the app cannot connect to the DB, verify:
   - MariaDB is running and reachable.
   - User, password and database name match config.
-  - Character set (utf8) if you see encoding issues (see
-	`doc/setup/setup-webapp.txt`).
+  - Character set (utf8) if you see encoding issues
+    (see `doc/setup/setup-webapp.txt`).
 - Check logs (log files and console output) for startup errors.
 
 ## Contributing

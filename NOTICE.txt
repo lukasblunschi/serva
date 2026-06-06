@@ -1,2 +1,2 @@
 Serva
-Copyright 2009-2011 Lukas Blunschi
+Copyright 2009-2026 Lukas Blunschi
