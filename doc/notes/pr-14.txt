@@ -1,5 +1,8 @@
 
-PR 14 (7 commits): 3-remove-libs
+PR 14 (8 commits): 3-remove-libs
+
+oo doc/admin/releasing.txt
+   -> update
 
 oo doc/notes/
    oo pr-14.txt                                  [1]
@@ -20,6 +23,8 @@ oo build.gradle.kts
    -> notes:154+167
 oo changelog.txt
    -> PR 14
+oo release.xml
+   -> removed
 
 [1] added
 
