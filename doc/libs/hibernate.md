@@ -1,4 +1,4 @@
-# Notes for Hibernate
+# Hibernate
 
 ## Which Release to Choose
 
@@ -84,6 +84,10 @@ check `runtimeClasspath`:
 |         \--- com.mchange:mchange-commons-java:0.2.19
 ...
 ```
+
+### Version Notes 5.6
+
+License: LGPL v2.1
 
 ## User Guide
 
