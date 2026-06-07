@@ -1,0 +1,19 @@
+
+PR 19 (1 commits): 18-cleanup-resources-on-undeploy
+
+-- doc/notes/
+   -- entries-in-howto-recreate.txt
+   -- pr-19.txt                                 [1]
+
+-- ContextListener                              [1]
+
+oo log4j.properties
+   -> left align:7
+
+-- web.xml
+   -> add context listener:12
+
+-- changelog.txt
+
+[1] added
+
