@@ -9,6 +9,10 @@
 
 	<display-name>Serva (0.3.1)</display-name>
 
+	<listener>
+		<listener-class>ch.serva.listeners.ContextListener</listener-class>
+	</listener>
+
 	<servlet>
 		<servlet-name>serva</servlet-name>
 		<servlet-class>ch.serva.servlets.ServaServlet</servlet-class>
